@@ -41,22 +41,53 @@
   };
   $(function () {
     /*--------------------------------------------------------------
-    awura PRELOADER JS INIT
+    AWURA STICKY MENU JS INIT
     --------------------------------------------------------------*/
-    $(".awura-preloader-wrap").fadeOut(500);
-
-    /*--------------------------------------------------------------
-    awura STICKY MENU JS INIT
-    --------------------------------------------------------------*/
-    $(window).on('scroll', function () {
+    $(window).on("scroll", function () {
       if ($(window).scrollTop() > 50) {
-        $('#sticky-menu').addClass('sticky-menu');
+        $("#sticky-menu").addClass("sticky-menu");
       } else {
-        $('#sticky-menu').removeClass('sticky-menu');
+        $("#sticky-menu").removeClass("sticky-menu");
       }
     });
+
+    /*--------------------------------------------------------------
+    AWURA SHAPE ANIMATION JS INIT
+    --------------------------------------------------------------*/
+    var images = document.querySelectorAll(".awura-cta-shape-left, .awura-cta-shape-right, .awura-hero-shape-left, .awura-hero-shape-right");
+    function revealOnScroll() {
+      var triggerBottom = window.innerHeight * 0.9; // trigger before fully in view
+
+      images.forEach(function (img) {
+        var imgTop = img.getBoundingClientRect().top;
+        if (imgTop < triggerBottom) {
+          img.classList.add("active");
+        }
+      });
+    }
+    window.addEventListener("scroll", revealOnScroll);
+    window.addEventListener("load", revealOnScroll); // trigger on load
   }); /*End document ready*/
 
+  /*--------------------------------------------------------------
+  AXIMO MAGNIFIC POPUP JS INIT
+  ------------------------------------------------------------*/
+  var popup_youtube = $('.video-init');
+  if (popup_youtube.is_exist()) {
+    popup_youtube.magnificPopup({
+      type: 'iframe',
+      mainClass: 'mfp-fade'
+    });
+  }
+  var container = document.getElementById("myImageContainer");
+  window.addEventListener("scroll", function () {
+    // Check if the user has scrolled a certain distance (e.g., 200 pixels)
+    if (window.scrollY > 200) {
+      container.classList.add("full-width-on-scroll");
+    } else {
+      container.classList.remove("full-width-on-scroll");
+    }
+  });
   $(window).on("resize", function () {}); // end window resize
 
   $(window).on("load", function () {
@@ -71,11 +102,5 @@
     }, 600);
   }); // End window LODE
 
-  new WOW({
-    boxClass: "wow",
-    animateClass: "animate__animated",
-    offset: 100,
-    // distance from bottom of viewport before triggering
-    mobile: true
-  }).init();
+  new WOW().init();
 })(jQuery);
