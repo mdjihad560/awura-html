@@ -2005,6 +2005,17 @@ button#comment-btn i {
 .awura-default-content h2 {
   margin-bottom: 20px;
 }
+.awura-default-content p {
+  font-size: 20px;
+}
+@media (max-width: 767px) {
+  .awura-default-content p {
+    font-size: 18px;
+  }
+}
+.awura-default-content.light-color h2, .awura-default-content.light-color p {
+  color: var(--white-color);
+}
 
 .awura-position-sticky {
   top: 100px;
@@ -2014,6 +2025,11 @@ button#comment-btn i {
   .awura-position-sticky {
     position: static;
   }
+}
+
+.position-relative {
+  position: relative;
+  z-index: 0;
 }
 
 .breadcumb-wrapper {
@@ -2181,6 +2197,7 @@ a.current {
   position: absolute;
   left: 0;
   bottom: 0;
+  z-index: -1;
   clip-path: inset(100% 0 0 0); /* fully hidden from bottom */
   transition: clip-path 1s ease-out;
 }
@@ -2199,6 +2216,7 @@ a.current {
   position: absolute;
   right: 0;
   bottom: 0;
+  z-index: -1;
   clip-path: inset(100% 0 0 0); /* fully hidden from bottom */
   transition: clip-path 1s ease-out;
 }
@@ -2221,6 +2239,7 @@ a.current {
 .awura-cta-shape-left {
   position: absolute;
   top: 35px;
+  z-index: -1;
   clip-path: inset(100% 0 0 0); /* fully hidden from bottom */
   transition: clip-path 1s ease-out;
 }
@@ -2239,6 +2258,7 @@ a.current {
   position: absolute;
   top: 0;
   right: 0;
+  z-index: -1;
   clip-path: inset(100% 0 0 0); /* fully hidden from bottom */
   transition: clip-path 1s ease-out;
 }
@@ -2512,6 +2532,66 @@ a.current {
   .iconbox-sticky {
     position: static;
   }
+}
+
+.awura-rolling-counter-column {
+  gap: 100px;
+  display: grid;
+  max-width: 500px;
+  position: relative;
+  grid-template-columns: 1fr 1fr;
+}
+@media (max-width: 479px) {
+  .awura-rolling-counter-column {
+    gap: 24px;
+    max-width: 250px;
+    grid-template-columns: 1fr;
+  }
+}
+.awura-rolling-counter-column:before {
+  content: "";
+  left: 47%;
+  top: 30px;
+  width: 1px;
+  height: 100px;
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+@media (max-width: 479px) {
+  .awura-rolling-counter-column:before {
+    content: none;
+  }
+}
+.awura-rolling-counter-value {
+  margin-bottom: 20px;
+}
+.awura-rolling-counter-value span {
+  font-size: 65px;
+  font-weight: 500;
+  color: var(--accent-color);
+}
+
+.rolling-counter {
+  display: inline-flex;
+  overflow: hidden;
+  font-size: 65px;
+  line-height: 70px;
+  height: 60px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--accent-color);
+}
+
+.rolling-counter .digit {
+  display: flex;
+  width: 34px;
+  flex-direction: column;
+  transition: transform 1s ease-out;
+}
+
+.rolling-counter .digit span {
+  height: 60px;
+  display: block;
 }
 
 .awura-menu-wrapper {

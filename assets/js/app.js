@@ -79,15 +79,6 @@
       mainClass: 'mfp-fade'
     });
   }
-  var container = document.getElementById("myImageContainer");
-  window.addEventListener("scroll", function () {
-    // Check if the user has scrolled a certain distance (e.g., 200 pixels)
-    if (window.scrollY > 200) {
-      container.classList.add("full-width-on-scroll");
-    } else {
-      container.classList.remove("full-width-on-scroll");
-    }
-  });
   $(window).on("resize", function () {}); // end window resize
 
   $(window).on("load", function () {
