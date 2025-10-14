@@ -79,6 +79,27 @@
       mainClass: 'mfp-fade'
     });
   }
+
+  // scroll
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.to(".awura-hero-v2-thumb1", {
+    y: -1600,
+    scrollTrigger: {
+      trigger: ".awura-hero-section2",
+      start: "top top",
+      end: "bottom top",
+      scrub: true
+    }
+  });
+  gsap.to(".awura-hero-v2-thumb2", {
+    y: -700,
+    scrollTrigger: {
+      trigger: ".awura-hero-section2",
+      start: "top top",
+      end: "bottom top",
+      scrub: true
+    }
+  });
   $(window).on("resize", function () {}); // end window resize
 
   $(window).on("load", function () {

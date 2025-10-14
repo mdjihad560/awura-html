@@ -21,11 +21,18 @@
 --white-color: #fff;
 --pampas-color: #EFECE5;
 --gray-color: rgba(0, 0, 0, 0.05);
+--orange-color: #FFCD61;
+--dark-color-1: #242424;
 }
 
 .awura-dark-bg
 {
 background-color: var(--primary-color) !important;
+}
+
+.awura-dark-bg2
+{
+background-color: var(--dark-color-1) !important;
 }
 
 .awura-gray-bg
@@ -45,7 +52,7 @@ background-color: var(--pampas-color) !important;
 
 .light-color
 {
-color: var(--white-color);
+color: var(--white-color) !important;
 }
 
 /*1.0 base css*/
@@ -405,6 +412,11 @@ h4,
 p {
   margin-bottom: 30px;
 }
+@media (max-width: 767px) {
+  p {
+    margin-bottom: 20px;
+  }
+}
 
 .f-size-10 {
   font-size: 10px !important;
@@ -725,6 +737,16 @@ header.awura-header.main-header {
 }
 .awura-header.header-one .menu-style1 > ul > li > a {
   padding: 11px 0;
+}
+
+.awura-header.header-two.sticky-menu {
+  background-color: var(--accent-color);
+}
+.awura-header.header-two .main-menu a {
+  color: var(--white-color);
+}
+.awura-header.header-two .main-menu a:hover {
+  color: var(--orange-color);
 }
 
 .main-menu a {
@@ -1878,9 +1900,6 @@ button#comment-btn i {
 .awura-btn-icon:hover {
   color: var(--white-color);
 }
-.awura-btn-icon.awura-small-btn {
-  padding: 11px 25px;
-}
 
 .btn-icon {
   position: relative;
@@ -1916,6 +1935,55 @@ button#comment-btn i {
 
 .awura-btn-icon:hover .button-icon-show i {
   transform: translateX(20px);
+}
+
+.awura-small-btn {
+  padding: 11px 25px !important;
+}
+
+.awura-small-btn2 {
+  padding: 13px 30px !important;
+}
+
+.awura-btn-style-two {
+  display: inline-block;
+  font-weight: 600;
+  text-transform: capitalize;
+  color: var(--dark-color-1);
+  background-color: var(--orange-color);
+  border-radius: 50px;
+  padding: 18px 35px;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--dark-color-1) !important;
+}
+.awura-btn-style-two.btn-outline {
+  color: var(--white-color) !important;
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+.awura-btn-style-two.btn-outline.dark-outline {
+  color: var(--dark-color-1) !important;
+  border: 1px solid var(--dark-color-1);
+}
+
+.awura-btn-effect-wrap {
+  height: 24px;
+  position: relative;
+  overflow: hidden;
+  display: block;
+}
+
+.btn-effect-content {
+  display: block;
+  height: 100%;
+  position: relative;
+  top: 0;
+  transition: 0.3s;
+}
+
+.awura-btn-style-two:hover .btn-effect-content {
+  top: -100%;
 }
 
 .awura-section-padding {
@@ -2013,13 +2081,44 @@ button#comment-btn i {
   }
 }
 .awura-section-title.center-align {
-  max-width: 660px;
+  max-width: 665px;
   margin: 0 auto;
   text-align: center;
 }
 @media (max-width: 991px) {
   .awura-section-title.center-align {
     max-width: 600px;
+  }
+}
+.awura-section-title.anton-font h5 {
+  font-size: 24px;
+  line-height: 34px;
+  margin-bottom: 20px;
+  font-family: "Anton", sans-serif;
+}
+.awura-section-title.anton-font h2 {
+  font-size: 85px;
+  letter-spacing: 0;
+  font-family: "Anton", sans-serif;
+}
+@media (max-width: 1399px) {
+  .awura-section-title.anton-font h2 {
+    font-size: 75px;
+  }
+}
+@media (max-width: 1199px) {
+  .awura-section-title.anton-font h2 {
+    font-size: 65px;
+  }
+}
+@media (max-width: 767px) {
+  .awura-section-title.anton-font h2 {
+    font-size: 40px;
+  }
+}
+@media (max-width: 479px) {
+  .awura-section-title.anton-font h2 {
+    font-size: 36px;
   }
 }
 
@@ -2067,6 +2166,45 @@ button#comment-btn i {
 .position-relative {
   position: relative;
   z-index: 0;
+}
+
+.awura-default-content.anton-font h2 {
+  font-size: 85px;
+  line-height: 1.117em;
+  letter-spacing: 0;
+  font-family: "Anton", sans-serif;
+  color: var(--dark-color-1);
+}
+@media (max-width: 1399px) {
+  .awura-default-content.anton-font h2 {
+    font-size: 75px;
+  }
+}
+@media (max-width: 1199px) {
+  .awura-default-content.anton-font h2 {
+    font-size: 65px;
+  }
+}
+@media (max-width: 767px) {
+  .awura-default-content.anton-font h2 {
+    font-size: 40px;
+  }
+}
+@media (max-width: 479px) {
+  .awura-default-content.anton-font h2 {
+    font-size: 36px;
+  }
+}
+.awura-default-content.anton-font h5 {
+  font-size: 24px;
+  line-height: 34px;
+  margin-bottom: 20px;
+  font-family: "Anton", sans-serif;
+  color: var(--dark-color-1);
+}
+.awura-default-content.inter-font p {
+  font-family: "Inter", sans-serif;
+  color: var(--dark-color-1);
 }
 
 .breadcumb-wrapper {
@@ -2352,6 +2490,159 @@ a.current {
   max-width: 840px;
   margin: 0 auto;
 }
+.awura-hero-section2 {
+  z-index: 0;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding: 195px 0 150px;
+  background-color: var(--accent-color);
+}
+@media (max-width: 991px) {
+  .awura-hero-section2 {
+    padding: 170px 0 100px;
+  }
+}
+@media (max-width: 767px) {
+  .awura-hero-section2 {
+    padding: 130px 0 80px;
+  }
+}
+.awura-hero-content2 {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+}
+@media (max-width: 1399px) {
+  .awura-hero-content2 {
+    max-width: 900px;
+  }
+}
+@media (max-width: 1199px) {
+  .awura-hero-content2 {
+    max-width: 740px;
+  }
+}
+.awura-hero-content2 h1, .awura-hero-content2 h4 {
+  color: var(--white-color);
+  font-family: "Anton", sans-serif;
+}
+.awura-hero-content2 h4 {
+  margin-bottom: 20px;
+}
+.awura-hero-content2 h1 {
+  font-size: 120px;
+  margin-bottom: 24px;
+  line-height: 1.08em;
+  letter-spacing: 0;
+}
+@media (max-width: 1399px) {
+  .awura-hero-content2 h1 {
+    font-size: 100px;
+  }
+}
+@media (max-width: 1199px) {
+  .awura-hero-content2 h1 {
+    font-size: 80px;
+  }
+}
+@media (max-width: 991px) {
+  .awura-hero-content2 h1 {
+    font-size: 60px;
+  }
+}
+@media (max-width: 767px) {
+  .awura-hero-content2 h1 {
+    font-size: 48px;
+  }
+}
+@media (max-width: 479px) {
+  .awura-hero-content2 h1 {
+    font-size: 40px;
+  }
+}
+.awura-hero-content2 p {
+  font-size: 20px;
+  color: var(--white-color);
+  font-family: "Inter", sans-serif;
+}
+@media (max-width: 767px) {
+  .awura-hero-content2 p {
+    font-size: 18px;
+  }
+}
+.awura-hero-btn {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.awura-hero-v2-thumb1 {
+  width: 300px;
+  overflow: hidden;
+  border-radius: 12px;
+  position: absolute;
+  transform: rotate(-10deg);
+  left: -11%;
+  bottom: -53%;
+  z-index: -1;
+  transition: transform 0.5s ease-out;
+}
+@media (max-width: 1399px) {
+  .awura-hero-v2-thumb1 {
+    max-width: 250px;
+  }
+}
+@media (max-width: 991px) {
+  .awura-hero-v2-thumb1 {
+    max-width: 200px;
+  }
+}
+@media (max-width: 767px) {
+  .awura-hero-v2-thumb1 {
+    display: none;
+  }
+}
+.awura-hero-v2-thumb1 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.awura-hero-v2-thumb2 {
+  width: 300px;
+  overflow: hidden;
+  border-radius: 12px;
+  position: absolute;
+  transform: rotate(10deg);
+  right: -11%;
+  top: -13%;
+  z-index: -1;
+  transition: transform 0.5s ease-out;
+}
+@media (max-width: 1399px) {
+  .awura-hero-v2-thumb2 {
+    max-width: 250px;
+  }
+}
+@media (max-width: 991px) {
+  .awura-hero-v2-thumb2 {
+    max-width: 200px;
+  }
+}
+@media (max-width: 767px) {
+  .awura-hero-v2-thumb2 {
+    display: none;
+  }
+}
+.awura-hero-v2-thumb2 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
 .awura-video-section {
   z-index: 0;
@@ -2456,6 +2747,12 @@ a.current {
 .wave-3 {
   -webkit-animation-delay: 2s;
   animation-delay: 2s;
+}
+
+.background-video {
+  display: none;
+  width: 100%;
+  border-radius: 16px;
 }
 
 .awura-brandlogo-title {
@@ -2751,7 +3048,7 @@ a.current {
 .awura-team-wrap:hover .awura-team-data h4, .awura-team-wrap:hover .awura-team-data p {
   color: var(--white-color);
 }
-.awura-team-wrap:hover a.awura-team-linkedin {
+.awura-team-wrap:hover .awura-social-icon ul li a {
   color: var(--primary-color);
   background-color: var(--white-color);
 }
@@ -2790,6 +3087,131 @@ a.current {
   color: var(--primary-color);
   border-radius: 100px;
   border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.awura-social-icon.team-social ul li a {
+  cursor: pointer;
+}
+.awura-social-icon.team-social ul li a:hover {
+  background-color: var(--accent-color) !important;
+}
+
+.awura-service-row {
+  position: relative;
+  height: 115px;
+  padding: 30px 0;
+  overflow: hidden;
+  transition: all 0.4s ease-in;
+  border-bottom: 1px solid var(--dark-color-1);
+}
+@media (max-width: 991px) {
+  .awura-service-row {
+    height: 100% !important;
+  }
+}
+.awura-service-row:hover .awura-service-thumb {
+  transform: scale(1);
+}
+.awura-service-row:hover {
+  height: 320px;
+}
+.awura-service-row:hover .awura-btn-style-two.btn-outline.dark-outline {
+  background-color: var(--orange-color);
+  border: 1px solid var(--orange-color);
+}
+.awura-service-thumb {
+  position: absolute;
+  top: 17px;
+  right: 300px;
+  transition: all 0.8s ease-in;
+  transform: scale(0);
+}
+@media (max-width: 1199px) {
+  .awura-service-thumb {
+    right: 170px;
+  }
+}
+@media (max-width: 991px) {
+  .awura-service-thumb {
+    transform: scale(1);
+    position: static;
+    margin-top: 24px;
+  }
+}
+.awura-service-thumb img {
+  width: 250px;
+  border-radius: 20px;
+}
+@media (max-width: 991px) {
+  .awura-service-thumb img {
+    width: 100%;
+    border-radius: 10px;
+  }
+}
+.awura-service-item {
+  overflow: hidden;
+}
+.awura-service-header {
+  display: flex;
+  margin-bottom: 15px;
+  align-items: center;
+  justify-content: space-between;
+}
+.awura-service-header h3 {
+  font-size: 42px;
+  line-height: 1.23em;
+  font-family: "Anton", sans-serif;
+  color: var(--dark-color-1);
+}
+@media (max-width: 991px) {
+  .awura-service-header h3 {
+    font-size: 36px;
+  }
+}
+@media (max-width: 767px) {
+  .awura-service-header h3 {
+    font-size: 30px;
+  }
+}
+.awura-service-body {
+  max-width: 485px;
+}
+@media (max-width: 767px) {
+  .awura-service-body {
+    margin-bottom: 24px;
+  }
+}
+.awura-service-body p {
+  margin-bottom: 50px;
+  font-family: "Inter", sans-serif;
+}
+@media (max-width: 991px) {
+  .awura-service-body p {
+    margin-bottom: 30px;
+  }
+}
+.awura-service-list ul {
+  column-gap: 24px;
+  row-gap: 15px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.awura-service-list ul li {
+  font-weight: 700;
+  font-family: "Inter", sans-serif;
+  padding-left: 20px;
+  position: relative;
+  color: var(--dark-color-1);
+}
+.awura-service-list ul li::before {
+  content: "";
+  left: 0;
+  top: 9px;
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  border-radius: 100px;
+  background-color: var(--dark-color-1);
 }
 
 .awura-menu-wrapper {
