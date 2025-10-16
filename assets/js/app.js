@@ -104,6 +104,19 @@
       scrub: true
     }
   });
+  var sections = document.querySelectorAll(".awura-portfolio-wrap2");
+  window.addEventListener("scroll", function () {
+    sections.forEach(function (section) {
+      var rect = section.getBoundingClientRect();
+
+      // যদি সেকশন viewport এর মধ্যে থাকে
+      if (rect.top < window.innerHeight * 0.8 && rect.bottom > window.innerHeight * 0.2) {
+        section.classList.add("active");
+      } else {
+        section.classList.remove("active");
+      }
+    });
+  });
 
   // card scroll
   // const sections = document.querySelectorAll(".awura-portfolio-wrap2");
