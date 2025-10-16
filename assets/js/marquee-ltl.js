@@ -1,5 +1,8 @@
-$(document).ready(function () {
+$(function () {
   const $container = $(".dir-ltl");
+
+  if ($container.length === 0) return;
+
   const $clones = $container.clone();
   $container.append($clones);
 
@@ -16,6 +19,7 @@ $(document).ready(function () {
     }
     requestAnimationFrame(marqueeScroll);
   }
+
   marqueeScroll();
 
   $(".inner-mwrquee-wra")

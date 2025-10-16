@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /**!
 
     Template Name: 'Relik-Admin Dashboard'
@@ -987,6 +986,27 @@ ul.sub-menu li.menu-item-has-children a::after {
   margin: 0;
 }
 
+.awura-footer-bottom2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 35px 0;
+}
+@media (max-width: 767px) {
+  .awura-footer-bottom2 {
+    gap: 24px;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+.awura-footer-bottom2 p {
+  margin: 0;
+  font-size: 16px;
+  color: var(--dark-color-1);
+  font-family: "Inter", sans-serif;
+}
+
 /*1.2 components css*/
 input[type=text],
 input[type=email],
@@ -1246,6 +1266,37 @@ button#awura-subscriber-btn:hover {
 }
 #sidebar-subscriber-btn i {
   font-size: 24px;
+}
+
+.awura-form-wrap {
+  padding: 30px;
+  border-radius: 10px;
+  background-color: var(--white-color);
+}
+
+.awura-input-field {
+  margin-bottom: 24px;
+}
+.awura-input-field input {
+  font-family: "Inter", sans-serif;
+}
+
+#awura-submit-btn {
+  width: 120px;
+  height: 60px;
+  display: flex;
+  font-size: 16px;
+  font-weight: 700;
+  align-items: center;
+  border-radius: 50px;
+  justify-content: center;
+  color: var(--dark-color-1);
+  background-color: var(--orange-color);
+  transition: all 0.4s;
+}
+#awura-submit-btn:hover {
+  color: var(--white-color);
+  background-color: var(--dark-color-1);
 }
 
 .awura-cta-content {
@@ -1796,6 +1847,58 @@ button#comment-btn i {
   margin-bottom: 24px;
 }
 
+.awura-style-two .blog-single {
+  padding: 30px;
+  border-radius: 10px;
+  margin-bottom: 24px;
+  background-color: var(--white-color);
+}
+@media (max-width: 767px) {
+  .awura-style-two .blog-single {
+    padding: 24px;
+  }
+}
+.awura-style-two .blog-single:hover .awura-btn-style-two.btn-outline.dark-outline {
+  background-color: var(--orange-color);
+  border: 1px solid var(--orange-color);
+}
+.awura-style-two .blog-meta a {
+  color: var(--dark-color-1);
+  font-size: 18px;
+  font-weight: 700;
+  font-family: "Inter", sans-serif;
+  position: relative;
+  padding-left: 20px;
+}
+.awura-style-two .blog-meta a::before {
+  content: "";
+  left: 0;
+  top: 8px;
+  width: 10px;
+  height: 10px;
+  border-radius: 10px;
+  position: absolute;
+  transition: all 0.4s;
+  background-color: var(--dark-color-1);
+}
+.awura-style-two .blog-meta a:hover {
+  color: var(--orange-color);
+}
+.awura-style-two .blog-meta a:hover::before {
+  background-color: var(--orange-color);
+}
+.awura-style-two .blog-title {
+  margin-bottom: 24px;
+  color: var(--dark-color-1);
+  font-family: "Anton", sans-serif;
+}
+.awura-style-two .blog-title a {
+  color: var(--dark-color-1);
+}
+.awura-style-two .blog-title a:hover {
+  color: var(--orange-color);
+}
+
 .aximo-default-btn {
   font-size: 16px;
   line-height: 24px;
@@ -2032,6 +2135,20 @@ button#comment-btn i {
   }
 }
 
+.awura-section-pb2 {
+  padding-bottom: 106px;
+}
+@media (max-width: 991px) {
+  .awura-section-pb2 {
+    padding-bottom: 76px;
+  }
+}
+@media (max-width: 991px) {
+  .awura-section-pb2 {
+    padding-bottom: 56px;
+  }
+}
+
 .awura-section-pt {
   padding-top: 130px;
 }
@@ -2095,8 +2212,11 @@ button#comment-btn i {
     max-width: 600px;
   }
 }
-.awura-section-title.center-align.max-w-680 {
-  max-width: 680px;
+.awura-section-title.center-align.max-w-685 {
+  max-width: 685px;
+}
+.awura-section-title.max-w-720 {
+  max-width: 720px;
 }
 .awura-section-title.anton-font h5 {
   font-size: 24px;
@@ -2113,6 +2233,7 @@ button#comment-btn i {
 .awura-section-title.anton-font h2 {
   font-size: 85px;
   letter-spacing: 0;
+  line-height: 1.17em;
   font-family: "Anton", sans-serif;
 }
 @media (max-width: 1399px) {
@@ -2134,6 +2255,9 @@ button#comment-btn i {
   .awura-section-title.anton-font h2 {
     font-size: 36px;
   }
+}
+.awura-section-title.anton-font.light-color h5, .awura-section-title.anton-font.light-color h2 {
+  color: var(--white-color);
 }
 
 @media (max-width: 991px) {
@@ -2767,23 +2891,18 @@ a.current {
 }
 
 .video-card {
-  width: 360px; /* change as needed */
-  max-width: 92vw;
-  background: #fff;
-  border-radius: var(--card-radius);
-  box-shadow: 0 6px 18px rgba(20, 20, 20, 0.09);
   overflow: hidden;
   position: relative;
+  border-radius: 20px;
+  aspect-ratio: 2/2.17;
 }
 
 /* video element fills card */
 .video-card video {
   width: 100%;
-  height: auto;
+  height: 100%;
   display: block;
-  background: #111;
   object-fit: cover;
-  aspect-ratio: 1/1; /* keep roughly square like image — adjust if needed */
 }
 
 /* controls overlay */
@@ -2792,7 +2911,7 @@ a.current {
   left: 0;
   right: 0;
   bottom: 0;
-  padding: 12px;
+  padding: 30px;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -2806,55 +2925,46 @@ a.current {
   justify-content: space-between;
   gap: 10px;
   pointer-events: auto;
+  margin-bottom: 15px;
 }
 
 /* left group (play + time) */
-.left {
+.controls-left {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 24px;
 }
 
 .play-btn {
-  width: 44px;
-  height: 44px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
   display: grid;
   place-items: center;
   cursor: pointer;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  flex: 0 0 44px;
 }
 
 .play-btn svg {
-  width: 18px;
-  height: 18px;
+  width: 28px;
+  height: 28px;
   fill: #fff;
 }
 
 .time {
   color: #fff;
-  font-size: 14px;
-  font-weight: 600;
-  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.6);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--white-color);
+  font-family: "Inter", sans-serif;
 }
 
 /* right group: icons */
-.icon-btn {
-  display: inline-grid;
-  place-items: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 9px;
-  background: rgba(255, 255, 255, 0.06);
-  cursor: pointer;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+.controls-right {
+  display: flex;
+  gap: 24px;
 }
 
 .icon-btn svg {
-  width: 16px;
-  height: 16px;
+  width: 28px;
+  height: 28px;
   fill: #fff;
 }
 
@@ -2866,20 +2976,23 @@ a.current {
   pointer-events: auto;
 }
 
-input[type=range] {
+.progress-wrap input[type=range] {
   -webkit-appearance: none;
   appearance: none;
   width: 100%;
-  height: 6px;
+  height: 10px !important;
   border-radius: 999px;
   background: linear-gradient(90deg, #ffffff 0%, #ffffff 0%) no-repeat;
   background-size: 0% 100%;
   outline: none;
   cursor: pointer;
+  padding: 0 !important;
+  border: none !important;
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
 /* thumb */
-input[type=range]::-webkit-slider-thumb {
+.progress-wrap input[type=range]::-webkit-slider-thumb {
   -webkit-appearance: none;
   width: 12px;
   height: 12px;
@@ -2889,7 +3002,7 @@ input[type=range]::-webkit-slider-thumb {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
 }
 
-input[type=range]::-moz-range-thumb {
+.progress-wrap input[type=range]::-moz-range-thumb {
   width: 12px;
   height: 12px;
   border-radius: 50%;
@@ -2910,16 +3023,6 @@ input[type=range]::-moz-range-thumb {
   transition: transform 0.12s ease;
 }
 
-/* responsive smaller */
-@media (max-width: 420px) {
-  .video-card {
-    width: 320px;
-  }
-  .play-btn {
-    width: 40px;
-    height: 40px;
-  }
-}
 .awura-brandlogo-title {
   max-width: 600px;
   padding-bottom: 60px;
@@ -3386,6 +3489,69 @@ input[type=range]::-moz-range-thumb {
 .awura-testimonial-author-data p {
   margin: 0;
   color: var(--white-color);
+}
+
+.awura-testimonial-row {
+  gap: 24px;
+  display: flex;
+  margin-bottom: 24px;
+  flex-direction: column;
+}
+@media (max-width: 1199px) {
+  .awura-testimonial-row.responsive-column {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 991px) {
+  .awura-testimonial-row.responsive-column {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: 1fr;
+  }
+}
+.awura-testimonial-box2 {
+  padding: 30px;
+  border-radius: 10px;
+  background-color: var(--white-color);
+}
+.awura-testimonial-box2 p {
+  font-weight: 700;
+  color: var(--dark-color-1);
+  font-family: "Inter", sans-serif;
+}
+.awura-testimonial-author-wrap2 {
+  margin-top: 40px;
+  gap: 24px;
+  display: flex;
+  align-items: center;
+}
+.awura-testimonial-author-thumb2 {
+  width: 60px;
+  height: 60px;
+  border-radius: 100px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.awura-testimonial-author-thumb2 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.awura-testimonial-author-data2 span {
+  font-size: 16px;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 5px;
+  color: var(--dark-color-1);
+  font-family: "Inter", sans-serif;
+}
+.awura-testimonial-author-data2 p {
+  margin: 0;
+  font-size: 16px;
+  color: var(--dark-color-1);
+  font-family: "Inter", sans-serif;
 }
 
 .awura-team-wrap {
