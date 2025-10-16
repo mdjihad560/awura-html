@@ -1,14 +1,18 @@
 function createRollingCounter(element) {
   const targetValue = element.getAttribute("data-value");
+
+  if (!targetValue) return;
+
   element.innerHTML = "";
 
+  // Create digit containers
   for (let char of targetValue) {
     if (isNaN(char)) continue;
 
     const digitContainer = document.createElement("div");
     digitContainer.className = "digit";
 
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i <= 9; i++) {
       const span = document.createElement("span");
       span.textContent = i;
       digitContainer.appendChild(span);
@@ -16,30 +20,40 @@ function createRollingCounter(element) {
 
     element.appendChild(digitContainer);
   }
-}
 
-function animateRollingCounter(element) {
-  const targetValue = element.getAttribute("data-value");
-  const digits = element.querySelectorAll(".digit");
+  // Animate digits
+  requestAnimationFrame(() => {
+    const digits = element.querySelectorAll(".digit");
+    digits.forEach((digit, index) => {
+      const targetDigit = parseInt(targetValue[index]);
+      const spanHeight = digit
+        .querySelector("span")
+        .getBoundingClientRect().height;
 
-  digits.forEach((digitContainer, index) => {
-    const targetDigit = +targetValue[index];
-    digitContainer.style.transform = `translateY(-${targetDigit * 60}px)`;
+      setTimeout(() => {
+        digit.querySelectorAll("span").forEach((span) => {
+          span.style.transform = `translateY(-${targetDigit * spanHeight}px)`;
+        });
+      }, index * 200); // stagger animation
+    });
   });
 }
 
-// Create all counters
-const counters = document.querySelectorAll(".rolling-counter");
-counters.forEach(createRollingCounter);
+// Scroll-triggered logic
+document.addEventListener("DOMContentLoaded", () => {
+  const counters = document.querySelectorAll(".rolling-counter");
 
-// Scroll trigger
-let started = false;
-window.addEventListener("scroll", () => {
-  const section = document.querySelector("#counter-section");
-  const rect = section.getBoundingClientRect();
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          createRollingCounter(entry.target);
+          obs.unobserve(entry.target); // only run once
+        }
+      });
+    },
+    { threshold: 0.5 }
+  ); // trigger when 50% visible
 
-  if (!started && rect.top < window.innerHeight && rect.bottom >= 0) {
-    started = true;
-    counters.forEach(animateRollingCounter);
-  }
+  counters.forEach((counter) => observer.observe(counter));
 });
