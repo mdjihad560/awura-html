@@ -100,9 +100,32 @@
     });
   });
 
-  // // video
-  // // Elements
+  /*--------------------------------------------------------------
+  AWURA BUTTON HOVER JS INIT
+  ------------------------------------------------------------*/
 
+  $(".awura-btn-style-three").mouseenter(function (e) {
+    var parentOffset = $(this).offset();
+    var relX = e.pageX - parentOffset.left;
+    var relY = e.pageY - parentOffset.top;
+    $(this).prev(".awura-button-hover").css({
+      left: relX,
+      top: relY
+    });
+    $(this).prev(".awura-button-hover").removeClass("btn-desplode-circle");
+    $(this).prev(".awura-button-hover").addClass("btn-explode-circle");
+  });
+  $(".awura-btn-style-three").mouseleave(function (e) {
+    var parentOffset = $(this).offset();
+    var relX = e.pageX - parentOffset.left;
+    var relY = e.pageY - parentOffset.top;
+    $(this).prev(".awura-button-hover").css({
+      left: relX,
+      top: relY
+    });
+    $(this).prev(".awura-button-hover").removeClass("btn-explode-circle");
+    $(this).prev(".awura-button-hover").addClass("btn-desplode-circle");
+  });
   $(window).on("resize", function () {}); // end window resize
 
   $(window).on("load", function () {

@@ -22,11 +22,4 @@ $(function () {
 
   marqueeScroll();
 
-  $(".inner-mwrquee-wra")
-    .on("mouseenter", function () {
-      isPaused = true;
-    })
-    .on("mouseleave", function () {
-      isPaused = false;
-    });
 });
