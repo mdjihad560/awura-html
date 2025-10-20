@@ -126,6 +126,104 @@
     $(this).prev(".awura-button-hover").removeClass("btn-explode-circle");
     $(this).prev(".awura-button-hover").addClass("btn-desplode-circle");
   });
+
+  /*--------------------------------------------------------------
+  AWURA ACCORDION JS INIT
+  ------------------------------------------------------------*/
+  var items = document.querySelectorAll(".awura-accordion-item");
+  items.forEach(function (item) {
+    var header = item.querySelector(".awura-accordion-header");
+    var content = item.querySelector(".awura-accordion-content");
+    if (item.classList.contains("active")) {
+      content.style.height = content.scrollHeight + "px";
+    }
+    header.addEventListener("click", function () {
+      var openItem = document.querySelector(".awura-accordion-item.active");
+      if (openItem && openItem !== item) {
+        openItem.classList.remove("active");
+        openItem.querySelector(".awura-accordion-content").style.height = "0px";
+      }
+      item.classList.toggle("active");
+      if (item.classList.contains("active")) {
+        content.style.height = content.scrollHeight + "px";
+      } else {
+        content.style.height = "0px";
+      }
+    });
+  });
+
+  /*--------------------------------------------------------------
+  AWURA PROGRESS JS INIT
+  ------------------------------------------------------------*/
+  document.addEventListener("DOMContentLoaded", function () {
+    var bars = document.querySelectorAll(".awura-progress-bar");
+    var chartSection = document.getElementById("chart");
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          bars.forEach(function (bar) {
+            var height = bar.getAttribute("data-height");
+            bar.style.height = height;
+          });
+          observer.unobserve(chartSection); // একবারই অ্যানিমেশন হবে
+        }
+      });
+    }, {
+      threshold: 0.5
+    });
+    observer.observe(chartSection);
+  });
+
+  /*--------------------------------------------------------------
+  TESTIMONIAL PROGRESS JS INIT
+  ------------------------------------------------------------*/
+  var testimonial_slider = $(".awura-testimonial-init");
+  if (testimonial_slider.is_exist()) {
+    testimonial_slider.slick({
+      infinite: true,
+      slidesToShow: 3,
+      slidesToScroll: 1,
+      arrows: true,
+      dots: false,
+      autoplay: false,
+      speed: 800,
+      prevArrow: '<button class="slide-arrow awura-testimonial-next"><i class="ri-arrow-left-line"></i></button>',
+      nextArrow: '<button class="slide-arrow awura-testimonial-prev"><i class="ri-arrow-right-line"></i></button>',
+      responsive: [{
+        breakpoint: 1399,
+        settings: {
+          slidesToShow: 2
+        }
+      }, {
+        breakpoint: 767,
+        settings: {
+          slidesToShow: 1
+        }
+      }]
+    });
+  }
+
+  /*--------------------------------------------------------------
+  PRICING JS INIT
+  ------------------------------------------------------------*/
+  var toggle = document.getElementById("toggle");
+  var prices = document.querySelectorAll(".awura-pricing-price");
+  var isYearly = false;
+  toggle.addEventListener("click", function () {
+    isYearly = !isYearly;
+    toggle.classList.toggle("active");
+    prices.forEach(function (price) {
+      var monthly = price.getAttribute("data-monthly");
+      var yearly = price.getAttribute("data-yearly");
+      var newPrice = isYearly ? yearly : monthly;
+      var duration = isYearly ? "/year" : "/month";
+      price.style.opacity = "0";
+      setTimeout(function () {
+        price.innerHTML = "$".concat(newPrice, "<span>").concat(duration, "</span>");
+        price.style.opacity = "1";
+      }, 250);
+    });
+  });
   $(window).on("resize", function () {}); // end window resize
 
   $(window).on("load", function () {
