@@ -4511,29 +4511,38 @@ a.current {
   }
 }
 .awura-accordion-item {
-  border-radius: 10px;
-  margin-bottom: 24px;
   overflow: hidden;
-  padding: 24px;
+  padding: 24px 0;
   display: flex;
   gap: 0;
   flex-direction: column;
   transition: all 0.3s ease;
-  background-color: rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(38, 41, 46, 0.1);
 }
-.awura-accordion-item:last-child {
-  margin-bottom: 0;
+.awura-accordion-item:first-child {
+  padding-top: 0;
 }
 .awura-accordion-item.active {
   gap: 15px;
+}
+.awura-accordion-item.active .awura-accordion-plus img {
+  transform: rotate(45deg);
 }
 .awura-accordion-header {
   cursor: pointer;
   transition: background 0.3s;
   font-size: 32px;
+  display: flex;
+  justify-content: space-between;
   line-height: 1.18em;
   letter-spacing: -0.015em;
   font-family: "Pixelify Sans", sans-serif;
+  color: var(--dark-color-2);
+}
+@media (max-width: 479px) {
+  .awura-accordion-header {
+    font-size: 28px;
+  }
 }
 .awura-accordion-content {
   height: 0;
@@ -4544,6 +4553,61 @@ a.current {
   margin: 0;
   font-size: 18px !important;
   font-family: "Roboto", sans-serif;
+}
+.awura-accordion-plus {
+  line-height: 1;
+}
+.awura-accordion-plus img {
+  transition: all 0.4s;
+}
+
+.style-two .awura-accordion-item {
+  border-radius: 10px;
+  margin-bottom: 24px;
+  overflow: hidden;
+  padding: 24px !important;
+  display: flex;
+  gap: 0;
+  border: none;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+.style-two .awura-accordion-item:last-child {
+  margin-bottom: 0;
+}
+.style-two .awura-accordion-item.active {
+  gap: 15px;
+}
+.style-two .awura-accordion-header {
+  cursor: pointer;
+  transition: background 0.3s;
+  font-size: 32px;
+  line-height: 1.18em;
+  letter-spacing: -0.015em;
+  font-family: "Pixelify Sans", sans-serif;
+  color: var(--white-color);
+}
+@media (max-width: 479px) {
+  .style-two .awura-accordion-header {
+    font-size: 28px;
+  }
+}
+.style-two .awura-accordion-content {
+  height: 0;
+  overflow: hidden;
+  transition: height 0.35s ease;
+}
+.style-two .awura-accordion-content p {
+  margin: 0;
+  font-size: 18px !important;
+  font-family: "Roboto", sans-serif;
+}
+
+@media (max-width: 991px) {
+  .responsive-mt40 {
+    margin-top: 40px;
+  }
 }
 
 .awura-chart-background {
@@ -4778,53 +4842,180 @@ a.current {
 .awura-toggle-header {
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 30px;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 55px;
+}
+.awura-toggle-header span {
+  font-size: 16px;
+  font-weight: 600;
+  font-family: "Roboto", sans-serif;
 }
 
 .toggle-switch {
   position: relative;
-  width: 60px;
-  height: 30px;
-  background: #ccc;
+  width: 70px;
+  height: 35px;
+  background: var(--dark-color-2);
   border-radius: 30px;
   cursor: pointer;
   transition: background 0.3s ease;
 }
 
-.toggle-switch.active {
-  background: #7c3aed;
-}
-
 .toggle-circle {
   position: absolute;
-  top: 4px;
+  top: 5px;
   left: 4px;
-  width: 22px;
-  height: 22px;
-  background: #fff;
+  width: 25px;
+  height: 25px;
+  background: var(--white-color);
   border-radius: 50%;
   transition: all 0.3s ease;
 }
 
 .toggle-switch.active .toggle-circle {
-  left: 34px;
+  left: 40px;
 }
 
+.awura-pricing-box {
+  padding: 40px;
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 24px;
+  background-color: var(--white-color);
+  border: 1px solid rgba(38, 41, 46, 0.1);
+}
+.awura-pricing-box p {
+  margin: 0;
+  color: var(--dark-color-2);
+  font-family: "Roboto", sans-serif;
+}
+.awura-pricing-divider {
+  height: 1px;
+  width: calc(100% + 80px);
+  margin: 24px 0;
+  margin-left: -40px;
+  background-color: rgba(38, 41, 46, 0.1);
+}
+.awura-pricing-header {
+  margin-bottom: 24px;
+}
+.awura-pricing-header h3 {
+  font-size: 32px;
+  font-family: "Pixelify Sans", sans-serif;
+}
 .awura-pricing-price {
+  margin-bottom: 24px;
   display: flex;
-  flex-wrap: wrap;
+  font-size: 85px;
+  line-height: 0.94em;
+  align-items: flex-end;
+  letter-spacing: -0.02em;
+  font-family: "Pixelify Sans", sans-serif;
+  color: var(--dark-color-2);
+}
+@media (max-width: 1399px) {
+  .awura-pricing-price {
+    font-size: 75px;
+  }
+}
+@media (max-width: 1199px) {
+  .awura-pricing-price {
+    font-size: 70px;
+    letter-spacing: 0;
+  }
+}
+.awura-pricing-price span {
+  margin-left: 5px;
+  font-size: 32px;
+  display: block;
+  line-height: 1;
+  margin-bottom: 5px;
+}
+.awura-pricing-feature ul li {
+  position: relative;
+  padding-left: 30px;
+  color: var(--dark-color-2);
+  font-family: "Roboto", sans-serif;
+  margin-bottom: 15px;
+}
+.awura-pricing-feature ul li:last-child {
+  margin-bottom: 0;
+}
+.awura-pricing-feature ul li img {
+  left: 0;
+  top: 3px;
+  position: absolute;
+}
+.awura-pricing-footer {
+  margin-top: 30px;
+}
+.awura-pricing-footer .awura-btn-position {
+  width: 100%;
+}
+.awura-pricing-footer a.awura-btn-style-three {
+  width: 100%;
+  display: inline-flex;
   justify-content: center;
-  gap: 25px;
+  background-color: var(--dark-color-2);
+}
+.awura-pricing-footer .btn-explode-circle {
+  animation: explode_pricing 0.5s forwards;
+}
+.awura-pricing-footer .btn-desplode-circle {
+  animation: desplode_pricing 0.5s forwards;
+}
+.awura-pricing-active {
+  padding: 10px;
+  padding-bottom: 0;
+  border-radius: 10px;
+  background: linear-gradient(180deg, #F8D597 0%, #FFFFFF 100%);
+}
+.awura-pricing-active .awura-pricing-box {
+  border: none;
+}
+.awura-pricing-active h3 {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 10px;
+  font-family: "Pixelify Sans", sans-serif;
+}
+.awura-pricing-active .awura-btn-style-three {
+  background-color: var(--blue-color) !important;
 }
 
-.price {
-  font-size: 36px;
-  font-weight: 700;
-  margin: 15px 0;
-  transition: all 0.4s ease;
+@keyframes explode_pricing {
+  0% {
+    width: 0px;
+    height: 0px;
+    margin-left: 0px;
+    margin-top: 0px;
+    background-color: var(--marzipan-color);
+  }
+  100% {
+    width: 800px;
+    height: 800px;
+    margin-left: -400px;
+    margin-top: -400px;
+    background-color: var(--marzipan-color);
+  }
 }
-
+@keyframes desplode_pricing {
+  0% {
+    width: 800px;
+    height: 800px;
+    margin-left: -400px;
+    margin-top: -400px;
+    background-color: var(--marzipan-color);
+  }
+  100% {
+    width: 0px;
+    height: 0px;
+    margin-left: 0px;
+    margin-top: 0px;
+    background-color: var(--marzipan-color);
+  }
+}
 .awura-menu-wrapper {
   position: fixed;
   top: 0;

@@ -130,25 +130,32 @@
   /*--------------------------------------------------------------
   AWURA ACCORDION JS INIT
   ------------------------------------------------------------*/
-  var items = document.querySelectorAll(".awura-accordion-item");
-  items.forEach(function (item) {
-    var header = item.querySelector(".awura-accordion-header");
-    var content = item.querySelector(".awura-accordion-content");
-    if (item.classList.contains("active")) {
-      content.style.height = content.scrollHeight + "px";
-    }
-    header.addEventListener("click", function () {
-      var openItem = document.querySelector(".awura-accordion-item.active");
-      if (openItem && openItem !== item) {
-        openItem.classList.remove("active");
-        openItem.querySelector(".awura-accordion-content").style.height = "0px";
-      }
-      item.classList.toggle("active");
-      if (item.classList.contains("active")) {
-        content.style.height = content.scrollHeight + "px";
-      } else {
-        content.style.height = "0px";
-      }
+  document.addEventListener("DOMContentLoaded", function () {
+    var accordionGroups = document.querySelectorAll(".awura-accordion-wrapper");
+    accordionGroups.forEach(function (group) {
+      var items = group.querySelectorAll(".awura-accordion-item");
+      items.forEach(function (item) {
+        var header = item.querySelector(".awura-accordion-header");
+        var content = item.querySelector(".awura-accordion-content");
+
+        // যদি active থাকে, height সেট করো
+        if (item.classList.contains("active")) {
+          content.style.height = content.scrollHeight + "px";
+        }
+        header.addEventListener("click", function () {
+          var openItem = group.querySelector(".awura-accordion-item.active");
+          if (openItem && openItem !== item) {
+            openItem.classList.remove("active");
+            openItem.querySelector(".awura-accordion-content").style.height = "0px";
+          }
+          item.classList.toggle("active");
+          if (item.classList.contains("active")) {
+            content.style.height = content.scrollHeight + "px";
+          } else {
+            content.style.height = "0px";
+          }
+        });
+      });
     });
   });
 
