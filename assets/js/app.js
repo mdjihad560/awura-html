@@ -156,8 +156,11 @@
   AWURA PROGRESS JS INIT
   ------------------------------------------------------------*/
   document.addEventListener("DOMContentLoaded", function () {
-    var bars = document.querySelectorAll(".awura-progress-bar");
     var chartSection = document.getElementById("chart");
+    var bars = document.querySelectorAll(".awura-progress-bar");
+
+    // ✅ Stop if chart or bars are not found (prevents errors)
+    if (!chartSection || bars.length === 0) return;
     var observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
@@ -165,7 +168,9 @@
             var height = bar.getAttribute("data-height");
             bar.style.height = height;
           });
-          observer.unobserve(chartSection); // একবারই অ্যানিমেশন হবে
+
+          // Unobserve so it animates only once
+          observer.unobserve(chartSection);
         }
       });
     }, {
@@ -206,22 +211,27 @@
   /*--------------------------------------------------------------
   PRICING JS INIT
   ------------------------------------------------------------*/
-  var toggle = document.getElementById("toggle");
-  var prices = document.querySelectorAll(".awura-pricing-price");
-  var isYearly = false;
-  toggle.addEventListener("click", function () {
-    isYearly = !isYearly;
-    toggle.classList.toggle("active");
-    prices.forEach(function (price) {
-      var monthly = price.getAttribute("data-monthly");
-      var yearly = price.getAttribute("data-yearly");
-      var newPrice = isYearly ? yearly : monthly;
-      var duration = isYearly ? "/year" : "/month";
-      price.style.opacity = "0";
-      setTimeout(function () {
-        price.innerHTML = "$".concat(newPrice, "<span>").concat(duration, "</span>");
-        price.style.opacity = "1";
-      }, 250);
+  document.addEventListener("DOMContentLoaded", function () {
+    var toggle = document.getElementById("toggle");
+    var prices = document.querySelectorAll(".awura-pricing-price");
+
+    // ✅ Stop here if toggle or prices not found
+    if (!toggle || prices.length === 0) return;
+    var isYearly = false;
+    toggle.addEventListener("click", function () {
+      isYearly = !isYearly;
+      toggle.classList.toggle("active");
+      prices.forEach(function (price) {
+        var monthly = price.getAttribute("data-monthly");
+        var yearly = price.getAttribute("data-yearly");
+        var newPrice = isYearly ? yearly : monthly;
+        var duration = isYearly ? "/year" : "/month";
+        price.style.opacity = "0";
+        setTimeout(function () {
+          price.innerHTML = "$".concat(newPrice, "<span>").concat(duration, "</span>");
+          price.style.opacity = "1";
+        }, 250);
+      });
     });
   });
   $(window).on("resize", function () {}); // end window resize
