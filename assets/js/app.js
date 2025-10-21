@@ -160,33 +160,6 @@
   });
 
   /*--------------------------------------------------------------
-  AWURA PROGRESS JS INIT
-  ------------------------------------------------------------*/
-  document.addEventListener("DOMContentLoaded", function () {
-    var chartSection = document.getElementById("chart");
-    var bars = document.querySelectorAll(".awura-progress-bar");
-
-    // ✅ Stop if chart or bars are not found (prevents errors)
-    if (!chartSection || bars.length === 0) return;
-    var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          bars.forEach(function (bar) {
-            var height = bar.getAttribute("data-height");
-            bar.style.height = height;
-          });
-
-          // Unobserve so it animates only once
-          observer.unobserve(chartSection);
-        }
-      });
-    }, {
-      threshold: 0.5
-    });
-    observer.observe(chartSection);
-  });
-
-  /*--------------------------------------------------------------
   TESTIMONIAL PROGRESS JS INIT
   ------------------------------------------------------------*/
   var testimonial_slider = $(".awura-testimonial-init");
@@ -240,6 +213,147 @@
         }, 250);
       });
     });
+  });
+
+  /*--------------------------------------------------------------
+  DASHBOARD ROTATED JS INIT
+  ------------------------------------------------------------*/
+  document.addEventListener("DOMContentLoaded", function () {
+    var image = document.getElementById("rotating-image");
+    if (!image) return;
+    var scrollThreshold = 400;
+    var targetRotation = 20;
+    var currentRotation = 20;
+    var smoothness = 0.08;
+    function updateRotation() {
+      currentRotation += (targetRotation - currentRotation) * smoothness;
+      image.style.transform = "perspective(1000px) rotateX(".concat(currentRotation, "deg)");
+      requestAnimationFrame(updateRotation);
+    }
+    window.addEventListener("scroll", function () {
+      var scrollTop = window.scrollY;
+      var progress = Math.min(scrollTop / scrollThreshold, 1);
+      targetRotation = 20 * (1 - progress);
+    });
+    updateRotation();
+  });
+
+  /*--------------------------------------------------------------
+  CHART JS INIT
+  ------------------------------------------------------------*/
+
+  document.addEventListener("DOMContentLoaded", function () {
+    var ctx = document.getElementById("myChart").getContext("2d");
+    var chartInitialized = false;
+    function createChart() {
+      new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "July", "Aug"],
+          datasets: [{
+            label: "Blue Sales",
+            data: [0, 18000, 0, 2737, 0, 50000, 0, 17000],
+            backgroundColor: "#00c0ff",
+            borderRadius: 4,
+            barThickness: 20,
+            categoryPercentage: 0.6,
+            barPercentage: 1.0,
+            order: 1
+          }, {
+            label: "Yellow Sales",
+            data: [33000, 0, 25000, 33000, 29000, 0, 27000, 0],
+            backgroundColor: "#ffee55",
+            borderRadius: 4,
+            barThickness: 20,
+            categoryPercentage: 0.6,
+            barPercentage: 1.0,
+            order: 2
+          }]
+        },
+        options: {
+          maintainAspectRatio: false,
+          responsive: true,
+          interaction: {
+            mode: "index",
+            intersect: false
+          },
+          animation: {
+            duration: 2000,
+            // সময় (২ সেকেন্ডে মসৃণ অ্যানিমেশন)
+            easing: "easeInOutQuart" // smooth easing effect
+          },
+          plugins: {
+            legend: {
+              display: false
+            },
+            tooltip: {
+              backgroundColor: "#ffffff",
+              borderColor: "#e0e0e0",
+              borderWidth: 1,
+              titleColor: "#444",
+              bodyColor: "#000",
+              titleFont: {
+                weight: "normal"
+              },
+              bodyFont: {
+                weight: "bold"
+              },
+              padding: 10,
+              callbacks: {
+                label: function label(context) {
+                  return "Sales $" + context.raw.toLocaleString();
+                }
+              }
+            }
+          },
+          scales: {
+            x: {
+              grid: {
+                display: false
+              },
+              ticks: {
+                font: {
+                  size: 10,
+                  weight: "400"
+                },
+                color: "rgba(3, 22, 11, 0.8)"
+              }
+            },
+            y: {
+              beginAtZero: true,
+              max: 55000,
+              ticks: {
+                stepSize: 5000,
+                callback: function callback(value) {
+                  return value / 1000 + " k";
+                },
+                color: "rgba(3, 22, 11, 0.8)",
+                font: {
+                  size: 10
+                }
+              },
+              grid: {
+                drawBorder: false,
+                color: "#fff"
+              }
+            }
+          }
+        }
+      });
+    }
+
+    // যখন চার্ট স্ক্রিনে দেখা যাবে তখন অ্যানিমেশন শুরু হবে
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting && !chartInitialized) {
+          createChart();
+          chartInitialized = true;
+        }
+      });
+    }, {
+      threshold: 0.4
+    });
+    observer.observe(document.getElementById("myChart"));
   });
   $(window).on("resize", function () {}); // end window resize
 
