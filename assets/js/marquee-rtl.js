@@ -8,7 +8,7 @@ $(document).ready(function () {
 
   function marqueeScroll() {
     if (!isPaused) {
-      scrollAmount += 2; // speed
+      scrollAmount += 1.2; // speed
       $container.css("transform", `translateX(${scrollAmount}px)`);
       if (scrollAmount >= $container[0].scrollWidth / 2) {
         scrollAmount = 0;
@@ -18,7 +18,7 @@ $(document).ready(function () {
   }
   marqueeScroll();
 
-  const $wrapper = $(".inner-mwrquee-wra");
+  const $wrapper = $(".awura-integration-slider-box");
   $wrapper.on("mouseenter", () => (isPaused = true));
   $wrapper.on("mouseleave", () => (isPaused = false));
 });

@@ -160,7 +160,7 @@
   });
 
   /*--------------------------------------------------------------
-  TESTIMONIAL PROGRESS JS INIT
+  TESTIMONIAL SLIDER JS INIT
   ------------------------------------------------------------*/
   var testimonial_slider = $(".awura-testimonial-init");
   if (testimonial_slider.is_exist()) {
@@ -183,6 +183,31 @@
         breakpoint: 767,
         settings: {
           slidesToShow: 1
+        }
+      }]
+    });
+  }
+
+  /*--------------------------------------------------------------
+  TESTIMONIAL SLIDER JS INIT
+  ------------------------------------------------------------*/
+  var testimonial_slider = $(".awura-testimonial-init2");
+  if (testimonial_slider.is_exist()) {
+    testimonial_slider.slick({
+      infinite: true,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      arrows: true,
+      dots: false,
+      autoplay: false,
+      speed: 800,
+      prevArrow: '<button class="slide-arrow awura-testimonial-next2"><i class="ri-arrow-left-s-line"></i></button>',
+      nextArrow: '<button class="slide-arrow awura-testimonial-prev2"><i class="ri-arrow-right-s-line"></i></button>',
+      responsive: [{
+        breakpoint: 479,
+        settings: {
+          arrows: false,
+          autoplay: true
         }
       }]
     });
@@ -239,7 +264,34 @@
   });
 
   /*--------------------------------------------------------------
-  CHART JS INIT
+  AWURA CHART V3 JS INIT
+  ------------------------------------------------------------*/
+  document.addEventListener("DOMContentLoaded", function () {
+    var chartSection = document.getElementById("chart");
+    var bars = document.querySelectorAll(".awura-progress-bar");
+
+    // ✅ Stop if chart or bars are not found (prevents errors)
+    if (!chartSection || bars.length === 0) return;
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          bars.forEach(function (bar) {
+            var height = bar.getAttribute("data-height");
+            bar.style.height = height;
+          });
+
+          // Unobserve so it animates only once
+          observer.unobserve(chartSection);
+        }
+      });
+    }, {
+      threshold: 0.5
+    });
+    observer.observe(chartSection);
+  });
+
+  /*--------------------------------------------------------------
+  CHART CHART V4 JS INIT
   ------------------------------------------------------------*/
 
   document.addEventListener("DOMContentLoaded", function () {
@@ -254,20 +306,18 @@
             label: "Blue Sales",
             data: [0, 18000, 0, 2737, 0, 50000, 0, 17000],
             backgroundColor: "#00c0ff",
-            borderRadius: 4,
+            borderRadius: 6,
             barThickness: 20,
             categoryPercentage: 0.6,
-            barPercentage: 1.0,
-            order: 1
+            barPercentage: 1.0
           }, {
             label: "Yellow Sales",
             data: [33000, 0, 25000, 33000, 29000, 0, 27000, 0],
             backgroundColor: "#ffee55",
-            borderRadius: 4,
+            borderRadius: 6,
             barThickness: 20,
             categoryPercentage: 0.6,
-            barPercentage: 1.0,
-            order: 2
+            barPercentage: 1.0
           }]
         },
         options: {
@@ -279,8 +329,7 @@
           },
           animation: {
             duration: 2000,
-            // সময় (২ সেকেন্ডে মসৃণ অ্যানিমেশন)
-            easing: "easeInOutQuart" // smooth easing effect
+            easing: "easeInOutQuart" // smooth animation
           },
           plugins: {
             legend: {
@@ -292,9 +341,6 @@
               borderWidth: 1,
               titleColor: "#444",
               bodyColor: "#000",
-              titleFont: {
-                weight: "normal"
-              },
               bodyFont: {
                 weight: "bold"
               },
@@ -342,7 +388,7 @@
       });
     }
 
-    // যখন চার্ট স্ক্রিনে দেখা যাবে তখন অ্যানিমেশন শুরু হবে
+    // ✅ Scroll Trigger Animation
     var observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting && !chartInitialized) {
@@ -353,7 +399,77 @@
     }, {
       threshold: 0.4
     });
-    observer.observe(document.getElementById("myChart"));
+    observer.observe(document.getElementById("chartSection1"));
+  });
+  /*--------------------------------------------------------------
+  CHART CHART CIRCLE V4 JS INIT
+  ------------------------------------------------------------*/
+  document.addEventListener("DOMContentLoaded", function () {
+    var chartBox = document.getElementById("chartSection2");
+    var chartValue = document.getElementById("chartValue");
+    var canvas = document.getElementById("growthChart");
+
+    // যদি চার্ট এলিমেন্টগুলো না থাকে, তাহলে স্ক্রিপ্ট বন্ধ করো
+    if (!chartBox || !chartValue || !canvas) return;
+    var ctx = canvas.getContext("2d");
+    var chartInstance = null;
+    var animated = false;
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting && !animated) {
+          chartBox.classList.add("active");
+          startSmoothAnimation(73);
+          animated = true;
+        }
+      });
+    }, {
+      threshold: 0.6
+    });
+    observer.observe(chartBox);
+    function easeOutCubic(t) {
+      return 1 - Math.pow(1 - t, 3);
+    }
+    function startSmoothAnimation(targetValue) {
+      var startTime = null;
+      var duration = 1600;
+      function animate(currentTime) {
+        if (!startTime) startTime = currentTime;
+        var elapsed = currentTime - startTime;
+        var progress = Math.min(elapsed / duration, 1);
+        var eased = easeOutCubic(progress);
+        var value = Math.round(targetValue * eased);
+        chartValue.textContent = value + "%";
+        updateChart(value);
+        if (progress < 1) requestAnimationFrame(animate);
+      }
+      requestAnimationFrame(animate);
+    }
+    function updateChart(value) {
+      if (chartInstance) chartInstance.destroy();
+      chartInstance = new Chart(ctx, {
+        type: "doughnut",
+        data: {
+          datasets: [{
+            data: [value, (100 - value) / 1.5, (100 - value) / 2],
+            backgroundColor: ["#6ED0FB", "#FFE872", "#EEF0F2"],
+            borderWidth: 0,
+            cutout: "70%",
+            rotation: 270
+          }]
+        },
+        options: {
+          animation: false,
+          plugins: {
+            legend: {
+              display: false
+            },
+            tooltip: {
+              enabled: false
+            }
+          }
+        }
+      });
+    }
   });
   $(window).on("resize", function () {}); // end window resize
 

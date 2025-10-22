@@ -1712,14 +1712,26 @@ button#awura-subscriber-btn2:hover {
   font-family: "Plus Jakarta Sans", sans-serif;
   color: var(--bottle-green-color);
 }
-@media (max-width: 1199px) {
+@media (max-width: 1399px) {
   .awura-cta-content3 h2 {
     font-size: 48px;
+    letter-spacing: 0;
+  }
+}
+@media (max-width: 1199px) {
+  .awura-cta-content3 h2 {
+    font-size: 45px;
+    letter-spacing: 0;
   }
 }
 @media (max-width: 767px) {
   .awura-cta-content3 h2 {
-    font-size: 36px;
+    font-size: 40px;
+  }
+}
+@media (max-width: 479px) {
+  .awura-cta-content3 h2 {
+    font-size: 34px;
   }
 }
 .awura-cta-content3 p {
@@ -2626,6 +2638,7 @@ button#comment-btn i {
   cursor: pointer;
   font-size: 16px;
   font-weight: 600;
+  justify-content: center;
   transition: background 0.3s;
   background-color: var(--bottle-green-color);
   font-family: "Plus Jakarta Sans", sans-serif;
@@ -2788,6 +2801,9 @@ button#comment-btn i {
     padding-bottom: 40px;
   }
 }
+.awura-section-title.light-color h2, .awura-section-title.light-color p {
+  color: var(--white-color) !important;
+}
 .awura-section-title.center-align {
   max-width: 665px;
   margin: 0 auto;
@@ -2871,6 +2887,52 @@ button#comment-btn i {
 @media (max-width: 479px) {
   .awura-section-title.pixelify-font h2 {
     font-size: 40px;
+  }
+}
+.awura-section-title.plus-jakarta-font h2 {
+  font-weight: 600;
+  font-size: 60px;
+  margin-bottom: 20px;
+  line-height: 1.16em;
+  letter-spacing: -0.02em;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  color: var(--bottle-green-color);
+}
+@media (max-width: 1399px) {
+  .awura-section-title.plus-jakarta-font h2 {
+    font-size: 48px;
+    letter-spacing: 0;
+  }
+}
+@media (max-width: 1199px) {
+  .awura-section-title.plus-jakarta-font h2 {
+    font-size: 45px;
+    letter-spacing: 0;
+  }
+}
+@media (max-width: 767px) {
+  .awura-section-title.plus-jakarta-font h2 {
+    font-size: 40px;
+  }
+}
+@media (max-width: 479px) {
+  .awura-section-title.plus-jakarta-font h2 {
+    font-size: 34px;
+  }
+}
+.awura-section-title.plus-jakarta-font p {
+  margin: 0;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  color: var(--bottle-green-color);
+}
+.awura-section-title.two-column {
+  max-width: 100%;
+}
+@media (max-width: 1199px) {
+  .awura-section-title.two-column {
+    text-align: center;
+    margin: 0 auto;
+    max-width: 800px;
   }
 }
 
@@ -3019,9 +3081,15 @@ button#comment-btn i {
   font-family: "Plus Jakarta Sans", sans-serif;
   color: var(--bottle-green-color);
 }
-@media (max-width: 1199px) {
+@media (max-width: 1399px) {
   .awura-default-content.plus-jakarta-font h2 {
     font-size: 48px;
+    letter-spacing: 0;
+  }
+}
+@media (max-width: 1199px) {
+  .awura-default-content.plus-jakarta-font h2 {
+    font-size: 45px;
     letter-spacing: 0;
   }
 }
@@ -3036,7 +3104,6 @@ button#comment-btn i {
   }
 }
 .awura-default-content.plus-jakarta-font p {
-  margin: 0;
   font-size: 18px;
   color: var(--bottle-green-color);
   font-family: "Plus Jakarta Sans", sans-serif;
@@ -4295,6 +4362,48 @@ a.current {
   color: var(--blue-color);
 }
 
+.awura-iconbox-box3 {
+  padding: 30px;
+  border-radius: 10px;
+  transition: all 0.4s;
+  position: relative;
+  margin-bottom: 24px;
+}
+.awura-iconbox-box3:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+@media (max-width: 1199px) {
+  .awura-iconbox-box3 {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+}
+.awura-iconbox-line {
+  height: 260px;
+  width: 1px;
+  right: -12px;
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.1);
+  top: 50%;
+  transform: translateY(-50%);
+}
+.awura-iconbox-icon3 {
+  margin-bottom: 30px;
+}
+.awura-iconbox-data3 span {
+  font-size: 20px;
+  line-height: 26px;
+  margin-bottom: 15px;
+  font-weight: 600;
+  display: block;
+  color: var(--white-color);
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+.awura-iconbox-data3 p {
+  margin: 0;
+  color: var(--white-color);
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+
 .awura-rolling-counter-column {
   gap: 100px;
   display: grid;
@@ -4850,6 +4959,122 @@ a.current {
   }
 }
 
+.awura-testimonial-init2 {
+  padding: 30px;
+  border-radius: 10px;
+  background-color: var(--white-color);
+}
+@media (max-width: 991px) {
+  .awura-testimonial-init2 {
+    margin-top: 40px;
+  }
+}
+.awura-testimonial-box4 p {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 34px;
+  margin-bottom: 40px;
+  letter-spacing: -0.05em;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  color: var(--bottle-green-color);
+}
+@media (max-width: 767px) {
+  .awura-testimonial-box4 p {
+    font-size: 20px;
+  }
+}
+.awura-testimonial-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 50px;
+  justify-content: space-between;
+}
+@media (max-width: 1199px) {
+  .awura-testimonial-header {
+    margin-bottom: 30px;
+  }
+}
+.awura-testimonial-header h2 {
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -0.015em;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  color: var(--bottle-green-color);
+}
+@media (max-width: 767px) {
+  .awura-testimonial-header h2 {
+    font-size: 40px;
+  }
+}
+.awura-testimonial-author-wrap4 {
+  gap: 15px;
+  display: flex;
+  align-items: center;
+}
+.awura-testimonial-author-thumb4 {
+  width: 64px;
+  height: 64px;
+  overflow: hidden;
+  border-radius: 100px;
+  border: 3px solid var(--bottle-green-color);
+}
+.awura-testimonial-author-thumb4 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.awura-testimonial-author-data4 span, .awura-testimonial-author-data4 p {
+  font-size: 16px;
+  font-weight: 400;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  color: var(--bottle-green-color);
+}
+.awura-testimonial-author-data4 p {
+  margin: 0;
+  font-weight: 600;
+}
+
+.testimonial-social.awura-social-icon ul li a {
+  width: 45px;
+  height: 45px;
+  border-radius: 6.42px;
+  background-color: rgba(3, 22, 11, 0.1);
+  border: none;
+}
+.testimonial-social.awura-social-icon ul li a i {
+  font-size: 24px;
+  color: var(--bottle-green-color);
+}
+
+.awura-testimonial-next2,
+.awura-testimonial-prev2 {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  bottom: 30px;
+  right: 89px;
+  z-index: 1;
+  transition: all 0.4s;
+  align-items: center;
+  border-radius: 100px;
+  justify-content: center;
+  color: var(--white-color);
+  position: absolute;
+  background-color: var(--bottle-green-color);
+}
+.awura-testimonial-next2:hover,
+.awura-testimonial-prev2:hover {
+  background-color: var(--blue-color);
+}
+.awura-testimonial-next2 i,
+.awura-testimonial-prev2 i {
+  font-size: 30px;
+}
+
+.awura-testimonial-prev2 {
+  right: 30px;
+}
+
 .awura-team-wrap {
   overflow: hidden;
   border-radius: 20px 20px 0 0;
@@ -5189,6 +5414,22 @@ a.current {
   font-family: "Roboto", sans-serif;
 }
 
+.style-three .awura-accordion-item {
+  border-bottom: 1px solid rgba(3, 22, 11, 0.1);
+}
+.style-three .awura-accordion-header {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.41em;
+  letter-spacing: -0.05em;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  color: var(--bottle-green-color);
+}
+.style-three .awura-accordion-content p {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  color: var(--bottle-green-color);
+}
+
 @media (max-width: 991px) {
   .responsive-mt40 {
     margin-top: 40px;
@@ -5312,6 +5553,32 @@ canvas {
 .awura-chart-boxs img {
   width: 100%;
   margin-bottom: 20px;
+}
+
+.awura-chart-title {
+  font-weight: 700;
+  margin-bottom: 15px;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  color: var(--bottle-green-color);
+}
+
+.chart-container2 {
+  position: relative;
+}
+
+.chart-center-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 50px;
+  font-weight: 600;
+  color: var(--bottle-green-color);
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+canvas {
+  filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.05));
 }
 
 .awura-integration-wrap {
@@ -5459,6 +5726,23 @@ canvas {
     align-items: center;
     margin-top: 40px;
   }
+}
+
+.awura-integration-slider-box {
+  gap: 50px;
+  display: flex;
+  flex-direction: column;
+  padding: 50px 0;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: var(--bottle-green-color);
+}
+.awura-integration-slider-row {
+  gap: 50px;
+  display: flex;
+}
+.awura-integration-slider-icon {
+  flex-shrink: 0;
 }
 
 .awura-toggle-header {
@@ -5638,6 +5922,87 @@ canvas {
     background-color: var(--marzipan-color);
   }
 }
+.pricing-style-two .awura-toggle-header span {
+  font-size: 16px;
+  font-weight: 600;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  color: var(--bottle-green-color);
+}
+.pricing-style-two .toggle-switch {
+  background: var(--bottle-green-color);
+}
+.pricing-style-two .awura-pricing-box {
+  padding: 30px;
+  border: none;
+  position: relative;
+}
+.pricing-style-two .awura-pricing-box p {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  color: var(--bottle-green-color);
+}
+.pricing-style-two .awura-pricing-divider {
+  width: calc(100% + 60px);
+  margin-left: -30px;
+}
+.pricing-style-two .awura-pricing-header {
+  gap: 15px;
+  display: flex;
+  align-items: center;
+}
+.pricing-style-two .awura-pricing-header h3 {
+  font-size: 24px;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  color: var(--bottle-green-color);
+}
+.pricing-style-two .awura-pricing-price {
+  font-weight: 600;
+  font-size: 60px;
+  line-height: 1.16em;
+  letter-spacing: -0.02em;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  color: var(--bottle-green-color);
+}
+@media (max-width: 1199px) {
+  .pricing-style-two .awura-pricing-price {
+    font-size: 48px;
+    letter-spacing: 0;
+  }
+}
+.pricing-style-two .awura-pricing-price span {
+  font-weight: 400;
+  font-size: 18px;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  color: var(--bottle-green-color);
+}
+.pricing-style-two .awura-pricing-feature {
+  margin-bottom: 30px;
+}
+.pricing-style-two .awura-pricing-feature p {
+  font-weight: 600;
+  margin-bottom: 24px;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  color: var(--bottle-green-color);
+}
+.pricing-style-two .awura-pricing-feature ul li {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  padding-left: 24px;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  color: var(--bottle-green-color);
+}
+.pricing-style-two .awura-pricing-feature ul li img {
+  top: 7px;
+}
+.pricing-style-two .awura-pricing-feature ul li:last-child {
+  margin-bottom: 0;
+}
+.pricing-style-two .awura-pricing-badge {
+  position: absolute;
+  top: 25px;
+  right: 20px;
+}
+
 .awura-menu-wrapper {
   position: fixed;
   top: 0;
