@@ -1,5 +1,9 @@
 $(document).ready(function () {
   const $container = $(".dir-rtl");
+
+  // If .dir-rtl not found → stop script to avoid error
+  if ($container.length === 0) return;
+
   const $clones = $container.clone();
   $container.append($clones.html());
 
@@ -10,6 +14,7 @@ $(document).ready(function () {
     if (!isPaused) {
       scrollAmount += 1.2; // speed
       $container.css("transform", `translateX(${scrollAmount}px)`);
+
       if (scrollAmount >= $container[0].scrollWidth / 2) {
         scrollAmount = 0;
       }
@@ -19,6 +24,9 @@ $(document).ready(function () {
   marqueeScroll();
 
   const $wrapper = $(".awura-integration-slider-box");
-  $wrapper.on("mouseenter", () => (isPaused = true));
-  $wrapper.on("mouseleave", () => (isPaused = false));
+
+  if ($wrapper.length > 0) {
+    $wrapper.on("mouseenter", () => (isPaused = true));
+    $wrapper.on("mouseleave", () => (isPaused = false));
+  }
 });

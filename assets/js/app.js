@@ -295,7 +295,12 @@
   ------------------------------------------------------------*/
 
   document.addEventListener("DOMContentLoaded", function () {
-    var ctx = document.getElementById("myChart").getContext("2d");
+    var chartSection = document.getElementById("chartSection1");
+    var canvas = document.getElementById("myChart");
+
+    // ❗ If section or canvas does not exist, stop the script
+    if (!chartSection || !canvas) return;
+    var ctx = canvas.getContext("2d");
     var chartInitialized = false;
     function createChart() {
       new Chart(ctx, {
@@ -329,7 +334,7 @@
           },
           animation: {
             duration: 2000,
-            easing: "easeInOutQuart" // smooth animation
+            easing: "easeInOutQuart"
           },
           plugins: {
             legend: {
@@ -399,8 +404,9 @@
     }, {
       threshold: 0.4
     });
-    observer.observe(document.getElementById("chartSection1"));
+    observer.observe(chartSection1);
   });
+
   /*--------------------------------------------------------------
   CHART CHART CIRCLE V4 JS INIT
   ------------------------------------------------------------*/
@@ -408,8 +414,6 @@
     var chartBox = document.getElementById("chartSection2");
     var chartValue = document.getElementById("chartValue");
     var canvas = document.getElementById("growthChart");
-
-    // যদি চার্ট এলিমেন্টগুলো না থাকে, তাহলে স্ক্রিপ্ট বন্ধ করো
     if (!chartBox || !chartValue || !canvas) return;
     var ctx = canvas.getContext("2d");
     var chartInstance = null;
@@ -470,6 +474,88 @@
         }
       });
     }
+  });
+
+  /*--------------------------------------------------------------
+  PI CHART V5 JS INIT
+  ------------------------------------------------------------*/
+  var canvas = document.getElementById("myPieChart");
+  var chartInit = false;
+
+  // If canvas is missing, do nothing — prevents error on other pages
+  if (canvas) {
+    var createPieChart = function createPieChart() {
+      var ctx = canvas.getContext("2d");
+      new Chart(ctx, {
+        type: "pie",
+        data: {
+          labels: ["A", "B", "C", "D"],
+          datasets: [{
+            data: [55, 15, 15, 15],
+            backgroundColor: ["#855CF8",
+            // Main Purple
+            "#B085FF",
+            // Dark Purple
+            "#503795",
+            // Light Purple
+            "#000000" // Black
+            ],
+            borderWidth: 0
+          }]
+        },
+        options: {
+          animation: {
+            animateRotate: true,
+            animateScale: false,
+            // ❌ No Zoom
+            duration: 1500,
+            easing: "easeOutQuart" // Smooth like the sample
+          },
+          plugins: {
+            legend: {
+              display: false
+            }
+          }
+        }
+      });
+    }; // Scroll Trigger
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting && !chartInit) {
+          chartInit = true;
+          createPieChart();
+        }
+      });
+    }, {
+      threshold: 0.5
+    } // 50% visible then start animation
+    );
+    observer.observe(canvas);
+  }
+
+  /*--------------------------------------------------------------
+  TAB V5 JS INIT
+  ------------------------------------------------------------*/
+  document.addEventListener("DOMContentLoaded", function () {
+    var tabButtons = document.querySelectorAll(".awura-tab-menu-value");
+    var tabContents = document.querySelectorAll(".awura-tab-body");
+    tabButtons.forEach(function (button) {
+      button.addEventListener("click", function () {
+        var tabId = button.getAttribute("data-tab");
+
+        // Remove active classes
+        tabButtons.forEach(function (btn) {
+          return btn.classList.remove("active");
+        });
+        tabContents.forEach(function (content) {
+          return content.classList.remove("active");
+        });
+
+        // Add active class to clicked tab
+        button.classList.add("active");
+        document.querySelector(".awura-tab-body[data-tab=\"".concat(tabId, "\"]")).classList.add("active");
+      });
+    });
   });
   $(window).on("resize", function () {}); // end window resize
 
