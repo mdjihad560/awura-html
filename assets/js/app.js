@@ -557,6 +557,29 @@
       });
     });
   });
+
+  /*--------------------------------------------------------------
+  AWURA V6 CONTENT THUMB JS INIT
+  ------------------------------------------------------------*/
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.to(".awura-content-thumb.left-thumb", {
+    y: -1200,
+    scrollTrigger: {
+      trigger: ".awura-single-content-section",
+      start: "top top",
+      end: "bottom top",
+      scrub: true
+    }
+  });
+  gsap.to(".awura-content-thumb.right-thumb", {
+    y: -1700,
+    scrollTrigger: {
+      trigger: ".awura-single-content-section",
+      start: "top top",
+      end: "bottom top",
+      scrub: true
+    }
+  });
   $(window).on("resize", function () {}); // end window resize
 
   $(window).on("load", function () {
