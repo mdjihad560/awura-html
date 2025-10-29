@@ -889,6 +889,9 @@ header.awura-header.main-header {
   backdrop-filter: blur(20px);
   background: rgba(255, 255, 255, 0.05);
 }
+.awura-header.header-six.sticky-menu {
+  background-color: var(--dark-color-4);
+}
 .awura-header.header-six .main-menu a {
   font-family: "Onest", sans-serif;
   color: var(--white-color);
@@ -2809,6 +2812,81 @@ button#comment-btn i {
   color: var(--yellow-color);
 }
 
+.awura-style-three .blog-single {
+  padding: 0;
+  border-radius: 0;
+  margin-bottom: 24px;
+  background-color: var(--white-color);
+}
+@media (max-width: 767px) {
+  .awura-style-three .blog-single {
+    padding: 24px;
+  }
+}
+.awura-style-three .blog-single:hover .awura-btn-style-two.btn-outline.dark-outline {
+  background-color: var(--yellow-color);
+  border: 1px solid var(--yellow-color);
+}
+.awura-style-three .blog-img {
+  position: relative;
+  border-radius: 15px;
+}
+.awura-style-three .blog-content p {
+  color: var(--dark-color-4);
+  font-family: "Onest", sans-serif;
+  margin-bottom: 24px;
+}
+.awura-style-three .blog-meta a {
+  color: var(--dark-color-4);
+  font-size: 16px;
+  font-weight: 600;
+  position: relative;
+  font-family: "Onest", sans-serif;
+  padding-left: 30px;
+}
+.awura-style-three .blog-meta a::before {
+  content: none;
+}
+.awura-style-three .blog-meta a i {
+  position: absolute;
+  left: 0;
+}
+.awura-style-three .blog-meta a:hover {
+  color: var(--orange-color);
+}
+.awura-style-three .blog-title {
+  font-size: 24px;
+  margin-bottom: 15px;
+  font-weight: 600;
+  color: var(--dark-color-4);
+  font-family: "Onest", sans-serif;
+}
+.awura-style-three .blog-title a {
+  color: var(--dark-color-4);
+}
+.awura-style-three .blog-title a:hover {
+  color: var(--orange-color);
+}
+.awura-style-three .blog-category {
+  top: 24px;
+  right: 24px;
+  display: block;
+  font-size: 16px;
+  padding: 11px 24px;
+  font-weight: 600;
+  border-radius: 50px;
+  position: absolute;
+  transition: all 0.4s;
+  color: var(--dark-color-4);
+  font-family: "Onest", sans-serif;
+  text-transform: uppercase;
+  background-color: rgba(30, 30, 30, 0.05);
+}
+.awura-style-three .blog-category:hover {
+  color: var(--white-color);
+  background-color: var(--orange-color);
+}
+
 .blog-btn {
   line-height: 22px;
   font-weight: 600;
@@ -3318,6 +3396,9 @@ button#comment-btn i {
 }
 .awura-section-title.max-w-720 {
   max-width: 720px;
+}
+.awura-section-title.max-w-685 {
+  max-width: 685px;
 }
 .awura-section-title.anton-font h5 {
   font-size: 24px;
@@ -6487,6 +6568,39 @@ a.current {
   background-color: var(--accent-color) !important;
 }
 
+.awura-team-wrap2 {
+  border-radius: 0;
+  margin-bottom: 24px;
+}
+.awura-team-wrap2:hover .awura-team-thumb2 img {
+  transform: scale(1.02);
+}
+.awura-team-thumb2 {
+  display: block;
+  overflow: hidden;
+  border-radius: 15px;
+}
+.awura-team-thumb2 img {
+  transition: all 0.5s;
+}
+.awura-team-data2 {
+  margin-top: 24px;
+}
+.awura-team-data2 h4 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  transition: all 0.4s;
+  font-family: "Onest", sans-serif;
+  color: var(--dark-color-4);
+}
+.awura-team-data2 p {
+  margin: 0;
+  transition: all 0.4s;
+  font-family: "Onest", sans-serif;
+  color: var(--dark-color-4);
+}
+
 .awura-service-row {
   position: relative;
   height: 115px;
@@ -7636,6 +7750,108 @@ canvas {
 
 .awura-tab-menu-value:nth-child(4).active {
   background-color: var(--jonquil-color);
+}
+
+.tab-style-two .awura-tab-menu {
+  gap: 1px;
+  text-align: center;
+  display: grid;
+  max-width: 100%;
+  overflow: hidden;
+  border-radius: 10px;
+  justify-content: center;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  background-color: rgba(30, 30, 30, 0.1);
+  border: 1px solid rgba(30, 30, 30, 0.1);
+}
+@media (max-width: 1199px) {
+  .tab-style-two .awura-tab-menu {
+    display: flex;
+    overflow-x: scroll;
+    justify-content: inherit;
+  }
+}
+.tab-style-two .awura-tab-menu-value {
+  border-radius: 0;
+  justify-content: center;
+  background-color: var(--ebb-color) !important;
+}
+.tab-style-two .awura-tab-menu-value svg path {
+  transition: all 0.4s;
+}
+.tab-style-two .awura-tab-menu-value.active {
+  background-color: var(--dark-color-4) !important;
+}
+.tab-style-two .awura-tab-menu-value.active svg path {
+  transition: all 0.4s;
+  fill: var(--white-color);
+}
+.tab-style-two .awura-tab-body {
+  padding: 30px;
+  border-radius: 20px;
+  background-color: var(--dark-color-4);
+}
+@media (max-width: 767px) {
+  .tab-style-two .awura-tab-body {
+    padding: 24px;
+  }
+}
+.tab-style-two .awura-tab-thumb {
+  overflow: hidden;
+  border-radius: 20px;
+}
+@media (max-width: 991px) {
+  .tab-style-two .awura-tab-thumb {
+    margin-bottom: 40px;
+  }
+}
+@media (max-width: 767px) {
+  .tab-style-two .awura-tab-thumb {
+    border-radius: 10px;
+  }
+}
+.tab-style-two .awura-tab-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.tab-style-two .awura-tab-content h5 {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px;
+  margin-bottom: 24px;
+  letter-spacing: -0.01em;
+  color: var(--white-color);
+  font-family: "Onest", sans-serif;
+}
+@media (max-width: 767px) {
+  .tab-style-two .awura-tab-content h5 {
+    font-size: 20px;
+    line-height: 28px;
+  }
+}
+.tab-style-two .awura-tab-author {
+  margin-top: 50px;
+  gap: 5px;
+  display: flex;
+  flex-wrap: wrap;
+}
+@media (max-width: 991px) {
+  .tab-style-two .awura-tab-author {
+    margin-top: 30px;
+  }
+}
+.tab-style-two .awura-tab-author span {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--white-color);
+  font-family: "Onest", sans-serif;
+}
+.tab-style-two .awura-tab-author p {
+  font-size: 16px;
+  margin: 0;
+  color: var(--white-color);
+  font-family: "Onest", sans-serif;
 }
 
 .awura-single-content-section {
