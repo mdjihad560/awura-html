@@ -39,6 +39,8 @@
 --dark-color-4: #1E1E1E;
 --orange-color: #FE5733;
 --ebb-color: #E8E5E2;
+--dark-color-5: #2A2A2A;
+--wood-color: #F5F4ED;
 }
 
 .awura-dark-bg
@@ -64,6 +66,11 @@ background-color: var(--dark-color-3) !important;
 .awura-dark-bg5
 {
 background-color: var(--dark-color-4) !important;
+}
+
+.awura-dark-bg6
+{
+background-color: var(--dark-color-5) !important;
 }
 
 .awura-accent-bg
@@ -119,6 +126,11 @@ background-color: var(--jonquil-color) !important;
 .awura-ebb-bg
 {
 background-color: var(--ebb-color) !important;
+}
+
+.awura-wood-bg
+{
+background-color: var(--wood-color) !important;
 }
 
 .light-color
@@ -906,6 +918,38 @@ header.awura-header.main-header {
   color: var(--white-color);
 }
 
+.awura-header.header-seven.sticky-menu {
+  background-color: var(--white-color);
+}
+.awura-header.header-seven .header-logo {
+  margin-right: 80px;
+}
+@media (max-width: 1199px) {
+  .awura-header.header-seven .header-logo {
+    margin-right: 40px;
+  }
+}
+@media (max-width: 991px) {
+  .awura-header.header-seven .header-logo {
+    margin-right: 0;
+  }
+}
+.awura-header.header-seven .main-menu a {
+  color: var(--dark-color-5);
+  font-family: "Inter", sans-serif;
+}
+.awura-header.header-seven .awura-menu-toggle {
+  background-color: var(--dark-color-5) !important;
+}
+.awura-header.header-seven .awura-menu-toggle i {
+  color: var(--white-color);
+}
+.awura-header.header-seven .awura-text-btn {
+  font-weight: 700;
+  font-family: "Inter", sans-serif;
+  color: var(--dark-color-5) !important;
+}
+
 .main-menu a {
   color: var(--primary-color);
   position: relative;
@@ -1404,6 +1448,61 @@ ul.sub-menu li.menu-item-has-children a::after {
   margin: 0;
   color: var(--white-color);
   font-family: "Onest", sans-serif;
+}
+
+.awura-footer-grid.grid-two {
+  gap: 150px;
+  grid-template-columns: 332px 1fr;
+}
+@media (max-width: 1399px) {
+  .awura-footer-grid.grid-two {
+    gap: 80px;
+  }
+}
+@media (max-width: 1199px) {
+  .awura-footer-grid.grid-two {
+    gap: 40px;
+    grid-template-columns: 1fr;
+  }
+}
+
+.awura-footer-textarea.inter-font p {
+  font-family: "Inter", sans-serif;
+  color: var(--dark-color-5);
+}
+
+.awura-footer-menu.inter-font p {
+  font-weight: 700;
+  font-family: "Inter", sans-serif;
+  color: var(--dark-color-5);
+}
+.awura-footer-menu.inter-font ul li a {
+  font-family: "Inter", sans-serif;
+  color: var(--dark-color-5);
+}
+.awura-footer-menu.inter-font ul li a:hover {
+  color: var(--orange-color);
+}
+
+.awura-app-wrap {
+  gap: 15px;
+  display: flex;
+  flex-direction: column;
+}
+.awura-app-wrap a {
+  display: block;
+  transition: all 0.4s;
+}
+
+.awura-footer-bottom7 {
+  padding: 35px 0;
+  text-align: center;
+  border-top: 1px solid rgba(42, 42, 42, 0.1);
+}
+.awura-footer-bottom7 p {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  color: var(--dark-color-5);
 }
 
 /*1.2 components css*/
@@ -2224,6 +2323,47 @@ button#awura-subscriber-btn6:hover img {
   background-color: var(--orange-color);
 }
 
+.awura-cta-content5 {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.awura-cta-content5 h2 {
+  font-weight: 600;
+  font-size: 75px;
+  line-height: 1.06em;
+  margin-bottom: 20px;
+  font-family: "Funnel Display", sans-serif;
+  color: var(--white-color);
+}
+@media (max-width: 1199px) {
+  .awura-cta-content5 h2 {
+    font-size: 60px;
+    letter-spacing: 0;
+  }
+}
+@media (max-width: 767px) {
+  .awura-cta-content5 h2 {
+    font-size: 55px;
+  }
+}
+@media (max-width: 575px) {
+  .awura-cta-content5 h2 {
+    font-size: 40px;
+  }
+}
+.awura-cta-content5 p {
+  margin: 0;
+  font-size: 20px;
+  font-family: "Inter", sans-serif;
+  color: var(--white-color);
+}
+@media (max-width: 767px) {
+  .awura-cta-content5 p {
+    font-size: 18px;
+  }
+}
+
 .blog-single {
   overflow: hidden;
   margin-bottom: 50px;
@@ -3020,6 +3160,10 @@ button#comment-btn i {
   padding: 12px 24px !important;
 }
 
+.awura-small-btn4 {
+  padding: 9px 22px !important;
+}
+
 #awura-submit-btn,
 .awura-btn-style-two {
   display: inline-block;
@@ -3263,6 +3407,104 @@ button#comment-btn i {
   border: 2px solid var(--orange-color);
 }
 
+.awura-btn-style-six {
+  color: var(--white-color);
+  padding: 14px 23px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  display: inline-block;
+  transition: 0.4s;
+  overflow: hidden;
+  position: relative;
+  background-color: var(--dark-color-5);
+  font-family: "Inter", sans-serif;
+  border: 2px solid var(--dark-color-5);
+}
+.awura-btn-style-six.white-btn {
+  color: var(--dark-color-5);
+  background-color: var(--white-color);
+  border: 2px solid var(--white-color);
+}
+.awura-btn-style-six.white-btn:hover {
+  color: var(--white-color);
+}
+.awura-btn-style-six.white-btn::before, .awura-btn-style-six.white-btn::after {
+  background-color: var(--dark-color-5);
+}
+.awura-btn-style-six.outline-btn {
+  color: var(--dark-color-5);
+  background-color: transparent;
+}
+.awura-btn-style-six.outline-btn::before, .awura-btn-style-six.outline-btn::after {
+  background-color: var(--dark-color-5);
+}
+.awura-btn-style-six.outline-btn:hover {
+  color: var(--white-color);
+}
+.awura-btn-style-six:hover {
+  color: var(--dark-color-5);
+}
+.awura-btn-style-six span {
+  display: block;
+  position: relative;
+  z-index: 10;
+}
+.awura-btn-style-six:hover span {
+  animation: MoveScaleUpInitial 0.3s forwards, MoveScaleUpEnd 0.3s forwards 0.3s;
+}
+.awura-btn-style-six::before, .awura-btn-style-six::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.awura-btn-style-six::before {
+  content: "";
+  background: #fff;
+  width: 120%;
+  height: 0;
+  padding-bottom: 120%;
+  top: -110%;
+  left: -10%;
+  border-radius: 50%;
+  transform: translate3d(0, 68%, 0) scale3d(0, 0, 0);
+}
+.awura-btn-style-six:hover::before {
+  transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+  transition: transform 0.4s cubic-bezier(0.1, 0, 0.3, 1);
+}
+.awura-btn-style-six:after {
+  content: "";
+  background: #fff;
+  transform: translate3d(0, -101%, 0);
+  transition: transform 0.4s cubic-bezier(0.1, 0, 0.3, 1);
+}
+.awura-btn-style-six:hover::after {
+  transform: translate3d(0, 0, 0);
+  transition-duration: 0.05s;
+  transition-delay: 0.4s;
+  transition-timing-function: linear;
+}
+
+@keyframes MoveScaleUpInitial {
+  to {
+    transform: translate3d(0, -105%, 0) scale3d(1, 2, 1);
+    opacity: 0;
+  }
+}
+@keyframes MoveScaleUpEnd {
+  from {
+    transform: translate3d(0, 100%, 0) scale3d(1, 2, 1);
+    opacity: 0;
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
 .awura-section-padding {
   padding: 130px 0;
 }
@@ -4107,6 +4349,28 @@ a.current {
   background-color: var(--bottle-green-color);
   border: 1px solid var(--bottle-green-color);
 }
+.awura-social-icon.style-four ul li a {
+  background-color: var(--white-color);
+}
+.awura-social-icon.style-four ul li a i {
+  color: var(--dark-color-5);
+}
+.awura-social-icon.style-four ul li:nth-child(1) a {
+  background-color: #B9B5ED;
+  border: 1px solid #B9B5ED;
+}
+.awura-social-icon.style-four ul li:nth-child(2) a {
+  background-color: #F5B2AA;
+  border: 1px solid #F5B2AA;
+}
+.awura-social-icon.style-four ul li:nth-child(3) a {
+  background-color: #B2F3B6;
+  border: 1px solid #B2F3B6;
+}
+.awura-social-icon.style-four ul li:nth-child(4) a {
+  background-color: #F5D6A7;
+  border: 1px solid #F5D6A7;
+}
 
 .awura-social-show {
   transition: all 0.4s;
@@ -4231,6 +4495,38 @@ a.current {
   overflow: hidden;
   border-radius: 10px;
   box-shadow: 0px 13.05px 58.43px 0px rgba(0, 0, 0, 0.031372549);
+}
+
+.awura-footer-shape {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+}
+@media (max-width: 1199px) {
+  .awura-footer-shape {
+    display: none;
+  }
+}
+.awura-footer-shape img {
+  width: 280px;
+}
+
+.awura-cta-shape-v7 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+}
+@media (max-width: 1399px) {
+  .awura-cta-shape-v7 {
+    width: 25%;
+  }
+}
+@media (max-width: 767px) {
+  .awura-cta-shape-v7 {
+    display: none;
+  }
 }
 
 .awura-hero-section {
@@ -4673,6 +4969,121 @@ a.current {
   .awura-hero-content6 p {
     font-size: 18px;
   }
+}
+.awura-hero-section7 {
+  z-index: 0;
+  overflow: hidden;
+  position: relative;
+  padding: 180px 0 150px;
+  background-size: cover;
+  background-position: center;
+}
+@media (max-width: 991px) {
+  .awura-hero-section7 {
+    padding: 170px 0 100px;
+  }
+}
+@media (max-width: 575px) {
+  .awura-hero-section7 {
+    padding: 130px 0 80px;
+  }
+}
+.awura-hero-rating {
+  gap: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 24px;
+}
+.awura-hero-rating ul {
+  line-height: 1;
+}
+.awura-hero-rating ul li {
+  margin-right: 6px;
+  display: inline-block;
+  color: rgba(42, 42, 42, 0.5);
+}
+.awura-hero-rating ul li:last-child {
+  margin-left: 9px;
+}
+.awura-hero-rating p {
+  margin: 0;
+  font-size: 16px !important;
+  font-weight: 700;
+  color: var(--dark-color-5);
+}
+.awura-hero-content7 h1 {
+  font-weight: 600;
+  margin-bottom: 24px;
+  font-size: 100px;
+  line-height: 1.05em;
+  font-family: "Funnel Display", sans-serif;
+  color: var(--dark-color-5);
+}
+@media (max-width: 1399px) {
+  .awura-hero-content7 h1 {
+    font-size: 80px;
+  }
+}
+@media (max-width: 1199px) {
+  .awura-hero-content7 h1 {
+    font-size: 70px;
+  }
+}
+@media (max-width: 767px) {
+  .awura-hero-content7 h1 {
+    font-size: 60px;
+  }
+}
+@media (max-width: 575px) {
+  .awura-hero-content7 h1 {
+    font-size: 48px;
+  }
+}
+.awura-hero-content7 p {
+  font-size: 20px;
+  line-height: 30px;
+  font-family: "Inter", sans-serif;
+}
+@media (max-width: 767px) {
+  .awura-hero-content7 p {
+    font-size: 18px;
+  }
+}
+.awura-hero-thumb7 {
+  border-radius: 20px;
+  position: relative;
+  z-index: 0;
+  padding: 10px;
+}
+@media (max-width: 991px) {
+  .awura-hero-thumb7 {
+    margin-top: 40px;
+  }
+}
+.awura-hero-thumb7 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+}
+.awura-hero-thumb7-overlay {
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.awura-hero-thumb7-box {
+  position: relative;
+  z-index: 0;
+}
+.awura-hero-thumb7-shape {
+  position: absolute;
+  top: -40%;
+  right: -38%;
+  z-index: -1;
 }
 
 .awura-hero-v2-thumb1 {
