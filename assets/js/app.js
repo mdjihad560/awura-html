@@ -214,6 +214,37 @@
   }
 
   /*--------------------------------------------------------------
+  TESTIMONIAL SLIDER JS INIT
+  ------------------------------------------------------------*/
+  var testimonial_slider = $(".awura-testimonial-init3");
+  if (testimonial_slider.is_exist()) {
+    testimonial_slider.slick({
+      infinite: true,
+      slidesToShow: 4,
+      slidesToScroll: 1,
+      arrows: true,
+      dots: false,
+      autoplay: false,
+      speed: 800,
+      prevArrow: '<button class="slide-arrow awura-testimonial-next3"><i class="ri-arrow-right-line"></i></button>',
+      nextArrow: '<button class="slide-arrow awura-testimonial-prev3"><i class="ri-arrow-left-line"></i></button>',
+      responsive: [{
+        breakpoint: 1399,
+        settings: {
+          slidesToShow: 2
+        }
+      }, {
+        breakpoint: 767,
+        settings: {
+          slidesToShow: 1,
+          autoplay: true,
+          arrows: false
+        }
+      }]
+    });
+  }
+
+  /*--------------------------------------------------------------
   PRICING JS INIT
   ------------------------------------------------------------*/
   document.addEventListener("DOMContentLoaded", function () {
@@ -267,11 +298,11 @@
   AWURA CHART V3 JS INIT
   ------------------------------------------------------------*/
   document.addEventListener("DOMContentLoaded", function () {
-    var chartSection = document.getElementById("chart");
+    var chartSectionPprogressOne = document.getElementById("chart");
     var bars = document.querySelectorAll(".awura-progress-bar");
 
     // ✅ Stop if chart or bars are not found (prevents errors)
-    if (!chartSection || bars.length === 0) return;
+    if (!chartSectionPprogressOne || bars.length === 0) return;
     var observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
@@ -281,137 +312,155 @@
           });
 
           // Unobserve so it animates only once
-          observer.unobserve(chartSection);
+          observer.unobserve(chartSectionPprogressOne);
         }
       });
     }, {
       threshold: 0.5
     });
-    observer.observe(chartSection);
+    observer.observe(chartSectionPprogressOne);
   });
 
   /*--------------------------------------------------------------
   CHART CHART V4 JS INIT
   ------------------------------------------------------------*/
-
   document.addEventListener("DOMContentLoaded", function () {
-    var chartSection = document.getElementById("chartSection1");
+    var chartSectionProgressTwo = document.getElementById("chartSectionProgressTwo");
     var canvas = document.getElementById("myChart");
 
-    // ❗ If section or canvas does not exist, stop the script
-    if (!chartSection || !canvas) return;
+    // ❗ যদি section বা canvas না থাকে, script stop
+    if (!chartSectionProgressTwo || !canvas) return;
     var ctx = canvas.getContext("2d");
+
+    // Target data
+    var targetData = [[0, 18000, 0, 2737, 0, 50000, 0, 17000],
+    // Blue Sales
+    [33000, 0, 25000, 33000, 29000, 0, 27000, 0] // Yellow Sales
+    ];
+
+    // Initial data (all zeros)
+    var initialData = targetData.map(function (row) {
+      return row.map(function () {
+        return 0;
+      });
+    });
     var chartInitialized = false;
-    function createChart() {
-      new Chart(ctx, {
-        type: "bar",
-        data: {
-          labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "July", "Aug"],
-          datasets: [{
-            label: "Blue Sales",
-            data: [0, 18000, 0, 2737, 0, 50000, 0, 17000],
-            backgroundColor: "#00c0ff",
-            borderRadius: 6,
-            barThickness: 20,
-            categoryPercentage: 0.6,
-            barPercentage: 1.0
-          }, {
-            label: "Yellow Sales",
-            data: [33000, 0, 25000, 33000, 29000, 0, 27000, 0],
-            backgroundColor: "#ffee55",
-            borderRadius: 6,
-            barThickness: 20,
-            categoryPercentage: 0.6,
-            barPercentage: 1.0
-          }]
+
+    // Chart instance
+    var myChart = new Chart(ctx, {
+      type: "bar",
+      data: {
+        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "July", "Aug"],
+        datasets: [{
+          label: "Blue Sales",
+          data: initialData[0],
+          backgroundColor: "#00c0ff",
+          borderRadius: 6,
+          barThickness: 20,
+          categoryPercentage: 0.6,
+          barPercentage: 1.0
+        }, {
+          label: "Yellow Sales",
+          data: initialData[1],
+          backgroundColor: "#ffee55",
+          borderRadius: 6,
+          barThickness: 20,
+          categoryPercentage: 0.6,
+          barPercentage: 1.0
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: {
+          mode: "index",
+          intersect: false
         },
-        options: {
-          maintainAspectRatio: false,
-          responsive: true,
-          interaction: {
-            mode: "index",
-            intersect: false
+        animation: {
+          duration: 1500,
+          easing: "easeOutQuart"
+        },
+        plugins: {
+          legend: {
+            display: false
           },
-          animation: {
-            duration: 2000,
-            easing: "easeInOutQuart"
-          },
-          plugins: {
-            legend: {
-              display: false
+          tooltip: {
+            backgroundColor: "#ffffff",
+            borderColor: "#e0e0e0",
+            borderWidth: 1,
+            titleColor: "#444",
+            bodyColor: "#000",
+            bodyFont: {
+              weight: "bold"
             },
-            tooltip: {
-              backgroundColor: "#ffffff",
-              borderColor: "#e0e0e0",
-              borderWidth: 1,
-              titleColor: "#444",
-              bodyColor: "#000",
-              bodyFont: {
-                weight: "bold"
-              },
-              padding: 10,
-              callbacks: {
-                label: function label(context) {
-                  return "Sales $" + context.raw.toLocaleString();
-                }
-              }
-            }
-          },
-          scales: {
-            x: {
-              grid: {
-                display: false
-              },
-              ticks: {
-                font: {
-                  size: 10,
-                  weight: "400"
-                },
-                color: "rgba(3, 22, 11, 0.8)"
-              }
-            },
-            y: {
-              beginAtZero: true,
-              max: 55000,
-              ticks: {
-                stepSize: 5000,
-                callback: function callback(value) {
-                  return value / 1000 + " k";
-                },
-                color: "rgba(3, 22, 11, 0.8)",
-                font: {
-                  size: 10
-                }
-              },
-              grid: {
-                drawBorder: false,
-                color: "#fff"
+            padding: 10,
+            callbacks: {
+              label: function label(context) {
+                return "Sales $" + context.raw.toLocaleString();
               }
             }
           }
+        },
+        scales: {
+          x: {
+            grid: {
+              display: false
+            },
+            ticks: {
+              font: {
+                size: 10,
+                weight: "400"
+              },
+              color: "rgba(3, 22, 11, 0.8)"
+            }
+          },
+          y: {
+            beginAtZero: true,
+            max: 55000,
+            ticks: {
+              stepSize: 5000,
+              callback: function callback(value) {
+                return value / 1000 + " k";
+              },
+              color: "rgba(3, 22, 11, 0.8)",
+              font: {
+                size: 10
+              }
+            },
+            grid: {
+              drawBorder: false,
+              color: "#fff"
+            }
+          }
         }
-      });
-    }
+      }
+    });
 
-    // ✅ Scroll Trigger Animation
+    // Scroll-trigger Animation
     var observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting && !chartInitialized) {
-          createChart();
+          // Update chart data to target values
+          myChart.data.datasets[0].data = targetData[0];
+          myChart.data.datasets[1].data = targetData[1];
+          myChart.update({
+            duration: 1500,
+            easing: "easeOutQuart"
+          });
           chartInitialized = true;
         }
       });
     }, {
       threshold: 0.4
     });
-    observer.observe(chartSection1);
+    observer.observe(chartSectionProgressTwo);
   });
 
   /*--------------------------------------------------------------
   CHART CHART CIRCLE V4 JS INIT
   ------------------------------------------------------------*/
   document.addEventListener("DOMContentLoaded", function () {
-    var chartBox = document.getElementById("chartSection2");
+    var chartBox = document.getElementById("chartSectionCircle");
     var chartValue = document.getElementById("chartValue");
     var canvas = document.getElementById("growthChart");
     if (!chartBox || !chartValue || !canvas) return;
@@ -479,37 +528,32 @@
   /*--------------------------------------------------------------
   PI CHART V5 JS INIT
   ------------------------------------------------------------*/
-  var canvas = document.getElementById("myPieChart");
-  var chartInit = false;
-
-  // If canvas is missing, do nothing — prevents error on other pages
-  if (canvas) {
-    var createPieChart = function createPieChart() {
+  document.addEventListener("DOMContentLoaded", function () {
+    var canvas = document.getElementById("myPieChart");
+    var chartInit = false;
+    if (!canvas) return;
+    function createSequentialPieChart() {
       var ctx = canvas.getContext("2d");
-      new Chart(ctx, {
+      var data = [55, 15, 15, 15];
+      var colors = ["#855CF8", "#B085FF", "#503795", "#000000"];
+      var labels = ["A", "B", "C", "D"];
+      var chart = new Chart(ctx, {
         type: "pie",
         data: {
-          labels: ["A", "B", "C", "D"],
+          labels: labels,
           datasets: [{
-            data: [55, 15, 15, 15],
-            backgroundColor: ["#855CF8",
-            // Main Purple
-            "#B085FF",
-            // Dark Purple
-            "#503795",
-            // Light Purple
-            "#000000" // Black
-            ],
+            data: data.map(function () {
+              return 0;
+            }),
+            // শুরুতে সব 0
+            backgroundColor: colors,
             borderWidth: 0
           }]
         },
         options: {
           animation: {
-            animateRotate: true,
-            animateScale: false,
-            // ❌ No Zoom
-            duration: 1500,
-            easing: "easeOutQuart" // Smooth like the sample
+            duration: 1000,
+            easing: "easeOutQuart"
           },
           plugins: {
             legend: {
@@ -518,21 +562,32 @@
           }
         }
       });
-    }; // Scroll Trigger
+
+      // Sequential animation for each slice
+      var i = 0;
+      function animateSlice() {
+        if (i >= data.length) return;
+        chart.data.datasets[0].data[i] = data[i];
+        chart.update();
+        i++;
+        setTimeout(animateSlice, 300); // 0.3s পর পর slice animate হবে
+      }
+      animateSlice();
+    }
+
+    // Scroll Trigger
     var observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting && !chartInit) {
           chartInit = true;
-          createPieChart();
+          createSequentialPieChart();
         }
       });
     }, {
       threshold: 0.5
-    } // 50% visible then start animation
-    );
+    });
     observer.observe(canvas);
-  }
-
+  });
   /*--------------------------------------------------------------
   TAB V5 JS INIT
   ------------------------------------------------------------*/
@@ -580,8 +635,6 @@
       scrub: true
     }
   });
-  $(window).on("resize", function () {}); // end window resize
-
   $(window).on("load", function () {
     /*--------------------------------------------------------------
     AWURA PRELOADER JS INIT
@@ -592,6 +645,79 @@
       preloader.style.display = "none";
       document.body.style.overflow = "auto";
     }, 600);
+
+    /*--------------------------------------------------------------
+    KDG THREE COLUMN FILTER JS
+    ------------------------------------------------------------*/
+    var kdg_filter_gallery = $("#awura-course-column");
+    if (kdg_filter_gallery.is_exist()) {
+      var $container = $(kdg_filter_gallery),
+        colWidth = function colWidth() {
+          var w = $container.width(),
+            columnNum = 1,
+            columnWidth = 0;
+          if (w > 1200) {
+            columnNum = 3;
+          } else if (w > 900) {
+            columnNum = 2;
+          } else if (w > 600) {
+            columnNum = 1;
+          } else if (w > 450) {
+            columnNum = 1;
+          } else if (w > 385) {
+            columnNum = 1;
+          }
+          columnWidth = Math.floor(w / columnNum);
+          $container.find(".collection-grid-item").each(function () {
+            var $item = $(this),
+              multiplier_w = $item.attr("class").match(/collection-grid-item-w(\d)/),
+              multiplier_h = $item.attr("class").match(/collection-grid-item-h(\d)/),
+              width = multiplier_w ? columnWidth * multiplier_w[1] : columnWidth,
+              height = multiplier_h ? columnWidth * multiplier_h[1] * 0.4 - 12 : columnWidth * 0.5;
+            $item.css({
+              width: width
+              //height: height
+            });
+          });
+          return columnWidth;
+        },
+        isotope = function isotope() {
+          $container.isotope({
+            resizable: false,
+            itemSelector: ".collection-grid-item",
+            masonry: {
+              columnWidth: colWidth(),
+              gutterWidth: 0
+            }
+          });
+        };
+      isotope();
+      $(window).resize(isotope);
+      var $optionSets = $(".awura-course-menu .option-set"),
+        $optionLinks = $optionSets.find("li");
+      $optionLinks.click(function () {
+        var $this = $(this);
+        var $optionSet = $this.parents(".option-set");
+        $optionSet.find(".active").removeClass("active");
+        $this.addClass("active");
+
+        // make option object dynamically, i.e. { filter: '.my-filter-class' }
+        var options = {},
+          key = $optionSet.attr("data-option-key"),
+          value = $this.attr("data-option-value");
+        // parse 'false' as false boolean
+        value = value === "false" ? false : value;
+        options[key] = value;
+        if (key === "layoutMode" && typeof changeLayoutMode === "function") {
+          // changes in layout modes need extra logic
+          changeLayoutMode($this, options);
+        } else {
+          // creativewise, apply new options
+          $container.isotope(options);
+        }
+        return false;
+      });
+    }
   }); // End window LODE
 
   /*--------------------------------------------------------------
