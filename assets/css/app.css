@@ -41,6 +41,8 @@
 --ebb-color: #E8E5E2;
 --dark-color-5: #2A2A2A;
 --wood-color: #F5F4ED;
+--dark-color-6: #2A2A2A;
+--green-color: #06923E;
 }
 
 .awura-dark-bg
@@ -948,6 +950,28 @@ header.awura-header.main-header {
   font-weight: 700;
   font-family: "Inter", sans-serif;
   color: var(--dark-color-5) !important;
+}
+
+.awura-header.header-eight.sticky-menu {
+  background-color: var(--white-color);
+}
+.awura-header.header-eight .main-menu a {
+  color: var(--dark-color-6);
+  font-family: "Inter", sans-serif;
+}
+.awura-header.header-eight .main-menu a:hover {
+  color: var(--green-color);
+}
+.awura-header.header-eight .awura-menu-toggle {
+  background-color: var(--green-color) !important;
+}
+.awura-header.header-eight .awura-menu-toggle i {
+  color: var(--white-color);
+}
+.awura-header.header-eight .awura-text-btn {
+  font-weight: 700;
+  font-family: "Inter", sans-serif;
+  color: var(--dark-color-6) !important;
 }
 
 .main-menu a {
@@ -3505,6 +3529,42 @@ button#comment-btn i {
     opacity: 1;
   }
 }
+.awura-btn-style-seven {
+  color: var(--white-color) !important;
+  padding: 14px 31px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  display: inline-block;
+  transition: 0.4s;
+  overflow: hidden;
+  position: relative;
+  background-color: var(--dark-color-6);
+  font-family: "Inter", sans-serif;
+}
+.awura-btn-style-seven span {
+  display: block;
+  position: relative;
+  z-index: 10;
+}
+.awura-btn-style-seven::before {
+  content: "";
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--green-color);
+  width: 120%;
+  left: -10%;
+  position: absolute;
+  transform: skew(30deg);
+  transition: transform 0.4s cubic-bezier(0.3, 1, 0.8, 1);
+}
+.awura-btn-style-seven:hover::before {
+  transform: translate3d(100%, 0, 0);
+}
+
 .awura-section-padding {
   padding: 130px 0;
 }
@@ -3643,48 +3703,50 @@ button#comment-btn i {
 .awura-section-title.max-w-685 {
   max-width: 685px;
 }
-.awura-section-title.anton-font h5 {
+.awura-section-title.font-typo-two h5 {
   font-size: 24px;
   line-height: 34px;
   margin-bottom: 20px;
   font-family: "Anton", sans-serif;
+  color: var(--dark-color-1);
 }
 @media (max-width: 575px) {
-  .awura-section-title.anton-font h5 {
+  .awura-section-title.font-typo-two h5 {
     font-size: 20px;
     margin-bottom: 15px;
   }
 }
-.awura-section-title.anton-font h2 {
+.awura-section-title.font-typo-two h2 {
   font-size: 85px;
   letter-spacing: 0;
   line-height: 1.17em;
   font-family: "Anton", sans-serif;
+  color: var(--dark-color-1);
 }
 @media (max-width: 1399px) {
-  .awura-section-title.anton-font h2 {
+  .awura-section-title.font-typo-two h2 {
     font-size: 75px;
   }
 }
 @media (max-width: 1199px) {
-  .awura-section-title.anton-font h2 {
+  .awura-section-title.font-typo-two h2 {
     font-size: 65px;
   }
 }
 @media (max-width: 767px) {
-  .awura-section-title.anton-font h2 {
+  .awura-section-title.font-typo-two h2 {
     font-size: 40px;
   }
 }
 @media (max-width: 479px) {
-  .awura-section-title.anton-font h2 {
+  .awura-section-title.font-typo-two h2 {
     font-size: 36px;
   }
 }
-.awura-section-title.anton-font.light-color h5, .awura-section-title.anton-font.light-color h2 {
+.awura-section-title.font-typo-two.light-color h5, .awura-section-title.font-typo-two.light-color h2 {
   color: var(--white-color) !important;
 }
-.awura-section-title.pixelify-font h2 {
+.awura-section-title.font-typo-three h2 {
   font-size: 85px;
   line-height: 0.94em;
   letter-spacing: -0.02em;
@@ -3692,27 +3754,27 @@ button#comment-btn i {
   color: var(--dark-color-2);
 }
 @media (max-width: 1399px) {
-  .awura-section-title.pixelify-font h2 {
+  .awura-section-title.font-typo-three h2 {
     font-size: 75px;
   }
 }
 @media (max-width: 1199px) {
-  .awura-section-title.pixelify-font h2 {
+  .awura-section-title.font-typo-three h2 {
     font-size: 70px;
     letter-spacing: 0;
   }
 }
 @media (max-width: 767px) {
-  .awura-section-title.pixelify-font h2 {
+  .awura-section-title.font-typo-three h2 {
     font-size: 48px;
   }
 }
 @media (max-width: 479px) {
-  .awura-section-title.pixelify-font h2 {
+  .awura-section-title.font-typo-three h2 {
     font-size: 40px;
   }
 }
-.awura-section-title.plus-jakarta-font h2 {
+.awura-section-title.font-typo-four h2 {
   font-weight: 600;
   font-size: 60px;
   margin-bottom: 20px;
@@ -3722,105 +3784,105 @@ button#comment-btn i {
   color: var(--bottle-green-color);
 }
 @media (max-width: 1399px) {
-  .awura-section-title.plus-jakarta-font h2 {
+  .awura-section-title.font-typo-four h2 {
     font-size: 48px;
     letter-spacing: 0;
   }
 }
 @media (max-width: 1199px) {
-  .awura-section-title.plus-jakarta-font h2 {
+  .awura-section-title.font-typo-four h2 {
     font-size: 45px;
     letter-spacing: 0;
   }
 }
 @media (max-width: 767px) {
-  .awura-section-title.plus-jakarta-font h2 {
+  .awura-section-title.font-typo-four h2 {
     font-size: 40px;
   }
 }
 @media (max-width: 479px) {
-  .awura-section-title.plus-jakarta-font h2 {
+  .awura-section-title.font-typo-four h2 {
     font-size: 34px;
   }
 }
-.awura-section-title.plus-jakarta-font p {
+.awura-section-title.font-typo-four p {
   margin: 0;
   font-family: "Plus Jakarta Sans", sans-serif;
   color: var(--bottle-green-color);
 }
-.awura-section-title.noto-font h2 {
+.awura-section-title.font-typo-five h2 {
   font-size: 85px;
   line-height: 1.05em;
   letter-spacing: -0.03em;
   font-weight: 600;
   font-family: "Noto Serif", serif;
-  color: var(--dark-color-1);
+  color: var(--dark-color-3);
 }
 @media (max-width: 1399px) {
-  .awura-section-title.noto-font h2 {
+  .awura-section-title.font-typo-five h2 {
     font-size: 75px;
   }
 }
 @media (max-width: 1199px) {
-  .awura-section-title.noto-font h2 {
+  .awura-section-title.font-typo-five h2 {
     font-size: 65px;
   }
 }
 @media (max-width: 991px) {
-  .awura-section-title.noto-font h2 {
+  .awura-section-title.font-typo-five h2 {
     font-size: 48px;
   }
 }
 @media (max-width: 767px) {
-  .awura-section-title.noto-font h2 {
+  .awura-section-title.font-typo-five h2 {
     font-size: 40px;
   }
 }
 @media (max-width: 479px) {
-  .awura-section-title.noto-font h2 {
+  .awura-section-title.font-typo-five h2 {
     font-size: 36px;
   }
 }
-.awura-section-title.noto-font h5 {
+.awura-section-title.font-typo-five h5 {
   font-size: 24px;
   line-height: 34px;
   margin-bottom: 20px;
   font-family: "Anton", sans-serif;
   color: var(--dark-color-1);
 }
-.awura-section-title.noto-font.light-color h2, .awura-section-title.noto-font.light-color h5, .awura-section-title.noto-font.light-color p {
+.awura-section-title.font-typo-five.light-color h2, .awura-section-title.font-typo-five.light-color h5, .awura-section-title.font-typo-five.light-color p {
   color: var(--white-color);
 }
-.awura-section-title.onest-font h2 {
+.awura-section-title.font-typo-six h2 {
   font-weight: 600;
   font-size: 85px;
-  line-height: 1.17em;
+  line-height: 1.11em;
   letter-spacing: -0.02em;
   font-family: "Onest", sans-serif;
   color: var(--dark-color-4);
 }
 @media (max-width: 1399px) {
-  .awura-section-title.onest-font h2 {
+  .awura-section-title.font-typo-six h2 {
     font-size: 75px;
   }
 }
 @media (max-width: 1199px) {
-  .awura-section-title.onest-font h2 {
+  .awura-section-title.font-typo-six h2 {
     font-size: 70px;
     letter-spacing: 0;
   }
 }
 @media (max-width: 767px) {
-  .awura-section-title.onest-font h2 {
+  .awura-section-title.font-typo-six h2 {
     font-size: 48px;
   }
 }
 @media (max-width: 479px) {
-  .awura-section-title.onest-font h2 {
+  .awura-section-title.font-typo-six h2 {
     font-size: 40px;
   }
 }
-.awura-section-title.onest-font p {
+.awura-section-title.font-typo-six p {
   position: relative;
   padding-left: 25px;
   display: inline-block;
@@ -3828,7 +3890,7 @@ button#comment-btn i {
   color: var(--dark-color-4);
   text-transform: uppercase;
 }
-.awura-section-title.onest-font p:before {
+.awura-section-title.font-typo-six p:before {
   content: "";
   left: 0;
   width: 12px;
@@ -3838,7 +3900,7 @@ button#comment-btn i {
   position: absolute;
   background-color: var(--orange-color);
 }
-.awura-section-title.funnel-font h2 {
+.awura-section-title.font-typo-seven h2 {
   font-weight: 600;
   font-size: 75px;
   line-height: 1.06em;
@@ -3846,17 +3908,17 @@ button#comment-btn i {
   color: var(--dark-color-5);
 }
 @media (max-width: 1199px) {
-  .awura-section-title.funnel-font h2 {
+  .awura-section-title.font-typo-seven h2 {
     font-size: 60px;
   }
 }
 @media (max-width: 767px) {
-  .awura-section-title.funnel-font h2 {
+  .awura-section-title.font-typo-seven h2 {
     font-size: 55px;
   }
 }
 @media (max-width: 575px) {
-  .awura-section-title.funnel-font h2 {
+  .awura-section-title.font-typo-seven h2 {
     font-size: 40px;
   }
 }
@@ -3898,10 +3960,12 @@ button#comment-btn i {
 }
 .awura-default-content p {
   font-size: 20px;
+  line-height: 30px;
 }
 @media (max-width: 767px) {
   .awura-default-content p {
     font-size: 18px;
+    line-height: 28px;
   }
 }
 .awura-default-content.light-color h2, .awura-default-content.light-color p {
@@ -3932,7 +3996,7 @@ button#comment-btn i {
   z-index: 0;
 }
 
-.awura-default-content.anton-font h2 {
+.awura-default-content.font-typo-two h2 {
   font-size: 85px;
   line-height: 1.117em;
   letter-spacing: 0;
@@ -3940,41 +4004,41 @@ button#comment-btn i {
   color: var(--dark-color-1);
 }
 @media (max-width: 1399px) {
-  .awura-default-content.anton-font h2 {
+  .awura-default-content.font-typo-two h2 {
     font-size: 75px;
   }
 }
 @media (max-width: 1199px) {
-  .awura-default-content.anton-font h2 {
+  .awura-default-content.font-typo-two h2 {
     font-size: 65px;
   }
 }
 @media (max-width: 767px) {
-  .awura-default-content.anton-font h2 {
+  .awura-default-content.font-typo-two h2 {
     font-size: 40px;
   }
 }
 @media (max-width: 479px) {
-  .awura-default-content.anton-font h2 {
+  .awura-default-content.font-typo-two h2 {
     font-size: 36px;
   }
 }
-.awura-default-content.anton-font h5 {
+.awura-default-content.font-typo-two h5 {
   font-size: 24px;
   line-height: 34px;
   margin-bottom: 20px;
   font-family: "Anton", sans-serif;
   color: var(--dark-color-1);
 }
-.awura-default-content.anton-font.light-color h2, .awura-default-content.anton-font.light-color h5, .awura-default-content.anton-font.light-color p {
+.awura-default-content.font-typo-two.light-color h2, .awura-default-content.font-typo-two.light-color h5, .awura-default-content.font-typo-two.light-color p {
   color: var(--white-color);
 }
-.awura-default-content.inter-font p {
+.awura-default-content.font-typo-two p {
   font-family: "Inter", sans-serif;
   color: var(--dark-color-1);
 }
 
-.awura-default-content.pixelify-font h2 {
+.awura-default-content.font-typo-three h2 {
   font-size: 85px;
   line-height: 0.94em;
   letter-spacing: -0.02em;
@@ -3982,39 +4046,33 @@ button#comment-btn i {
   color: var(--dark-color-2);
 }
 @media (max-width: 1399px) {
-  .awura-default-content.pixelify-font h2 {
+  .awura-default-content.font-typo-three h2 {
     font-size: 75px;
   }
 }
 @media (max-width: 1199px) {
-  .awura-default-content.pixelify-font h2 {
+  .awura-default-content.font-typo-three h2 {
     font-size: 70px;
     letter-spacing: 0;
   }
 }
 @media (max-width: 767px) {
-  .awura-default-content.pixelify-font h2 {
+  .awura-default-content.font-typo-three h2 {
     font-size: 48px;
   }
 }
 @media (max-width: 479px) {
-  .awura-default-content.pixelify-font h2 {
+  .awura-default-content.font-typo-three h2 {
     font-size: 40px;
   }
 }
-.awura-default-content.pixelify-font p {
-  font-size: 20px;
+.awura-default-content.font-typo-three p {
   margin: 0;
   color: var(--dark-color-2);
   font-family: "Roboto", sans-serif;
 }
-@media (max-width: 767px) {
-  .awura-default-content.pixelify-font p {
-    font-size: 18px;
-  }
-}
 
-.awura-default-content.plus-jakarta-font h2 {
+.awura-default-content.font-typo-four h2 {
   font-weight: 600;
   font-size: 60px;
   line-height: 1.16em;
@@ -4023,28 +4081,28 @@ button#comment-btn i {
   color: var(--bottle-green-color);
 }
 @media (max-width: 1399px) {
-  .awura-default-content.plus-jakarta-font h2 {
+  .awura-default-content.font-typo-four h2 {
     font-size: 48px;
     letter-spacing: 0;
   }
 }
 @media (max-width: 1199px) {
-  .awura-default-content.plus-jakarta-font h2 {
+  .awura-default-content.font-typo-four h2 {
     font-size: 45px;
     letter-spacing: 0;
   }
 }
 @media (max-width: 767px) {
-  .awura-default-content.plus-jakarta-font h2 {
+  .awura-default-content.font-typo-four h2 {
     font-size: 40px;
   }
 }
 @media (max-width: 479px) {
-  .awura-default-content.plus-jakarta-font h2 {
+  .awura-default-content.font-typo-four h2 {
     font-size: 34px;
   }
 }
-.awura-default-content.plus-jakarta-font p {
+.awura-default-content.font-typo-four p {
   font-size: 18px;
   color: var(--bottle-green-color);
   font-family: "Plus Jakarta Sans", sans-serif;
@@ -4055,40 +4113,40 @@ button#comment-btn i {
   background-position: center;
 }
 
-.awura-default-content.noto-font h2 {
+.awura-default-content.font-typo-five h2 {
   font-size: 85px;
   line-height: 1.05em;
   letter-spacing: -0.03em;
   font-weight: 600;
   font-family: "Noto Serif", serif;
-  color: var(--dark-color-1);
+  color: var(--dark-color-3);
 }
 @media (max-width: 1399px) {
-  .awura-default-content.noto-font h2 {
+  .awura-default-content.font-typo-five h2 {
     font-size: 75px;
   }
 }
 @media (max-width: 1199px) {
-  .awura-default-content.noto-font h2 {
+  .awura-default-content.font-typo-five h2 {
     font-size: 60px;
   }
 }
 @media (max-width: 991px) {
-  .awura-default-content.noto-font h2 {
+  .awura-default-content.font-typo-five h2 {
     font-size: 55px;
   }
 }
 @media (max-width: 767px) {
-  .awura-default-content.noto-font h2 {
+  .awura-default-content.font-typo-five h2 {
     font-size: 40px;
   }
 }
 @media (max-width: 479px) {
-  .awura-default-content.noto-font h2 {
+  .awura-default-content.font-typo-five h2 {
     font-size: 36px;
   }
 }
-.awura-default-content.noto-font.inter-font p {
+.awura-default-content.font-typo-five p {
   letter-spacing: -0.01em;
   font-family: "Inter", sans-serif;
   color: var(--dark-color-3);
@@ -4158,36 +4216,36 @@ button#comment-btn i {
   }
 }
 
-.awura-default-content.onest-font h2 {
+.awura-default-content.font-typo-six h2 {
   font-weight: 600;
   font-size: 85px;
-  line-height: 1.17em;
+  line-height: 1.11em;
   letter-spacing: -0.02em;
   font-family: "Onest", sans-serif;
   color: var(--dark-color-4);
 }
 @media (max-width: 1399px) {
-  .awura-default-content.onest-font h2 {
+  .awura-default-content.font-typo-six h2 {
     font-size: 75px;
   }
 }
 @media (max-width: 1199px) {
-  .awura-default-content.onest-font h2 {
+  .awura-default-content.font-typo-six h2 {
     font-size: 70px;
     letter-spacing: 0;
   }
 }
 @media (max-width: 767px) {
-  .awura-default-content.onest-font h2 {
+  .awura-default-content.font-typo-six h2 {
     font-size: 48px;
   }
 }
 @media (max-width: 479px) {
-  .awura-default-content.onest-font h2 {
+  .awura-default-content.font-typo-six h2 {
     font-size: 40px;
   }
 }
-.awura-default-content.onest-font span {
+.awura-default-content.font-typo-six span {
   position: relative;
   padding-left: 25px;
   margin-bottom: 24px;
@@ -4196,7 +4254,7 @@ button#comment-btn i {
   color: var(--dark-color-4);
   text-transform: uppercase;
 }
-.awura-default-content.onest-font span:before {
+.awura-default-content.font-typo-six span:before {
   content: "";
   left: 0;
   width: 12px;
@@ -4206,42 +4264,37 @@ button#comment-btn i {
   position: absolute;
   background-color: var(--orange-color);
 }
-.awura-default-content.onest-font p {
+.awura-default-content.font-typo-six p {
   font-family: "Onest", sans-serif;
   color: var(--dark-color-4);
 }
 
-.awura-default-content.funnel-font h2 {
+.awura-default-content.font-typo-seven h2 {
   font-weight: 600;
   font-size: 75px;
   line-height: 1.06em;
   margin-bottom: 20px;
   font-family: "Funnel Display", sans-serif;
+  color: var(--dark-color-5);
 }
 @media (max-width: 1199px) {
-  .awura-default-content.funnel-font h2 {
+  .awura-default-content.font-typo-seven h2 {
     font-size: 60px;
   }
 }
 @media (max-width: 767px) {
-  .awura-default-content.funnel-font h2 {
+  .awura-default-content.font-typo-seven h2 {
     font-size: 55px;
   }
 }
 @media (max-width: 575px) {
-  .awura-default-content.funnel-font h2 {
+  .awura-default-content.font-typo-seven h2 {
     font-size: 40px;
   }
 }
-.awura-default-content.funnel-font p {
-  font-size: 20px;
-  line-height: 30px;
+.awura-default-content.font-typo-seven p {
   font-family: "Inter", sans-serif;
-}
-@media (max-width: 767px) {
-  .awura-default-content.funnel-font p {
-    font-size: 18px;
-  }
+  color: var(--dark-color-5);
 }
 
 .breadcumb-wrapper {
@@ -5129,6 +5182,7 @@ a.current {
   font-size: 20px;
   line-height: 30px;
   font-family: "Inter", sans-serif;
+  color: var(--dark-color-5);
 }
 @media (max-width: 767px) {
   .awura-hero-content7 p {
@@ -5397,6 +5451,120 @@ a.current {
   transform-style: preserve-3d;
   transition: transform 0.3s;
   will-change: transform;
+}
+
+.awura-hero-section8 {
+  z-index: 0;
+  overflow: hidden;
+  position: relative;
+  padding: 195px 0 0;
+  background-size: cover;
+  background-position: center;
+}
+@media (max-width: 991px) {
+  .awura-hero-section8 {
+    padding: 170px 0 0;
+  }
+}
+@media (max-width: 575px) {
+  .awura-hero-section8 {
+    padding: 130px 0 0;
+  }
+}
+.awura-hero-content8 {
+  max-width: 880px;
+  margin: 0 auto;
+  text-align: center;
+  margin-bottom: 80px;
+}
+@media (max-width: 991px) {
+  .awura-hero-content8 {
+    margin-bottom: 60px;
+  }
+}
+@media (max-width: 767px) {
+  .awura-hero-content8 {
+    margin-bottom: 40px;
+  }
+}
+.awura-hero-content8 h1 {
+  font-weight: 600;
+  margin-bottom: 24px;
+  font-size: 100px;
+  line-height: 1.05em;
+  font-family: "Geist", sans-serif;
+  color: var(--dark-color-6);
+}
+@media (max-width: 1399px) {
+  .awura-hero-content8 h1 {
+    font-size: 80px;
+  }
+}
+@media (max-width: 1199px) {
+  .awura-hero-content8 h1 {
+    font-size: 70px;
+  }
+}
+@media (max-width: 991px) {
+  .awura-hero-content8 h1 {
+    font-size: 60px;
+  }
+}
+@media (max-width: 767px) {
+  .awura-hero-content8 h1 {
+    font-size: 48px;
+  }
+}
+@media (max-width: 479px) {
+  .awura-hero-content8 h1 {
+    font-size: 40px;
+  }
+}
+.awura-hero-content8 p {
+  font-size: 20px;
+  line-height: 30px;
+  font-family: "Inter", sans-serif;
+  color: var(--dark-color-6);
+}
+@media (max-width: 767px) {
+  .awura-hero-content8 p {
+    font-size: 18px;
+  }
+}
+
+.awura-hero-card-row {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  margin-bottom: 35px;
+}
+@media (max-width: 575px) {
+  .awura-hero-card-row {
+    gap: 24px;
+  }
+}
+
+.awura-hero-card8.first-card {
+  margin-bottom: 70px;
+}
+@media (max-width: 575px) {
+  .awura-hero-card8.first-card {
+    margin-bottom: 24px;
+  }
+}
+
+@media (max-width: 575px) {
+  .awura-hero-card8.card-socond {
+    margin-bottom: 24px;
+  }
+}
+
+.awura-hero-card8 {
+  width: 100%;
+}
+.awura-hero-card8 img {
+  width: 100%;
 }
 
 .awura-video-section {
@@ -6612,6 +6780,7 @@ a.current {
   position: relative;
   padding-left: 20px;
   transition: all 0.4s;
+  font-family: "Inter", sans-serif;
 }
 .awura-portfolio-data2 ul li:before {
   content: "";
@@ -7156,7 +7325,7 @@ a.current {
   color: var(--dark-color-5);
 }
 .awura-testimonial-box6 p {
-  color: var(--dark-color-3);
+  color: var(--dark-color-5);
   font-family: "Inter", sans-serif;
 }
 .awura-testimonial-author6 img {
