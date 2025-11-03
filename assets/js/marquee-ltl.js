@@ -22,8 +22,4 @@ $(function () {
 
   marqueeScroll();
 
-  const $wrapper = $(".awura-integration-slider-box");
-  $wrapper.on("mouseenter", () => (isPaused = true));
-  $wrapper.on("mouseleave", () => (isPaused = false));
-
 });
