@@ -272,6 +272,35 @@
   });
 
   /*--------------------------------------------------------------
+  PRICING JS INIT
+  ------------------------------------------------------------*/
+
+  document.addEventListener("DOMContentLoaded", function () {
+    var billingToggle = document.querySelector(".awura-billing-toggle");
+    var toggleButtons = billingToggle.querySelectorAll(".toggle-btn");
+    var prices = document.querySelectorAll(".awura-pricing-price3");
+    toggleButtons.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        // Active ক্লাস আপডেট করো
+        toggleButtons.forEach(function (b) {
+          return b.classList.remove("active");
+        });
+        btn.classList.add("active");
+
+        // প্ল্যান টাইপ (monthly / annual)
+        var planType = btn.getAttribute("data-plan");
+
+        // সব প্রাইস পরিবর্তন করো
+        prices.forEach(function (price) {
+          var newPrice = price.getAttribute("data-".concat(planType));
+          var label = planType === "annual" ? "/year" : "/month";
+          price.innerHTML = "".concat(newPrice, "<span>").concat(label, "</span>");
+        });
+      });
+    });
+  });
+
+  /*--------------------------------------------------------------
   DASHBOARD ROTATED JS INIT
   ------------------------------------------------------------*/
   document.addEventListener("DOMContentLoaded", function () {
