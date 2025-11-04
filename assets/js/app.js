@@ -191,9 +191,9 @@
   /*--------------------------------------------------------------
   TESTIMONIAL SLIDER JS INIT
   ------------------------------------------------------------*/
-  var testimonial_slider = $(".awura-testimonial-init2");
-  if (testimonial_slider.is_exist()) {
-    testimonial_slider.slick({
+  var testimonial_slider2 = $(".awura-testimonial-init2");
+  if (testimonial_slider2.is_exist()) {
+    testimonial_slider2.slick({
       infinite: true,
       slidesToShow: 1,
       slidesToScroll: 1,
@@ -216,9 +216,9 @@
   /*--------------------------------------------------------------
   TESTIMONIAL SLIDER JS INIT
   ------------------------------------------------------------*/
-  var testimonial_slider = $(".awura-testimonial-init3");
-  if (testimonial_slider.is_exist()) {
-    testimonial_slider.slick({
+  var testimonial_slider3 = $(".awura-testimonial-init3");
+  if (testimonial_slider3.is_exist()) {
+    testimonial_slider3.slick({
       infinite: true,
       slidesToShow: 4,
       slidesToScroll: 1,
@@ -228,6 +228,35 @@
       speed: 800,
       prevArrow: '<button class="slide-arrow awura-testimonial-next3"><i class="ri-arrow-right-line"></i></button>',
       nextArrow: '<button class="slide-arrow awura-testimonial-prev3"><i class="ri-arrow-left-line"></i></button>',
+      responsive: [{
+        breakpoint: 1399,
+        settings: {
+          slidesToShow: 2
+        }
+      }, {
+        breakpoint: 767,
+        settings: {
+          slidesToShow: 1,
+          autoplay: true,
+          arrows: false
+        }
+      }]
+    });
+  }
+
+  /*--------------------------------------------------------------
+  TESTIMONIAL SLIDER JS INIT
+  ------------------------------------------------------------*/
+  var testimonial_slider4 = $(".awura-testimonial-init4");
+  if (testimonial_slider4.is_exist()) {
+    testimonial_slider4.slick({
+      infinite: true,
+      slidesToShow: 2.5,
+      slidesToScroll: 1,
+      arrows: false,
+      dots: true,
+      autoplay: true,
+      speed: 1200,
       responsive: [{
         breakpoint: 1399,
         settings: {
@@ -281,16 +310,11 @@
     var prices = document.querySelectorAll(".awura-pricing-price3");
     toggleButtons.forEach(function (btn) {
       btn.addEventListener("click", function () {
-        // Active ক্লাস আপডেট করো
         toggleButtons.forEach(function (b) {
           return b.classList.remove("active");
         });
         btn.classList.add("active");
-
-        // প্ল্যান টাইপ (monthly / annual)
         var planType = btn.getAttribute("data-plan");
-
-        // সব প্রাইস পরিবর্তন করো
         prices.forEach(function (price) {
           var newPrice = price.getAttribute("data-".concat(planType));
           var label = planType === "annual" ? "/year" : "/month";

@@ -44,6 +44,8 @@
 --dark-color-6: #1A1A1A;
 --green-color: #06923E;
 --gray-color-5: #F8F8F8;
+--dodger-blue-color: #44B1FF;
+--gray-color-6: #F2EFE9;
 }
 
 .awura-dark-bg
@@ -124,6 +126,11 @@ background-color: var(--gray-color-4) !important;
 .awura-gray-bg4
 {
 background-color: var(--gray-color-5) !important;
+}
+
+.awura-gray-bg5
+{
+background-color: var(--gray-color-6) !important;
 }
 
 .awura-bottle-green-bg
@@ -988,6 +995,37 @@ header.awura-header.main-header {
   color: var(--green-color) !important;
 }
 
+.awura-header.header-nine {
+  background-color: var(--white-color);
+}
+.awura-header.header-nine .header-logo {
+  margin-right: 80px;
+}
+@media (max-width: 1199px) {
+  .awura-header.header-nine .header-logo {
+    margin-right: 40px;
+  }
+}
+@media (max-width: 991px) {
+  .awura-header.header-nine .header-logo {
+    margin-right: 0;
+  }
+}
+.awura-header.header-nine .main-menu a {
+  font-size: 18px;
+  color: var(--dark-color-4);
+  font-family: "Geist", sans-serif;
+}
+.awura-header.header-nine .main-menu a:hover {
+  color: var(--dodger-blue-color);
+}
+.awura-header.header-nine .awura-menu-toggle {
+  background-color: var(--dodger-blue-color) !important;
+}
+.awura-header.header-nine .awura-menu-toggle i {
+  color: var(--white-color);
+}
+
 .main-menu a {
   color: var(--primary-color);
   position: relative;
@@ -1576,6 +1614,87 @@ ul.sub-menu li.menu-item-has-children a::after {
   font-size: 16px;
   font-family: "Inter", sans-serif;
   color: var(--dark-color-6);
+}
+
+.font-typo-nine {
+  position: relative;
+}
+.font-typo-nine .awura-footer-grid {
+  gap: 250px;
+  grid-template-columns: 304px 1fr;
+}
+@media (max-width: 1399px) {
+  .font-typo-nine .awura-footer-grid {
+    gap: 150px;
+  }
+}
+@media (max-width: 1199px) {
+  .font-typo-nine .awura-footer-grid {
+    gap: 70px;
+  }
+}
+@media (max-width: 991px) {
+  .font-typo-nine .awura-footer-grid {
+    gap: 40px;
+    grid-template-columns: 1fr;
+  }
+}
+.font-typo-nine .awura-footer-textarea p {
+  margin: 0 0 24px;
+  font-family: "Geist", sans-serif;
+}
+.font-typo-nine .awura-footer-textarea span {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 15px;
+  font-family: "Geist", sans-serif;
+}
+.font-typo-nine .awura-footer-menu p {
+  font-weight: 500;
+  font-family: "Geist", sans-serif;
+}
+.font-typo-nine .awura-footer-menu ul li a {
+  font-family: "Geist", sans-serif;
+}
+.font-typo-nine .awura-footer-menu ul li a:hover {
+  color: var(--dodger-blue-color);
+}
+
+.awura-footer-bottom9 {
+  display: flex;
+  align-items: center;
+  padding: 30px 0;
+  justify-content: space-between;
+  border-top: 1px solid rgba(26, 26, 26, 0.1);
+}
+@media (max-width: 767px) {
+  .awura-footer-bottom9 {
+    gap: 20px;
+    justify-content: center;
+    flex-direction: column;
+  }
+}
+.awura-footer-bottom9 p {
+  margin: 0;
+  font-size: 16px;
+  font-family: "Geist", sans-serif;
+  color: var(--white-color);
+}
+
+.awura-line-top {
+  position: absolute;
+  top: 0;
+  left: 35%;
+  height: 100%;
+}
+.awura-line-top img {
+  width: 100%;
+  height: 100%;
+}
+@media (max-width: 1199px) {
+  .awura-line-top {
+    display: none;
+  }
 }
 
 /*1.2 components css*/
@@ -2262,6 +2381,67 @@ button#awura-subscriber-btn7:hover .awura-arrow-show {
   transform: translateX(35px);
 }
 
+.awura-subscriber8 {
+  position: relative;
+}
+.awura-subscriber8 input {
+  border-radius: 3px;
+  padding-right: 50px !important;
+  height: 50px;
+  font-family: "Geist", sans-serif;
+  background-color: var(--white-color);
+}
+.awura-subscriber8 input:focus {
+  border: 1px solid var(--dark-color-4) !important;
+}
+.awura-subscriber8 input::-webkit-input-placeholder, .awura-subscriber8 input::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+  color: var(--dark-color-4);
+  opacity: 1;
+}
+.awura-subscriber8 input:-moz-placeholder, .awura-subscriber8 input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color: var(--dark-color-4);
+  opacity: 1;
+}
+.awura-subscriber8 input::-moz-placeholder, .awura-subscriber8 input::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color: var(--dark-color-4);
+  opacity: 1;
+}
+.awura-subscriber8 input:-ms-input-placeholder, .awura-subscriber8 input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: var(--dark-color-4);
+  opacity: 1;
+}
+.awura-subscriber8 input::-ms-input-placeholder, .awura-subscriber8 input::-ms-input-placeholder { /* Microsoft Edge */
+  color: var(--dark-color-4);
+  opacity: 1;
+}
+.awura-subscriber8 input input::placeholder,
+.awura-subscriber8 input textarea::placeholder { /* Most modern browsers support this now. */
+  color: var(--dark-color-4);
+  opacity: 1;
+}
+
+button#awura-subscriber-btn8 {
+  top: 5px;
+  right: 5px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  border-radius: 3px;
+  align-items: center;
+  justify-content: center;
+  color: var(--white-color);
+  position: absolute;
+  transition: all 0.4s;
+  overflow: hidden;
+  background-color: var(--dodger-blue-color);
+}
+button#awura-subscriber-btn8 img {
+  transition: all 0.4s;
+}
+button#awura-subscriber-btn8:hover img {
+  transform: rotate(45deg);
+}
+
 .awura-cta-content {
   max-width: 576px;
   margin: 0 auto;
@@ -2598,6 +2778,68 @@ button#awura-subscriber-btn7:hover .awura-arrow-show {
 
 .play-store:hover {
   transform: translateY(-5px);
+}
+
+.awura-cta-section7 {
+  padding: 130px 0;
+  background-color: var(--dodger-blue-color);
+}
+@media (max-width: 991px) {
+  .awura-cta-section7 {
+    padding: 100px 0;
+  }
+}
+@media (max-width: 767px) {
+  .awura-cta-section7 {
+    padding: 80px 0;
+  }
+}
+.awura-cta-content7 {
+  text-align: center;
+  max-width: 650px;
+  margin: 0 auto;
+}
+.awura-cta-content7 h2 {
+  font-weight: 500;
+  font-size: 60px;
+  margin-bottom: 20px;
+  line-height: 1.13em;
+  letter-spacing: -0.02em;
+  font-family: "Geist", sans-serif;
+  color: var(--dark-color-4);
+}
+@media (max-width: 1199px) {
+  .awura-cta-content7 h2 {
+    font-size: 48px;
+  }
+}
+@media (max-width: 767px) {
+  .awura-cta-content7 h2 {
+    font-size: 40px;
+  }
+}
+@media (max-width: 575px) {
+  .awura-cta-content7 h2 {
+    font-size: 36px;
+  }
+}
+.awura-cta-content7 p {
+  font-family: "Geist", sans-serif;
+  color: var(--dark-color-4);
+}
+
+.awura-cta7-shape {
+  height: 50px;
+  width: 100%;
+}
+.awura-cta7-shape img {
+  width: 100%;
+  height: 100%;
+}
+@media (max-width: 991px) {
+  .awura-cta7-shape {
+    height: 30px;
+  }
 }
 
 .blog-single {
@@ -3263,6 +3505,48 @@ button#comment-btn i {
   background-color: var(--orange-color);
 }
 
+.awura-style-four .blog-single {
+  margin-bottom: 30px;
+}
+.awura-style-four .blog-img {
+  border-radius: 0;
+}
+.awura-style-four .blog-meta {
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.awura-style-four .blog-meta a {
+  display: inline-flex;
+  gap: 10px;
+  border-radius: 3px;
+  padding: 9px 16px;
+  align-items: center;
+  font-size: 16px;
+  line-height: 22px;
+  transition: all 0.4s;
+  font-family: "Geist", sans-serif;
+  color: var(--dark-color-4);
+  background-color: var(--gray-color-6);
+}
+.awura-style-four .blog-meta a:hover {
+  background-color: var(--dodger-blue-color);
+}
+.awura-style-four .blog-title {
+  margin: 0;
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 36px;
+  letter-spacing: -0.01em;
+  font-family: "Geist", sans-serif;
+  color: var(--dark-color-4);
+}
+.awura-style-four .blog-title a {
+  color: var(--dark-color-4);
+}
+.awura-style-four .blog-title a:hover {
+  color: var(--dodger-blue-color);
+}
+
 .blog-btn {
   line-height: 22px;
   font-weight: 600;
@@ -3777,6 +4061,40 @@ button#comment-btn i {
   transform: translate3d(100%, 0, 0);
 }
 
+.awura-btn-style-eight {
+  color: var(--dark-color-4) !important;
+  padding: 14px 23px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  display: inline-block;
+  transition: 0.4s;
+  overflow: hidden;
+  position: relative;
+  background-color: var(--dodger-blue-color);
+  font-family: "Geist", sans-serif;
+  border: 2px solid var(--dodger-blue-color);
+}
+.awura-btn-style-eight span {
+  display: block;
+  position: relative;
+  z-index: 10;
+}
+.awura-btn-style-eight:hover {
+  color: var(--dodger-blue-color) !important;
+  background-color: transparent;
+}
+.awura-btn-style-eight.white-btn {
+  color: var(--dark-color-4);
+  background-color: var(--white-color);
+  border: 2px solid var(--white-color);
+}
+.awura-btn-style-eight.white-btn:hover {
+  color: var(--white-color) !important;
+  background-color: transparent;
+}
+
 .awura-section-padding {
   padding: 130px 0;
 }
@@ -3811,6 +4129,20 @@ button#comment-btn i {
 @media (max-width: 991px) {
   .awura-section-padding3 {
     padding: 80px 0;
+  }
+}
+
+.awura-section-padding3 {
+  padding: 130px 0px 100px;
+}
+@media (max-width: 991px) {
+  .awura-section-padding3 {
+    padding: 100px 0 70px;
+  }
+}
+@media (max-width: 991px) {
+  .awura-section-padding3 {
+    padding: 80px 0 50px;
   }
 }
 
@@ -4173,6 +4505,29 @@ button#comment-btn i {
     font-size: 40px;
   }
 }
+.awura-section-title.font-typo-nine h2 {
+  font-weight: 500;
+  font-size: 60px;
+  line-height: 1.13em;
+  letter-spacing: -0.02em;
+  font-family: "Geist", sans-serif;
+  color: var(--dark-color-4);
+}
+@media (max-width: 1199px) {
+  .awura-section-title.font-typo-nine h2 {
+    font-size: 48px;
+  }
+}
+@media (max-width: 767px) {
+  .awura-section-title.font-typo-nine h2 {
+    font-size: 40px;
+  }
+}
+@media (max-width: 575px) {
+  .awura-section-title.font-typo-nine h2 {
+    font-size: 36px;
+  }
+}
 .awura-section-title.two-column {
   max-width: 100%;
 }
@@ -4205,6 +4560,16 @@ button#comment-btn i {
 }
 .awura-default-thumb.border-radius-10 img {
   border-radius: 10px;
+}
+@media (max-width: 991px) {
+  .awura-default-thumb2 {
+    margin-bottom: 40px;
+  }
+}
+.awura-default-thumb2 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .awura-default-content h2 {
   margin-bottom: 20px;
@@ -4612,6 +4977,50 @@ button#comment-btn i {
   }
 }
 
+.awura-default-content.font-typo-nine h2 {
+  font-weight: 500;
+  font-size: 60px;
+  line-height: 1.13em;
+  margin-bottom: 20px;
+  letter-spacing: -0.02em;
+  font-family: "Geist", sans-serif;
+  color: var(--dark-color-4);
+}
+@media (max-width: 1199px) {
+  .awura-default-content.font-typo-nine h2 {
+    font-size: 48px;
+  }
+}
+@media (max-width: 767px) {
+  .awura-default-content.font-typo-nine h2 {
+    font-size: 40px;
+  }
+}
+@media (max-width: 575px) {
+  .awura-default-content.font-typo-nine h2 {
+    font-size: 36px;
+  }
+}
+.awura-default-content.font-typo-nine p {
+  font-size: 18px;
+  line-height: 28px;
+  font-family: "Geist", sans-serif;
+  color: var(--dark-color-4);
+}
+
+.awura-about-thumb-wrap img {
+  margin-bottom: 24px;
+}
+.awura-about-thumb-wrap p {
+  font-family: "Geist", sans-serif;
+  color: var(--dark-color-4);
+}
+@media (max-width: 991px) {
+  .awura-about-thumb-wrap {
+    margin-bottom: 40px;
+  }
+}
+
 .breadcumb-wrapper {
   z-index: 0;
   text-align: center;
@@ -4808,6 +5217,29 @@ a.current {
   border: 1px solid var(--green-color);
 }
 .awura-social-icon.style-five ul li a:hover i {
+  color: var(--white-color);
+}
+.awura-social-icon.style-six {
+  gap: 24px;
+  display: flex;
+  align-items: center;
+}
+.awura-social-icon.style-six p {
+  font-size: 18px;
+}
+.awura-social-icon.style-six ul li a {
+  border-radius: 0;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.awura-social-icon.style-six ul li a i {
+  transition: all 0.4s;
+  color: var(--white-color);
+}
+.awura-social-icon.style-six ul li a:hover {
+  background-color: var(--dodger-blue-color);
+  border: 1px solid var(--dodger-blue-color);
+}
+.awura-social-icon.style-six ul li a:hover i {
   color: var(--white-color);
 }
 
@@ -5926,6 +6358,116 @@ a.current {
   width: 100%;
 }
 
+.awura_screenfix_right {
+  margin-right: calc((-100vw + 100%) / 2);
+}
+@media (max-width: 991px) {
+  .awura_screenfix_right {
+    margin-right: auto;
+  }
+}
+
+.awura-hero-section9 {
+  z-index: 0;
+  overflow: hidden;
+  position: relative;
+  margin: 0 100px;
+  background-color: var(--gray-color-6);
+}
+@media (max-width: 1399px) {
+  .awura-hero-section9 {
+    margin: 0 50px;
+  }
+}
+@media (max-width: 1199px) {
+  .awura-hero-section9 {
+    margin: 0;
+  }
+}
+@media (max-width: 991px) {
+  .awura-hero-section9 {
+    padding: 120px 0 100px;
+  }
+}
+@media (max-width: 575px) {
+  .awura-hero-section9 {
+    padding: 80px 0;
+  }
+}
+.awura-hero-content9 {
+  max-width: 650px;
+}
+@media (max-width: 991px) {
+  .awura-hero-content9 {
+    max-width: 100%;
+    margin-bottom: 40px;
+  }
+}
+.awura-hero-content9 h1 {
+  font-weight: 500;
+  margin-bottom: 20px;
+  font-size: 80px;
+  line-height: 1.06em;
+  letter-spacing: -0.03em;
+  font-family: "Geist", sans-serif;
+  color: var(--dark-color-4);
+}
+@media (max-width: 1399px) {
+  .awura-hero-content9 h1 {
+    font-size: 70px;
+  }
+}
+@media (max-width: 1199px) {
+  .awura-hero-content9 h1 {
+    font-size: 60px;
+  }
+}
+@media (max-width: 991px) {
+  .awura-hero-content9 h1 {
+    font-size: 55px;
+  }
+}
+@media (max-width: 767px) {
+  .awura-hero-content9 h1 {
+    font-size: 48px;
+  }
+}
+@media (max-width: 479px) {
+  .awura-hero-content9 h1 {
+    font-size: 40px;
+  }
+}
+.awura-hero-content9 p {
+  font-family: "Geist", sans-serif;
+  color: var(--dark-color-4);
+}
+@media (max-width: 767px) {
+  .awura-hero-content9 p {
+    font-size: 18px;
+  }
+}
+.awura-hero-thumb9 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+@media (max-width: 1199px) {
+  .awura-hero-thumb9 {
+    height: 550px;
+  }
+}
+@media (max-width: 991px) {
+  .awura-hero-thumb9 {
+    height: 100%;
+  }
+}
+
+.awura-hero9-border {
+  margin-top: 79px;
+  border-bottom: 1px solid rgba(30, 30, 30, 0.15);
+  border-top: 1px solid rgba(30, 30, 30, 0.15);
+}
+
 .awura-video-section {
   z-index: 0;
   position: relative;
@@ -6333,6 +6875,40 @@ a.current {
   line-height: 30px;
   font-family: "Inter", sans-serif;
   letter-spacing: 0.01em;
+}
+
+.awura-brandlogo-section3 {
+  padding: 50px 0 0;
+}
+.awura-brandlogo-title3 {
+  text-align: center;
+  margin-bottom: 50px;
+}
+.awura-brandlogo-title3 p {
+  font-size: 16px;
+  margin: 0;
+  color: var(--dark-color-4);
+  font-family: "Geist", sans-serif;
+}
+.awura-brandlogo-wrapper3 {
+  background-size: cover;
+  background-position: center;
+}
+
+.awura-brandlogo-three {
+  background-color: rgba(30, 30, 30, 0.15);
+  border: 1px solid rgba(30, 30, 30, 0.15);
+}
+.awura-brandlogo-three .awura-brandlogo-column {
+  gap: 1px;
+}
+.awura-brandlogo-three .awura-brandlogo-box {
+  border-radius: 0;
+  transition: all 0.4s;
+  background-color: var(--white-color);
+}
+.awura-brandlogo-three .awura-brandlogo-box:hover {
+  background-color: var(--dark-color-4);
 }
 
 .awura-about-content-box {
@@ -7106,6 +7682,65 @@ a.current {
   margin-bottom: 10px;
 }
 
+.awura-rolling-counter-item5 {
+  padding: 24px;
+  margin-bottom: 24px;
+  text-align: center;
+  background: linear-gradient(180deg, #FFFFFF 0%, #44B1FF 100%);
+}
+.awura-rolling-counter-item5 .rolling-counter {
+  font-weight: 500;
+  font-size: 60px;
+  line-height: 1.13em;
+  height: 55px;
+  letter-spacing: -0.02em;
+  font-family: "Geist", sans-serif;
+  color: var(--dark-color-4);
+}
+@media (max-width: 1199px) {
+  .awura-rolling-counter-item5 .rolling-counter {
+    font-size: 48px;
+  }
+}
+.awura-rolling-counter-item5 .rolling-counter .digit {
+  width: 42px;
+}
+@media (max-width: 1199px) {
+  .awura-rolling-counter-item5 .rolling-counter .digit {
+    width: 32px;
+  }
+}
+@media (max-width: 767px) {
+  .awura-rolling-counter-item5 .rolling-counter .digit {
+    width: 32px;
+  }
+}
+.awura-rolling-counter-item5 .rolling-counter .digit span {
+  height: 55px;
+}
+.awura-rolling-counter-item5 span {
+  font-weight: 500;
+  font-size: 60px;
+  line-height: 1.13em;
+  letter-spacing: -0.02em;
+  font-family: "Geist", sans-serif;
+  color: var(--dark-color-4);
+}
+@media (max-width: 1199px) {
+  .awura-rolling-counter-item5 span {
+    font-size: 48px;
+  }
+}
+.awura-rolling-counter-item5 p {
+  margin: 0;
+  font-weight: 500;
+  font-family: "Geist", sans-serif;
+  color: var(--dark-color-4);
+}
+.awura-rolling-counter-value5 {
+  margin-bottom: 15px;
+}
+
 .awura-portfolio-column {
   display: grid;
   column-gap: 24px;
@@ -7354,6 +7989,70 @@ a.current {
   .awura-portfolio-footer {
     margin-top: 60px;
   }
+}
+
+.awura-portfolio-wrap4 {
+  margin-bottom: 24px;
+}
+.awura-portfolio-wrap4:hover .awura-portfolio-data4 {
+  opacity: 1;
+  top: 50%;
+}
+.awura-portfolio-thumb4 {
+  position: relative;
+}
+.awura-portfolio-data4 {
+  left: 50%;
+  top: 60%;
+  opacity: 0;
+  padding: 24px;
+  max-width: 600px;
+  text-align: center;
+  position: absolute;
+  transition: all 0.6s;
+  transform: translate(-50%, -50%);
+  background-color: var(--white-color);
+}
+@media (max-width: 991px) {
+  .awura-portfolio-data4 {
+    transform: inherit;
+    position: static;
+    width: 100%;
+    opacity: 1;
+    text-align: left;
+  }
+}
+.awura-portfolio-data4 h4 {
+  font-weight: 500;
+  font-size: 28px;
+  margin-bottom: 15px;
+  line-height: 36px;
+  letter-spacing: -0.01em;
+  font-family: "Geist", sans-serif;
+  color: var(--dark-color-4);
+}
+@media (max-width: 479px) {
+  .awura-portfolio-data4 h4 {
+    font-size: 24px;
+  }
+}
+.awura-portfolio-data4 p {
+  font-family: "Geist", sans-serif;
+  color: var(--dark-color-4);
+}
+
+.awura-portfolio-shape {
+  height: 50px;
+  width: 100%;
+}
+@media (max-width: 767px) {
+  .awura-portfolio-shape {
+    height: 30px;
+  }
+}
+.awura-portfolio-shape img {
+  width: 100%;
+  height: 100%;
 }
 
 .awura-testimonial-column {
@@ -7882,6 +8581,79 @@ a.current {
   color: var(--dark-color-6);
 }
 
+.awura-testimonial-box8 {
+  padding: 30px;
+  border-radius: 3px;
+  background-color: var(--white-color);
+}
+.awura-testimonial-box8 p {
+  font-family: "Geist", sans-serif;
+  color: var(--dark-color-4);
+}
+.awura-testimonial-header8 {
+  display: flex;
+  margin-bottom: 30px;
+  align-items: center;
+  justify-content: space-between;
+}
+.awura-testimonial-header8 ul li {
+  display: inline-block;
+}
+.awura-testimonial-author8 {
+  gap: 24px;
+  display: flex;
+  align-items: center;
+}
+.awura-testimonial-author8 img {
+  width: 50px;
+  height: 50px;
+}
+.awura-testimonial-author8 p {
+  margin: 0;
+  font-family: "Geist", sans-serif;
+  color: var(--dark-color-4);
+}
+.awura-testimonial-author8 p span {
+  font-weight: 600;
+}
+
+.awura-testimonial-init4 .slick-slide {
+  margin: 0 12px;
+}
+.awura-testimonial-init4 .slick-dots {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  margin-top: 80px;
+  list-style-type: none;
+}
+@media (max-width: 991px) {
+  .awura-testimonial-init4 .slick-dots {
+    margin-top: 60px;
+  }
+}
+@media (max-width: 767px) {
+  .awura-testimonial-init4 .slick-dots {
+    margin-top: 40px;
+  }
+}
+.awura-testimonial-init4 .slick-dots li {
+  margin: 0 6px;
+}
+.awura-testimonial-init4 .slick-dots button {
+  display: block;
+  width: 12px;
+  height: 12px;
+  padding: 0;
+  border: none;
+  transition: all 0.4s;
+  background-color: rgba(30, 30, 30, 0.1);
+  text-indent: -9999px;
+}
+.awura-testimonial-init4 .slick-dots li.slick-active button {
+  background-color: var(--dark-color-4);
+}
+
 .awura-team-wrap {
   overflow: hidden;
   border-radius: 20px 20px 0 0;
@@ -8211,6 +8983,39 @@ a.current {
   }
 }
 
+.awura-text-slider-section3 {
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.awura-text-slider3 {
+  display: flex;
+}
+
+.awura-text-slider-item3 {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.awura-text-slider-item3 img {
+  margin: 0 24px;
+  flex-shrink: 0;
+}
+.awura-text-slider-item3 h2 {
+  font-weight: 500;
+  font-size: 60px;
+  line-height: 1.13em;
+  letter-spacing: -0.02em;
+  font-family: "Geist", sans-serif;
+  color: rgba(255, 255, 255, 0.1);
+}
+@media (max-width: 1199px) {
+  .awura-text-slider-item3 h2 {
+    font-size: 48px;
+  }
+}
+
 .awura-accordion-item {
   overflow: hidden;
   padding: 24px 0;
@@ -8468,6 +9273,139 @@ a.current {
 .style-eight .awura-accordion-content p {
   font-family: "Geist", sans-serif;
   color: var(--dark-color-6);
+}
+
+.awura-accordion-column9 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+@media (max-width: 991px) {
+  .awura-accordion-column9 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.style-nine .awura-accordion-item {
+  padding: 24px;
+  flex-direction: column;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.style-nine .awura-accordion-item:first-child {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+.style-nine .awura-accordion-item.active {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+@media (max-width: 991px) {
+  .style-nine .awura-accordion-item {
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}
+.style-nine .awura-accordion-header {
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 32px;
+  align-items: flex-start;
+  flex-direction: column;
+  font-family: "Geist", sans-serif;
+  color: var(--white-color);
+}
+.style-nine .awura-accordion-header img {
+  margin-bottom: 15px;
+}
+.style-nine .awura-accordion-content {
+  max-width: 470px;
+}
+.style-nine .awura-accordion-content p {
+  font-family: "Geist", sans-serif;
+  color: var(--white-color);
+}
+
+.awura-accodion-thumb9 {
+  height: 100%;
+}
+.awura-accodion-thumb9 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.style-ten {
+  padding-left: 55px;
+}
+@media (max-width: 1399px) {
+  .style-ten {
+    padding-left: 0;
+  }
+}
+@media (max-width: 991px) {
+  .style-ten {
+    margin-top: 40px;
+  }
+}
+.style-ten .awura-accordion-item.active .awura-accordion-plus img {
+  transform: rotate(0);
+}
+.style-ten .awura-accordion-item.active .awura-accordion-plus .minus {
+  opacity: 1;
+}
+.style-ten .awura-accordion-item.active .awura-accordion-plus .plus {
+  opacity: 0;
+}
+.style-ten .awura-accordion-header {
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 36px;
+  font-family: "Geist", sans-serif;
+  color: var(--dark-color-4);
+  justify-content: inherit;
+}
+@media (max-width: 767px) {
+  .style-ten .awura-accordion-header {
+    font-size: 24px;
+    line-height: 32px;
+  }
+}
+.style-ten .awura-accordion-plus {
+  width: 25px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  padding-left: 0;
+  margin-right: 24px;
+  position: relative;
+}
+.style-ten .awura-accordion-plus .plus {
+  top: 4px;
+  position: absolute;
+  transition: all 0.4s;
+}
+.style-ten .awura-accordion-plus .minus {
+  top: 15px;
+  opacity: 0;
+  transition: all 0.4s;
+  position: absolute;
+}
+.style-ten .awura-accordion-content {
+  padding-left: 50px;
+}
+.style-ten .awura-accordion-content p {
+  line-height: 24px;
+  font-family: "Geist", sans-serif;
+  color: var(--dark-color-4);
+}
+
+.awura-dots-divider {
+  height: 1px;
+}
+
+.awura-divider-line {
+  width: 100%;
+  width: 100%;
+  height: 100%;
+  background-size: 20px 100%;
+  background-image: linear-gradient(to right, transparent 50%, rgba(30, 30, 30, 0.15) 50%);
 }
 
 .awura-chart-background {
@@ -9504,6 +10442,43 @@ canvas {
 .awura-list-icon2 ul li img {
   left: 0;
   position: absolute;
+}
+
+.awura-list-icon3 ul {
+  gap: 15px;
+  display: grid;
+  grid-template-columns: 325px 1fr;
+}
+@media (max-width: 1399px) {
+  .awura-list-icon3 ul {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 991px) {
+  .awura-list-icon3 ul {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 767px) {
+  .awura-list-icon3 ul {
+    grid-template-columns: 1fr;
+  }
+}
+.awura-list-icon3 ul li {
+  font-weight: 500;
+  position: relative;
+  padding-left: 22px;
+  font-family: "Geist", sans-serif;
+  color: var(--dark-color-4);
+}
+.awura-list-icon3 ul li::before {
+  content: "";
+  left: 0;
+  top: 8px;
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  background-color: var(--dodger-blue-color);
 }
 
 .awura-tab-menu {
