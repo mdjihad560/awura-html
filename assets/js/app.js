@@ -19,7 +19,10 @@
     /*--------------------------------------------------------------
     AWURA DYNAMIC JS INIT
     --------------------------------------------------------------*/
-    document.getElementById("year").textContent = new Date().getFullYear();
+    (function () {
+      var el = document.getElementById("year");
+      if (el) el.textContent = new Date().getFullYear();
+    })();
 
     /*--------------------------------------------------------------
     AWURA STICKY MENU JS INIT
@@ -303,11 +306,13 @@
   /*--------------------------------------------------------------
   PRICING JS INIT
   ------------------------------------------------------------*/
-
   document.addEventListener("DOMContentLoaded", function () {
     var billingToggle = document.querySelector(".awura-billing-toggle");
-    var toggleButtons = billingToggle.querySelectorAll(".toggle-btn");
     var prices = document.querySelectorAll(".awura-pricing-price3");
+
+    // যদি এলিমেন্ট না থাকে তাহলে কোড রান হবে না
+    if (!billingToggle || !prices.length) return;
+    var toggleButtons = billingToggle.querySelectorAll(".toggle-btn");
     toggleButtons.forEach(function (btn) {
       btn.addEventListener("click", function () {
         toggleButtons.forEach(function (b) {
@@ -687,6 +692,23 @@
       end: "bottom top",
       scrub: true
     }
+  });
+
+  // hide show password
+  document.querySelectorAll(".toggle-password").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var input = btn.closest(".awura-account-field").querySelector(".password-input");
+      var icon = btn.querySelector("i");
+      if (input.type === "password") {
+        input.type = "text";
+        icon.classList.remove("ri-eye-line");
+        icon.classList.add("ri-eye-off-line");
+      } else {
+        input.type = "password";
+        icon.classList.remove("ri-eye-off-line");
+        icon.classList.add("ri-eye-line");
+      }
+    });
   });
   $(window).on("load", function () {
     /*--------------------------------------------------------------
