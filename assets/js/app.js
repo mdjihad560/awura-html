@@ -694,7 +694,10 @@
     }
   });
 
-  // hide show password
+  /*--------------------------------------------------------------
+  HIDE SHOW PASSWORD JS INIT
+  ------------------------------------------------------------*/
+
   document.querySelectorAll(".toggle-password").forEach(function (btn) {
     btn.addEventListener("click", function () {
       var input = btn.closest(".awura-account-field").querySelector(".password-input");
@@ -710,6 +713,34 @@
       }
     });
   });
+
+  /*--------------------------------------------------------------
+  THUMB HOVER JS INIT
+  ------------------------------------------------------------*/
+  var thumbTwo = document.querySelector(".thumb-two");
+  var thumbThree = document.querySelector(".thumb-three");
+  var hTwo = document.querySelector(".hover-two");
+  var hThree = document.querySelector(".hover-three");
+
+  // Hover Two
+  if (hTwo && thumbTwo) {
+    hTwo.addEventListener("mouseenter", function () {
+      thumbTwo.classList.add("active");
+    });
+    hTwo.addEventListener("mouseleave", function () {
+      thumbTwo.classList.remove("active");
+    });
+  }
+
+  // Hover Three
+  if (hThree && thumbThree) {
+    hThree.addEventListener("mouseenter", function () {
+      thumbThree.classList.add("active");
+    });
+    hThree.addEventListener("mouseleave", function () {
+      thumbThree.classList.remove("active");
+    });
+  }
   $(window).on("load", function () {
     /*--------------------------------------------------------------
     AWURA PRELOADER JS INIT
