@@ -38,7 +38,7 @@
     /*--------------------------------------------------------------
     AWURA SHAPE ANIMATION JS INIT
     --------------------------------------------------------------*/
-    var images = document.querySelectorAll(".awura-cta-shape-left, .awura-cta-shape-right, .awura-hero-shape-left, .awura-hero-shape-right");
+    var images = document.querySelectorAll(".awura-cta-shape-left, .awura-cta-shape-right, .awura-hero-shape-left, .awura-hero-shape-right, .bottom-top-animation");
     function revealOnScroll() {
       var triggerBottom = window.innerHeight * 0.9; // trigger before fully in view
 
