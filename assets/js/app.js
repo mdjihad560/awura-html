@@ -741,6 +741,23 @@
       thumbThree.classList.remove("active");
     });
   }
+
+  // text scroll overlay js init
+
+  gsap.registerPlugin(ScrollTrigger);
+  var textElements = gsap.utils.toArray(".text-overlay-animation");
+  textElements.forEach(function (text) {
+    gsap.to(text, {
+      backgroundSize: "100%",
+      ease: "none",
+      scrollTrigger: {
+        trigger: text,
+        start: "center 80%",
+        end: "center 20%",
+        scrub: true
+      }
+    });
+  });
   $(window).on("load", function () {
     /*--------------------------------------------------------------
     AWURA PRELOADER JS INIT
