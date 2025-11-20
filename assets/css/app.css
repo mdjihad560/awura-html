@@ -1893,7 +1893,7 @@ button#awura-subscriber-btn:hover {
 .awura-arrow-hide {
   position: absolute;
   transition: all 0.4s;
-  transform: translateX(-35px);
+  transform: translateX(-40px);
 }
 
 button#awura-subscriber-btn:hover .awura-arrow-hide {
@@ -1901,7 +1901,7 @@ button#awura-subscriber-btn:hover .awura-arrow-hide {
 }
 
 button#awura-subscriber-btn:hover .awura-arrow-show {
-  transform: translateX(35px);
+  transform: translateX(40px);
 }
 
 .awura-subscriber2 input {
@@ -4232,6 +4232,20 @@ span.button-icon-hide {
   background-color: transparent;
 }
 
+.awura-icon-normal-btn {
+  font-size: 16px;
+  font-weight: 700;
+  display: inline-flex;
+  color: var(--primary-color) !important;
+}
+.awura-icon-normal-btn img {
+  margin-left: 10px;
+  transition: all 0.4s;
+}
+.awura-icon-normal-btn:hover img {
+  margin-left: 15px;
+}
+
 .awura-section-padding {
   padding: 130px 0;
 }
@@ -4323,6 +4337,10 @@ span.button-icon-hide {
   .awura-section-pt {
     padding-top: 80px;
   }
+}
+
+.awura-section-pb80 {
+  padding-bottom: 80px;
 }
 
 .awura-mt50 {
@@ -5191,6 +5209,9 @@ span.button-icon-hide {
   text-align: center;
   max-width: 800px;
   margin: 0 auto;
+}
+.breadcumb-content.full-width {
+  max-width: 100%;
 }
 .breadcumb-content.max-w-1075 {
   max-width: 1075px;
@@ -7617,7 +7638,7 @@ a.current {
 }
 
 .awura-iconbox-box9 {
-  padding: 30px;
+  padding: 28px;
   margin-bottom: 24px;
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.1);
@@ -7755,6 +7776,62 @@ a.current {
   margin-bottom: 15px;
 }
 .awura-iconbox-data11 p {
+  margin: 0;
+}
+
+.awura-iconbox-box12 {
+  padding: 30px;
+  border-radius: 10px;
+  margin-bottom: 24px;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.awura-iconbox-icon12 {
+  margin-bottom: 30px;
+}
+.awura-iconbox-data12 h3 {
+  margin-bottom: 15px;
+}
+
+.awura-iconbox-box13 {
+  padding: 30px;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+.awura-iconbox-box13 ul {
+  column-gap: 30px;
+  row-gap: 15px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.awura-iconbox-box13 ul li {
+  padding-left: 20px;
+  position: relative;
+  display: inline-block;
+}
+.awura-iconbox-box13 ul li::before {
+  content: "";
+  left: 0;
+  top: 8px;
+  width: 12px;
+  height: 12px;
+  border-radius: 10px;
+  position: absolute;
+  background-color: var(--accent-color);
+}
+.awura-iconbox-icon13 {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  margin-bottom: 30px;
+  border-radius: 12px;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-color);
+}
+.awura-iconbox-data13 h3 {
+  margin-bottom: 15px;
+}
+.awura-iconbox-data13 p {
   margin: 0;
 }
 
@@ -9333,6 +9410,44 @@ a.current {
   transition: all 0.4s;
 }
 
+.awura-team-details-content h3 {
+  margin-bottom: 15px;
+}
+.awura-team-details-content p {
+  margin-bottom: 24px;
+}
+
+.awura-team-progress-box {
+  gap: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.awura-team-label-row {
+  display: flex;
+  margin-bottom: 15px;
+  justify-content: space-between;
+}
+.awura-team-label-row span {
+  font-weight: 500;
+}
+
+.awura-team-progress-bar {
+  width: 100%;
+  height: 8px;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.awura-team-progress-fill {
+  height: 100%;
+  width: 0;
+  background: var(--accent-color);
+  border-radius: 12px;
+  transition: width 1.5s ease;
+}
+
 .awura-service-row {
   position: relative;
   height: 112px;
@@ -10196,6 +10311,14 @@ a.current {
 .style-thirteen .awura-accordion-content p {
   font-family: "Outfit", sans-serif;
   color: var(--primary-color);
+}
+
+.default-font .awura-accordion-header {
+  font-family: "Outfit", sans-serif;
+}
+
+.default-font .awura-accordion-content p {
+  font-family: "Outfit", sans-serif;
 }
 
 .awura-chart-background {
@@ -11174,6 +11297,90 @@ canvas {
   left: 0;
   top: 5px;
   position: absolute;
+}
+
+.pricing-style-two.font-primary .awura-pricing-box {
+  padding: 28px;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+.pricing-style-two.font-primary .awura-pricing-box p {
+  color: var(--primary-color);
+  font-family: "Outfit", sans-serif;
+}
+.pricing-style-two.font-primary .awura-pricing-header h3 {
+  font-size: 20px;
+  font-weight: 500;
+  font-family: "Outfit", sans-serif;
+  color: var(--primary-color);
+}
+.pricing-style-two.font-primary .awura-pricing-price {
+  font-size: 65px;
+  font-weight: 500;
+  color: var(--primary-color);
+  font-family: "Outfit", sans-serif;
+}
+.pricing-style-two.font-primary .awura-pricing-feature ul li {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--primary-color);
+  font-family: "Outfit", sans-serif;
+}
+
+@media (max-width: 1199px) {
+  .awura-pricing-table {
+    overflow-x: scroll;
+  }
+}
+.awura-pricing-table table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  overflow: hidden;
+}
+.awura-pricing-table tr, .awura-pricing-table th {
+  padding: 30px;
+  white-space: nowrap;
+}
+.awura-pricing-table tr, .awura-pricing-table td {
+  padding: 30px;
+  font-size: 20px;
+  color: #122130;
+  text-align: center;
+  white-space: nowrap;
+  border: 1px solid rgba(18, 33, 48, 0.1);
+}
+.awura-pricing-table .table-dots {
+  text-align: left;
+  position: relative;
+  padding-left: 52px;
+}
+.awura-pricing-table .table-dots::before {
+  content: "";
+  left: 30px;
+  top: 39px;
+  width: 10px;
+  height: 10px;
+  border-radius: 100px;
+  position: absolute;
+  background-color: var(--accent-color);
+}
+
+.awura-btn-icon.icon-button-outline.w-250 {
+  width: 250px;
+}
+
+.awura-pricing-table-footer {
+  display: flex;
+  justify-content: right;
+  gap: 50px;
+  flex-wrap: wrap;
+  padding-top: 50px;
+}
+@media (max-width: 1199px) {
+  .awura-pricing-table-footer {
+    gap: 24px;
+    justify-content: center;
+  }
 }
 
 .awura-list-icon ul li {
@@ -12291,6 +12498,183 @@ a.awura-default-btn {
 .awura-contact-info-data2 a {
   display: block;
   color: var(--accent-color);
+}
+
+.awura-career-thumb-slider {
+  display: flex;
+  gap: 24px;
+}
+.awura-career-thumb-slider img {
+  border-radius: 20px;
+}
+
+.awura-career-thumb {
+  width: 421px;
+  flex-shrink: 0;
+}
+
+.awura-career-author-wrap {
+  gap: 24px;
+  display: flex;
+  align-items: center;
+}
+.awura-career-author-thumb {
+  border-radius: 10px;
+  overflow: hidden;
+}
+.awura-career-author-data span {
+  display: block;
+  font-size: 20px;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+.awura-career-author-data p {
+  margin: 0;
+}
+
+@media (max-width: 991px) {
+  .awura-carrer-header-btn {
+    width: 100%;
+    margin-top: 40px;
+  }
+}
+
+.awura-career-wrapper {
+  gap: 24px;
+  display: flex;
+  flex-direction: column;
+}
+.awura-career-item {
+  gap: 130px;
+  display: grid;
+  padding: 24px;
+  align-items: center;
+  border-radius: 20px;
+  grid-template-columns: 390px 390px 1fr;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+@media (max-width: 1399px) {
+  .awura-career-item {
+    gap: 80px;
+  }
+}
+@media (max-width: 1199px) {
+  .awura-career-item {
+    gap: 24px;
+  }
+}
+@media (max-width: 991px) {
+  .awura-career-item {
+    grid-template-columns: 1fr;
+  }
+}
+.awura-career-content h3 {
+  margin-bottom: 15px;
+}
+.awura-career-content ul li {
+  margin-bottom: 10px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+}
+@media (max-width: 479px) {
+  .awura-career-content ul li {
+    font-size: 18px;
+  }
+}
+.awura-career-content ul li img {
+  margin-right: 10px;
+}
+.awura-career-content ul li:last-child {
+  margin-bottom: 10px;
+}
+.awura-career-content ul li span {
+  font-weight: 500;
+}
+.awura-career-content h4 {
+  margin-bottom: 10px;
+}
+
+.awura-career-button {
+  display: flex;
+  justify-content: flex-end;
+}
+@media (max-width: 991px) {
+  .awura-career-button {
+    display: block;
+  }
+}
+
+.awura-career-icon-btn {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100px;
+  transition: all 0.4s;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.awura-career-icon-btn i {
+  font-size: 30px;
+  color: var(--primary-color);
+}
+.awura-career-icon-btn:hover {
+  border: 1px solid var(--accent-color);
+  background-color: var(--accent-color);
+}
+.awura-career-icon-btn .awura-arrow-hide i {
+  color: var(--white-color);
+}
+
+.awura-career-icon-btn:hover .awura-arrow-hide {
+  transform: translateX(0);
+}
+
+.awura-career-icon-btn:hover .awura-arrow-show {
+  transform: translateX(40px);
+}
+
+.awura-career-details-content {
+  margin: 0 auto;
+  max-width: 1076px;
+}
+.awura-career-details-content h3 {
+  margin-bottom: 15px;
+}
+.awura-career-details-content .awura-list-icon4 {
+  margin-bottom: 30px;
+}
+
+.awura-integration-details-wrap {
+  gap: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 80px;
+}
+@media (max-width: 1399px) {
+  .awura-integration-details-icon img {
+    width: 100px;
+  }
+}
+@media (max-width: 991px) {
+  .awura-integration-details-icon img {
+    width: 80px;
+  }
+}
+
+.awura-integration-details-content {
+  margin: 0 auto;
+  max-width: 1076px;
+}
+.awura-integration-details-content h3 {
+  margin-bottom: 15px;
+}
+.awura-integration-details-content .awura-list-icon4 {
+  margin-bottom: 30px;
 }
 
 .awura-about-page-thumb {

@@ -5,6 +5,34 @@
 
   /*--------------------------------------------------------------
   [Table of contents]
+  
+  AWURA DYNAMIC JS INIT
+  AWURA STICKY MENU JS INIT
+  AWURA SHAPE ANIMATION JS INIT
+  AWURA MAGNIFIC POPUP JS INIT
+  AWURA V2 HERO THUMB JS INIT
+  AWURA V2 PORTFOLIO SCROLL JS INIT
+  AWURA BUTTON HOVER JS INIT
+  AWURA ACCORDION JS INIT
+  TESTIMONIAL SLIDER JS INIT
+  TESTIMONIAL SLIDER JS INIT 2
+  TESTIMONIAL SLIDER JS INIT 3
+  TESTIMONIAL SLIDER JS INIT 4
+  PRICING JS INIT
+  PRICING JS INIT 3
+  DASHBOARD ROTATED JS INIT
+  AWURA CHART V3 JS INIT
+  CHART CHART V4 JS INIT
+  CHART CHART CIRCLE V4 JS INIT
+  PI CHART V5 JS INIT
+  TAB V5 JS INIT
+  AWURA V6 CONTENT THUMB JS INIT
+  HIDE SHOW PASSWORD JS INIT
+  THUMB HOVER JS INIT
+  TEXT SCROLL OVERLAY JS INIT
+  AWURA PRELOADER JS INIT
+  AWURA THREE COLUMN FILTER JS
+  AWURA WOW JS INIT
     
   -------------------------------------------------------------------*/
 
@@ -192,7 +220,7 @@
   }
 
   /*--------------------------------------------------------------
-  TESTIMONIAL SLIDER JS INIT
+  TESTIMONIAL SLIDER JS INIT 2
   ------------------------------------------------------------*/
   var testimonial_slider2 = $(".awura-testimonial-init2");
   if (testimonial_slider2.is_exist()) {
@@ -217,7 +245,7 @@
   }
 
   /*--------------------------------------------------------------
-  TESTIMONIAL SLIDER JS INIT
+  TESTIMONIAL SLIDER JS INIT 3
   ------------------------------------------------------------*/
   var testimonial_slider3 = $(".awura-testimonial-init3");
   if (testimonial_slider3.is_exist()) {
@@ -248,7 +276,7 @@
   }
 
   /*--------------------------------------------------------------
-  TESTIMONIAL SLIDER JS INIT
+  TESTIMONIAL SLIDER JS INIT 4
   ------------------------------------------------------------*/
   var testimonial_slider4 = $(".awura-testimonial-init4");
   if (testimonial_slider4.is_exist()) {
@@ -304,13 +332,11 @@
   });
 
   /*--------------------------------------------------------------
-  PRICING JS INIT
+  PRICING JS INIT 3
   ------------------------------------------------------------*/
   document.addEventListener("DOMContentLoaded", function () {
     var billingToggle = document.querySelector(".awura-billing-toggle");
     var prices = document.querySelectorAll(".awura-pricing-price3");
-
-    // যদি এলিমেন্ট না থাকে তাহলে কোড রান হবে না
     if (!billingToggle || !prices.length) return;
     var toggleButtons = billingToggle.querySelectorAll(".toggle-btn");
     toggleButtons.forEach(function (btn) {
@@ -385,8 +411,6 @@
   document.addEventListener("DOMContentLoaded", function () {
     var chartSectionProgressTwo = document.getElementById("chartSectionProgressTwo");
     var canvas = document.getElementById("myChart");
-
-    // ❗ যদি section বা canvas না থাকে, script stop
     if (!chartSectionProgressTwo || !canvas) return;
     var ctx = canvas.getContext("2d");
 
@@ -603,7 +627,6 @@
             data: data.map(function () {
               return 0;
             }),
-            // শুরুতে সব 0
             backgroundColor: colors,
             borderWidth: 0
           }]
@@ -646,6 +669,7 @@
     });
     observer.observe(canvas);
   });
+
   /*--------------------------------------------------------------
   TAB V5 JS INIT
   ------------------------------------------------------------*/
@@ -697,7 +721,6 @@
   /*--------------------------------------------------------------
   HIDE SHOW PASSWORD JS INIT
   ------------------------------------------------------------*/
-
   document.querySelectorAll(".toggle-password").forEach(function (btn) {
     btn.addEventListener("click", function () {
       var input = btn.closest(".awura-account-field").querySelector(".password-input");
@@ -742,8 +765,9 @@
     });
   }
 
-  // text scroll overlay js init
-
+  /*--------------------------------------------------------------
+  TEXT SCROLL OVERLAY JS INIT
+  ------------------------------------------------------------*/
   gsap.registerPlugin(ScrollTrigger);
   var textElements = gsap.utils.toArray(".text-overlay-animation");
   textElements.forEach(function (text) {
@@ -758,6 +782,24 @@
       }
     });
   });
+
+  /*--------------------------------------------------------------
+  TEAM PROGRESS JS INIT
+  ------------------------------------------------------------*/
+  var bars = document.querySelectorAll(".awura-team-progress-fill");
+  function animateBars() {
+    bars.forEach(function (bar) {
+      var rect = bar.getBoundingClientRect();
+      var barTop = rect.top;
+      var windowHeight = window.innerHeight;
+      if (barTop < windowHeight - 50) {
+        var width = bar.getAttribute("data-width");
+        bar.style.width = width + "%";
+      }
+    });
+  }
+  window.addEventListener("scroll", animateBars);
+  window.addEventListener("load", animateBars);
   $(window).on("load", function () {
     /*--------------------------------------------------------------
     AWURA PRELOADER JS INIT
@@ -770,7 +812,7 @@
     }, 600);
 
     /*--------------------------------------------------------------
-    KDG THREE COLUMN FILTER JS
+    AWURA THREE COLUMN FILTER JS
     ------------------------------------------------------------*/
     var kdg_filter_gallery = $("#awura-course-column");
     if (kdg_filter_gallery.is_exist()) {
