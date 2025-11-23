@@ -1,11 +1,10 @@
 function createRollingCounter(element) {
   const targetValue = element.getAttribute("data-value");
-
   if (!targetValue) return;
 
   element.innerHTML = "";
 
-  // Create digit containers
+  // Create digits
   for (let char of targetValue) {
     if (isNaN(char)) continue;
 
@@ -21,26 +20,25 @@ function createRollingCounter(element) {
     element.appendChild(digitContainer);
   }
 
-  // Animate digits
+  animateDigits(element, targetValue);
+}
+
+// Animation logic separated
+function animateDigits(element, targetValue) {
+  const digits = element.querySelectorAll(".digit");
+
   requestAnimationFrame(() => {
-    const digits = element.querySelectorAll(".digit");
     digits.forEach((digit, index) => {
       const targetDigit = parseInt(targetValue[index]);
-      const spanHeight = digit
-        .querySelector("span")
-        .getBoundingClientRect().height;
+      const spanHeight = digit.querySelector("span").offsetHeight;
 
-      setTimeout(() => {
-        digit.querySelectorAll("span").forEach((span) => {
-          span.style.transform = `translateY(-${targetDigit * spanHeight}px)`;
-        });
-      }, index * 200); // stagger animation
+      digit.style.transform = `translateY(-${targetDigit * spanHeight}px)`;
     });
   });
 }
 
-// Scroll-triggered logic
-document.addEventListener("DOMContentLoaded", () => {
+// Scroll trigger
+window.addEventListener("load", () => {
   const counters = document.querySelectorAll(".rolling-counter");
 
   const observer = new IntersectionObserver(
@@ -48,14 +46,23 @@ document.addEventListener("DOMContentLoaded", () => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           createRollingCounter(entry.target);
-          obs.unobserve(entry.target); // only run once
+          entry.target.classList.add("counter-activated");
+          obs.unobserve(entry.target);
         }
       });
     },
     { threshold: 0.5 }
-  ); // trigger when 50% visible
+  );
 
-  counters.forEach((counter) => observer.observe(counter));
+  counters.forEach((c) => observer.observe(c));
+
+  // IMPORTANT — Fix for resize breaking layout
+  window.addEventListener("resize", () => {
+    document
+      .querySelectorAll(".rolling-counter.counter-activated")
+      .forEach((el) => {
+        const value = el.getAttribute("data-value");
+        animateDigits(el, value); // recalc height & fix layout
+      });
+  });
 });
-
-

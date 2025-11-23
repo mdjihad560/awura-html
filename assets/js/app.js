@@ -47,6 +47,27 @@
     /*--------------------------------------------------------------
     AWURA DYNAMIC JS INIT
     --------------------------------------------------------------*/
+    document.addEventListener("DOMContentLoaded", function () {
+      var currentPage = location.pathname.split("/").pop(); // ex: about-us-01.html
+      var menuLinks = document.querySelectorAll("nav.main-menu a, .awura-mobile-menu a");
+      menuLinks.forEach(function (link) {
+        var linkPage = link.getAttribute("href");
+        if (linkPage === currentPage) {
+          link.classList.add("active");
+
+          // parent li active
+          var parentLi = link.closest("li");
+          if (parentLi) parentLi.classList.add("active");
+
+          // parent dropdown active
+          var parentDropdown = link.closest(".menu-item-has-children");
+          if (parentDropdown) parentDropdown.classList.add("active");
+        }
+      });
+    });
+    /*--------------------------------------------------------------
+    AWURA DYNAMIC JS INIT
+    --------------------------------------------------------------*/
     (function () {
       var el = document.getElementById("year");
       if (el) el.textContent = new Date().getFullYear();
@@ -135,7 +156,7 @@
   AWURA BUTTON HOVER JS INIT
   ------------------------------------------------------------*/
 
-  $(".awura-btn-style-three").mouseenter(function (e) {
+  $(".awura-btn-style-three, #awura-subscriber-btn2").mouseenter(function (e) {
     var parentOffset = $(this).offset();
     var relX = e.pageX - parentOffset.left;
     var relY = e.pageY - parentOffset.top;
@@ -146,7 +167,7 @@
     $(this).prev(".awura-button-hover").removeClass("btn-desplode-circle");
     $(this).prev(".awura-button-hover").addClass("btn-explode-circle");
   });
-  $(".awura-btn-style-three").mouseleave(function (e) {
+  $(".awura-btn-style-three, #awura-subscriber-btn2").mouseleave(function (e) {
     var parentOffset = $(this).offset();
     var relX = e.pageX - parentOffset.left;
     var relY = e.pageY - parentOffset.top;
@@ -889,4 +910,145 @@
   AWURA WOW JS INIT
   --------------------------------------------------------------*/
   new WOW().init();
+
+  /*--------------------------------------------------------------
+  AWURA MAP JS INIT
+  --------------------------------------------------------------*/
+  var google_map = $('#map');
+  if (google_map.is_exist()) {
+    var init = function init() {
+      var mapOptions = {
+        zoom: 11,
+        scrollwheel: false,
+        navigationControl: false,
+        mapTypeControl: false,
+        scaleControl: false,
+        draggable: true,
+        disableDefaultUI: true,
+        center: new google.maps.LatLng(40.6700, -73.9400),
+        styles: [{
+          "featureType": "landscape.man_made",
+          "elementType": "geometry",
+          "stylers": [{
+            "color": "#f7f1df"
+          }]
+        }, {
+          "featureType": "landscape.natural",
+          "elementType": "geometry",
+          "stylers": [{
+            "color": "#d0e3b4"
+          }]
+        }, {
+          "featureType": "landscape.natural.terrain",
+          "elementType": "geometry",
+          "stylers": [{
+            "visibility": "off"
+          }]
+        }, {
+          "featureType": "poi",
+          "elementType": "labels",
+          "stylers": [{
+            "visibility": "off"
+          }]
+        }, {
+          "featureType": "poi.business",
+          "elementType": "all",
+          "stylers": [{
+            "visibility": "off"
+          }]
+        }, {
+          "featureType": "poi.medical",
+          "elementType": "geometry",
+          "stylers": [{
+            "color": "#fbd3da"
+          }]
+        }, {
+          "featureType": "poi.park",
+          "elementType": "geometry",
+          "stylers": [{
+            "color": "#bde6ab"
+          }]
+        }, {
+          "featureType": "road",
+          "elementType": "geometry.stroke",
+          "stylers": [{
+            "visibility": "off"
+          }]
+        }, {
+          "featureType": "road",
+          "elementType": "labels",
+          "stylers": [{
+            "visibility": "off"
+          }]
+        }, {
+          "featureType": "road.highway",
+          "elementType": "geometry.fill",
+          "stylers": [{
+            "color": "#ffe15f"
+          }]
+        }, {
+          "featureType": "road.highway",
+          "elementType": "geometry.stroke",
+          "stylers": [{
+            "color": "#efd151"
+          }]
+        }, {
+          "featureType": "road.arterial",
+          "elementType": "geometry.fill",
+          "stylers": [{
+            "color": "#ffffff"
+          }]
+        }, {
+          "featureType": "road.local",
+          "elementType": "geometry.fill",
+          "stylers": [{
+            "color": "black"
+          }]
+        }, {
+          "featureType": "transit.station.airport",
+          "elementType": "geometry.fill",
+          "stylers": [{
+            "color": "#cfb2db"
+          }]
+        }, {
+          "featureType": "water",
+          "elementType": "geometry",
+          "stylers": [{
+            "color": "#a2daf2"
+          }]
+        }]
+      };
+      var mapElement = document.getElementById('map');
+      var map = new google.maps.Map(mapElement, mapOptions);
+      var marker = new google.maps.Marker({
+        position: new google.maps.LatLng(40.6700, -73.9400),
+        map: map,
+        // icon: 'assets/images/all-img/contact/map.png',
+        title: 'awura'
+      });
+      var contentString = '<div id="content">' + '<div id="tpw">' + '<h3>awura' + '</div>';
+      var infowindow = new google.maps.InfoWindow({
+        content: contentString,
+        maxWidth: 280
+      });
+      marker.setAnimation(google.maps.Animation.BOUNCE);
+      setTimeout(function () {
+        marker.setAnimation(null);
+      }, 750); //time it takes for one bounce   
+
+      google.maps.event.addListener(marker, 'click', function () {
+        infowindow.open(map, marker);
+      });
+    };
+    google.maps.event.addDomListener(window, 'load', init);
+  }
 })(jQuery);
+$(function () {
+  var current = location.pathname;
+  $(".main-menu ul li a").each(function () {
+    var href = $(this).attr("href");
+    if (href && (href === current || current.includes(href))) {
+      $(this).addClass("active");
+    }
+  });
+});
