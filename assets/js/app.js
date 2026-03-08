@@ -1043,12 +1043,21 @@
     google.maps.event.addDomListener(window, 'load', init);
   }
 })(jQuery);
+
+
+
 $(function () {
-  var current = location.pathname;
+
+  var current = window.location.pathname.split("/").pop();
+
   $(".main-menu ul li a").each(function () {
-    var href = $(this).attr("href");
-    if (href && (href === current || current.includes(href))) {
+
+    var link = $(this).attr("href");
+
+    if (link.indexOf(current) !== -1 && current !== "") {
       $(this).addClass("active");
     }
+
   });
+
 });
