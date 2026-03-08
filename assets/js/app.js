@@ -1046,17 +1046,30 @@
 
 
 
-$(function () {
+// $(function () {
 
-  var current = window.location.pathname.split("/").pop();
+//   var current = window.location.pathname.split("/").pop();
 
-  $(".main-menu ul li a").each(function () {
+//   $(".main-menu ul li a").each(function () {
 
-    var link = $(this).attr("href");
+//     var link = $(this).attr("href");
 
-    if (link.indexOf(current) !== -1 && current !== "") {
-      $(this).addClass("active");
-    }
+//     if (link.indexOf(current) !== -1 && current !== "") {
+//       $(this).addClass("active");
+//     }
+
+//   });
+
+// });
+
+
+$(document).ready(function () {
+
+  $(".main-menu ul li a").on("click", function () {
+
+    $(".main-menu ul li a").removeClass("active");
+
+    $(this).addClass("active");
 
   });
 
