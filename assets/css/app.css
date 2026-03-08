@@ -837,10 +837,6 @@ header.awura-header.main-header {
   background-color: var(--accent-color);
 }
 
-.main-menu ul li a.home.active {
-  color: var(--primary-color) !important;
-}
-
 .main-menu ul.sub-menu li a.active::before {
   background-color: var(--accent-color);
 }
