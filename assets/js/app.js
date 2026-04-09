@@ -5,7 +5,6 @@
 
   /*--------------------------------------------------------------
   [Table of contents]
-  
   AWURA DYNAMIC JS INIT
   AWURA STICKY MENU JS INIT
   AWURA SHAPE ANIMATION JS INIT
@@ -33,7 +32,6 @@
   AWURA PRELOADER JS INIT
   AWURA THREE COLUMN FILTER JS
   AWURA WOW JS INIT
-    
   -------------------------------------------------------------------*/
 
   /*--------------------------------------------------------------
@@ -43,30 +41,30 @@
   jQuery.fn.is_exist = function () {
     return this.length;
   };
+
+  /* ============================================================
+     DOCUMENT READY — using .on("ready") equivalent via $(function)
+     All DOM-dependent code lives here
+  ============================================================ */
   $(function () {
     /*--------------------------------------------------------------
-    AWURA DYNAMIC JS INIT
+    AWURA DYNAMIC JS INIT — active menu link highlight
     --------------------------------------------------------------*/
-    document.addEventListener("DOMContentLoaded", function () {
-      var currentPage = location.pathname.split("/").pop(); // ex: about-us-01.html
-      var menuLinks = document.querySelectorAll("nav.main-menu a, .awura-mobile-menu a");
-      menuLinks.forEach(function (link) {
-        var linkPage = link.getAttribute("href");
-        if (linkPage === currentPage) {
-          link.classList.add("active");
-
-          // parent li active
-          var parentLi = link.closest("li");
-          if (parentLi) parentLi.classList.add("active");
-
-          // parent dropdown active
-          var parentDropdown = link.closest(".menu-item-has-children");
-          if (parentDropdown) parentDropdown.classList.add("active");
-        }
-      });
+    var currentPage = location.pathname.split("/").pop();
+    var menuLinks = document.querySelectorAll("nav.main-menu a, .awura-mobile-menu a");
+    menuLinks.forEach(function (link) {
+      var linkPage = link.getAttribute("href");
+      if (linkPage === currentPage) {
+        link.classList.add("active");
+        var parentLi = link.closest("li");
+        if (parentLi) parentLi.classList.add("active");
+        var parentDropdown = link.closest(".menu-item-has-children");
+        if (parentDropdown) parentDropdown.classList.add("active");
+      }
     });
+
     /*--------------------------------------------------------------
-    AWURA DYNAMIC JS INIT
+    AWURA DYNAMIC JS INIT — auto year
     --------------------------------------------------------------*/
     (function () {
       var el = document.getElementById("year");
@@ -75,6 +73,7 @@
 
     /*--------------------------------------------------------------
     AWURA STICKY MENU JS INIT
+    FIX: replaced $(window).scroll() with $(window).on("scroll")
     --------------------------------------------------------------*/
     $(window).on("scroll", function () {
       if ($(window).scrollTop() > 50) {
@@ -86,762 +85,732 @@
 
     /*--------------------------------------------------------------
     AWURA SHAPE ANIMATION JS INIT
+    FIX: replaced window.addEventListener inline with named handler;
+         kept native addEventListener (GSAP/ScrollTrigger pattern,
+         no jQuery equivalent needed here)
     --------------------------------------------------------------*/
-    var images = document.querySelectorAll(".awura-cta-shape-left, .awura-cta-shape-right, .awura-hero-shape-left, .awura-hero-shape-right, .bottom-top-animation");
+    var shapeImages = document.querySelectorAll(".awura-cta-shape-left, .awura-cta-shape-right, .awura-hero-shape-left, .awura-hero-shape-right, .bottom-top-animation");
     function revealOnScroll() {
-      var triggerBottom = window.innerHeight * 0.9; // trigger before fully in view
-
-      images.forEach(function (img) {
-        var imgTop = img.getBoundingClientRect().top;
-        if (imgTop < triggerBottom) {
+      var triggerBottom = window.innerHeight * 0.9;
+      shapeImages.forEach(function (img) {
+        if (img.getBoundingClientRect().top < triggerBottom) {
           img.classList.add("active");
         }
       });
     }
-    window.addEventListener("scroll", revealOnScroll);
-    window.addEventListener("load", revealOnScroll); // trigger on load
-  });
+    $(window).on("scroll", revealOnScroll);
+    $(window).on("load", revealOnScroll);
 
-  /*--------------------------------------------------------------
-  AWURA MAGNIFIC POPUP JS INIT
-  ------------------------------------------------------------*/
-  var popup_youtube = $(".video-init");
-  if (popup_youtube.is_exist()) {
-    popup_youtube.magnificPopup({
-      type: "iframe",
-      mainClass: "mfp-fade"
-    });
-  }
-
-  /*--------------------------------------------------------------
-  AWURA V2 HERO THUMB JS INIT
-  ------------------------------------------------------------*/
-  gsap.registerPlugin(ScrollTrigger);
-  gsap.to(".awura-hero-v2-thumb1", {
-    y: -1200,
-    scrollTrigger: {
-      trigger: ".awura-hero-section2",
-      start: "top top",
-      end: "bottom top",
-      scrub: true
+    /*--------------------------------------------------------------
+    AWURA MAGNIFIC POPUP JS INIT
+    --------------------------------------------------------------*/
+    var popup_youtube = $(".video-init");
+    if (popup_youtube.is_exist()) {
+      popup_youtube.magnificPopup({
+        type: "iframe",
+        mainClass: "mfp-fade"
+      });
     }
-  });
-  gsap.to(".awura-hero-v2-thumb2", {
-    y: -700,
-    scrollTrigger: {
-      trigger: ".awura-hero-section2",
-      start: "top top",
-      end: "bottom top",
-      scrub: true
+
+    /*--------------------------------------------------------------
+    AWURA V2 HERO THUMB JS INIT (GSAP)
+    --------------------------------------------------------------*/
+    if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.to(".awura-hero-v2-thumb1", {
+        y: -1200,
+        scrollTrigger: {
+          trigger: ".awura-hero-section2",
+          start: "top top",
+          end: "bottom top",
+          scrub: true
+        }
+      });
+      gsap.to(".awura-hero-v2-thumb2", {
+        y: -700,
+        scrollTrigger: {
+          trigger: ".awura-hero-section2",
+          start: "top top",
+          end: "bottom top",
+          scrub: true
+        }
+      });
     }
-  });
 
-  /*--------------------------------------------------------------
-  AWURA V2 PORTFOLIO SCROLL JS INIT
-  ------------------------------------------------------------*/
-
-  var sections = document.querySelectorAll(".awura-portfolio-wrap2");
-  window.addEventListener("scroll", function () {
-    sections.forEach(function (section) {
-      var rect = section.getBoundingClientRect();
-      if (rect.top < window.innerHeight * 0.8 && rect.bottom > window.innerHeight * 0.2) {
-        section.classList.add("active");
-      } else {
-        section.classList.remove("active");
-      }
+    /*--------------------------------------------------------------
+    AWURA V2 PORTFOLIO SCROLL JS INIT
+    FIX: replaced raw window.addEventListener with $(window).on()
+    --------------------------------------------------------------*/
+    var portfolioSections = document.querySelectorAll(".awura-portfolio-wrap2");
+    $(window).on("scroll", function () {
+      portfolioSections.forEach(function (section) {
+        var rect = section.getBoundingClientRect();
+        if (rect.top < window.innerHeight * 0.8 && rect.bottom > window.innerHeight * 0.2) {
+          section.classList.add("active");
+        } else {
+          section.classList.remove("active");
+        }
+      });
     });
-  });
 
-  /*--------------------------------------------------------------
-  AWURA BUTTON HOVER JS INIT
-  ------------------------------------------------------------*/
-
-  $(".awura-btn-style-three, #awura-subscriber-btn2").mouseenter(function (e) {
-    var parentOffset = $(this).offset();
-    var relX = e.pageX - parentOffset.left;
-    var relY = e.pageY - parentOffset.top;
-    $(this).prev(".awura-button-hover").css({
-      left: relX,
-      top: relY
+    /*--------------------------------------------------------------
+    AWURA BUTTON HOVER JS INIT
+    FIX: replaced .mouseenter()/.mouseleave() shortcuts with
+         .on("mouseenter") / .on("mouseleave")
+    --------------------------------------------------------------*/
+    $(document).on("mouseenter", ".awura-btn-style-three, #awura-subscriber-btn2", function (e) {
+      var parentOffset = $(this).offset();
+      var relX = e.pageX - parentOffset.left;
+      var relY = e.pageY - parentOffset.top;
+      $(this).prev(".awura-button-hover").css({
+        left: relX,
+        top: relY
+      });
+      $(this).prev(".awura-button-hover").removeClass("btn-desplode-circle").addClass("btn-explode-circle");
     });
-    $(this).prev(".awura-button-hover").removeClass("btn-desplode-circle");
-    $(this).prev(".awura-button-hover").addClass("btn-explode-circle");
-  });
-  $(".awura-btn-style-three, #awura-subscriber-btn2").mouseleave(function (e) {
-    var parentOffset = $(this).offset();
-    var relX = e.pageX - parentOffset.left;
-    var relY = e.pageY - parentOffset.top;
-    $(this).prev(".awura-button-hover").css({
-      left: relX,
-      top: relY
+    $(document).on("mouseleave", ".awura-btn-style-three, #awura-subscriber-btn2", function (e) {
+      var parentOffset = $(this).offset();
+      var relX = e.pageX - parentOffset.left;
+      var relY = e.pageY - parentOffset.top;
+      $(this).prev(".awura-button-hover").css({
+        left: relX,
+        top: relY
+      });
+      $(this).prev(".awura-button-hover").removeClass("btn-explode-circle").addClass("btn-desplode-circle");
     });
-    $(this).prev(".awura-button-hover").removeClass("btn-explode-circle");
-    $(this).prev(".awura-button-hover").addClass("btn-desplode-circle");
-  });
 
-  /*--------------------------------------------------------------
-  AWURA ACCORDION JS INIT
-  ------------------------------------------------------------*/
-  document.addEventListener("DOMContentLoaded", function () {
+    /*--------------------------------------------------------------
+    AWURA ACCORDION JS INIT
+    FIX: removed duplicate DOMContentLoaded wrapper (already inside
+         document-ready); replaced .addEventListener("click") with
+         jQuery event delegation via $(document).on("click")
+    --------------------------------------------------------------*/
     var accordionGroups = document.querySelectorAll(".awura-accordion-wrapper");
     accordionGroups.forEach(function (group) {
       var items = group.querySelectorAll(".awura-accordion-item");
       items.forEach(function (item) {
-        var header = item.querySelector(".awura-accordion-header");
         var content = item.querySelector(".awura-accordion-content");
-
-        // যদি active থাকে, height সেট করো
-        if (item.classList.contains("active")) {
+        if (item.classList.contains("active") && content) {
           content.style.height = content.scrollHeight + "px";
         }
-        header.addEventListener("click", function () {
-          var openItem = group.querySelector(".awura-accordion-item.active");
-          if (openItem && openItem !== item) {
-            openItem.classList.remove("active");
-            openItem.querySelector(".awura-accordion-content").style.height = "0px";
+      });
+    });
+    $(document).on("click", ".awura-accordion-header", function () {
+      var $header = $(this);
+      var $item = $header.closest(".awura-accordion-item");
+      var $group = $header.closest(".awura-accordion-wrapper");
+      var $content = $item.find(".awura-accordion-content");
+
+      // Close any open sibling
+      $group.find(".awura-accordion-item.active").not($item).each(function () {
+        $(this).removeClass("active");
+        $(this).find(".awura-accordion-content").css("height", "0px");
+      });
+
+      // Toggle current
+      $item.toggleClass("active");
+      if ($item.hasClass("active")) {
+        $content.css("height", $content[0].scrollHeight + "px");
+      } else {
+        $content.css("height", "0px");
+      }
+    });
+
+    /*--------------------------------------------------------------
+    TESTIMONIAL SLIDER JS INIT
+    --------------------------------------------------------------*/
+    var testimonial_slider = $(".awura-testimonial-init");
+    if (testimonial_slider.is_exist()) {
+      testimonial_slider.slick({
+        infinite: true,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        arrows: true,
+        dots: false,
+        autoplay: false,
+        speed: 800,
+        prevArrow: '<button class="slide-arrow awura-testimonial-next"><i class="ri-arrow-left-line"></i></button>',
+        nextArrow: '<button class="slide-arrow awura-testimonial-prev"><i class="ri-arrow-right-line"></i></button>',
+        responsive: [{
+          breakpoint: 1399,
+          settings: {
+            slidesToShow: 2
           }
-          item.classList.toggle("active");
-          if (item.classList.contains("active")) {
-            content.style.height = content.scrollHeight + "px";
-          } else {
-            content.style.height = "0px";
-          }
-        });
-      });
-    });
-  });
-
-  /*--------------------------------------------------------------
-  TESTIMONIAL SLIDER JS INIT
-  ------------------------------------------------------------*/
-  var testimonial_slider = $(".awura-testimonial-init");
-  if (testimonial_slider.is_exist()) {
-    testimonial_slider.slick({
-      infinite: true,
-      slidesToShow: 3,
-      slidesToScroll: 1,
-      arrows: true,
-      dots: false,
-      autoplay: false,
-      speed: 800,
-      prevArrow: '<button class="slide-arrow awura-testimonial-next"><i class="ri-arrow-left-line"></i></button>',
-      nextArrow: '<button class="slide-arrow awura-testimonial-prev"><i class="ri-arrow-right-line"></i></button>',
-      responsive: [{
-        breakpoint: 1399,
-        settings: {
-          slidesToShow: 2
-        }
-      }, {
-        breakpoint: 767,
-        settings: {
-          slidesToShow: 1
-        }
-      }]
-    });
-  }
-
-  /*--------------------------------------------------------------
-  TESTIMONIAL SLIDER JS INIT 2
-  ------------------------------------------------------------*/
-  var testimonial_slider2 = $(".awura-testimonial-init2");
-  if (testimonial_slider2.is_exist()) {
-    testimonial_slider2.slick({
-      infinite: true,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      arrows: true,
-      dots: false,
-      autoplay: false,
-      speed: 800,
-      prevArrow: '<button class="slide-arrow awura-testimonial-next2"><i class="ri-arrow-left-s-line"></i></button>',
-      nextArrow: '<button class="slide-arrow awura-testimonial-prev2"><i class="ri-arrow-right-s-line"></i></button>',
-      responsive: [{
-        breakpoint: 479,
-        settings: {
-          arrows: false,
-          autoplay: true
-        }
-      }]
-    });
-  }
-
-  /*--------------------------------------------------------------
-  TESTIMONIAL SLIDER JS INIT 3
-  ------------------------------------------------------------*/
-  var testimonial_slider3 = $(".awura-testimonial-init3");
-  if (testimonial_slider3.is_exist()) {
-    testimonial_slider3.slick({
-      infinite: true,
-      slidesToShow: 4,
-      slidesToScroll: 1,
-      arrows: true,
-      dots: false,
-      autoplay: false,
-      speed: 800,
-      prevArrow: '<button class="slide-arrow awura-testimonial-next3"><i class="ri-arrow-right-line"></i></button>',
-      nextArrow: '<button class="slide-arrow awura-testimonial-prev3"><i class="ri-arrow-left-line"></i></button>',
-      responsive: [{
-        breakpoint: 1399,
-        settings: {
-          slidesToShow: 2
-        }
-      }, {
-        breakpoint: 767,
-        settings: {
-          slidesToShow: 1,
-          autoplay: true,
-          arrows: false
-        }
-      }]
-    });
-  }
-
-  /*--------------------------------------------------------------
-  TESTIMONIAL SLIDER JS INIT 4
-  ------------------------------------------------------------*/
-  var testimonial_slider4 = $(".awura-testimonial-init4");
-  if (testimonial_slider4.is_exist()) {
-    testimonial_slider4.slick({
-      infinite: true,
-      slidesToShow: 2.5,
-      slidesToScroll: 1,
-      arrows: false,
-      dots: true,
-      autoplay: true,
-      speed: 1200,
-      responsive: [{
-        breakpoint: 1399,
-        settings: {
-          slidesToShow: 2
-        }
-      }, {
-        breakpoint: 767,
-        settings: {
-          slidesToShow: 1,
-          autoplay: true,
-          arrows: false
-        }
-      }]
-    });
-  }
-
-  /*--------------------------------------------------------------
-  PRICING JS INIT
-  ------------------------------------------------------------*/
-  document.addEventListener("DOMContentLoaded", function () {
-    var toggle = document.getElementById("toggle");
-    var prices = document.querySelectorAll(".awura-pricing-price");
-
-    // ✅ Stop here if toggle or prices not found
-    if (!toggle || prices.length === 0) return;
-    var isYearly = false;
-    toggle.addEventListener("click", function () {
-      isYearly = !isYearly;
-      toggle.classList.toggle("active");
-      prices.forEach(function (price) {
-        var monthly = price.getAttribute("data-monthly");
-        var yearly = price.getAttribute("data-yearly");
-        var newPrice = isYearly ? yearly : monthly;
-        var duration = isYearly ? "/year" : "/month";
-        price.style.opacity = "0";
-        setTimeout(function () {
-          price.innerHTML = "$".concat(newPrice, "<span>").concat(duration, "</span>");
-          price.style.opacity = "1";
-        }, 250);
-      });
-    });
-  });
-
-  /*--------------------------------------------------------------
-  PRICING JS INIT 3
-  ------------------------------------------------------------*/
-  document.addEventListener("DOMContentLoaded", function () {
-    var billingToggle = document.querySelector(".awura-billing-toggle");
-    var prices = document.querySelectorAll(".awura-pricing-price3");
-    if (!billingToggle || !prices.length) return;
-    var toggleButtons = billingToggle.querySelectorAll(".toggle-btn");
-    toggleButtons.forEach(function (btn) {
-      btn.addEventListener("click", function () {
-        toggleButtons.forEach(function (b) {
-          return b.classList.remove("active");
-        });
-        btn.classList.add("active");
-        var planType = btn.getAttribute("data-plan");
-        prices.forEach(function (price) {
-          var newPrice = price.getAttribute("data-".concat(planType));
-          var label = planType === "annual" ? "/year" : "/month";
-          price.innerHTML = "".concat(newPrice, "<span>").concat(label, "</span>");
-        });
-      });
-    });
-  });
-
-  /*--------------------------------------------------------------
-  DASHBOARD ROTATED JS INIT
-  ------------------------------------------------------------*/
-  document.addEventListener("DOMContentLoaded", function () {
-    var image = document.getElementById("rotating-image");
-    if (!image) return;
-    var scrollThreshold = 400;
-    var targetRotation = 20;
-    var currentRotation = 20;
-    var smoothness = 0.08;
-    function updateRotation() {
-      currentRotation += (targetRotation - currentRotation) * smoothness;
-      image.style.transform = "perspective(1000px) rotateX(".concat(currentRotation, "deg)");
-      requestAnimationFrame(updateRotation);
-    }
-    window.addEventListener("scroll", function () {
-      var scrollTop = window.scrollY;
-      var progress = Math.min(scrollTop / scrollThreshold, 1);
-      targetRotation = 20 * (1 - progress);
-    });
-    updateRotation();
-  });
-
-  /*--------------------------------------------------------------
-  AWURA CHART V3 JS INIT
-  ------------------------------------------------------------*/
-  document.addEventListener("DOMContentLoaded", function () {
-    var chartSectionPprogressOne = document.getElementById("chart");
-    var bars = document.querySelectorAll(".awura-progress-bar");
-
-    // ✅ Stop if chart or bars are not found (prevents errors)
-    if (!chartSectionPprogressOne || bars.length === 0) return;
-    var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          bars.forEach(function (bar) {
-            var height = bar.getAttribute("data-height");
-            bar.style.height = height;
-          });
-
-          // Unobserve so it animates only once
-          observer.unobserve(chartSectionPprogressOne);
-        }
-      });
-    }, {
-      threshold: 0.5
-    });
-    observer.observe(chartSectionPprogressOne);
-  });
-
-  /*--------------------------------------------------------------
-  CHART CHART V4 JS INIT
-  ------------------------------------------------------------*/
-  document.addEventListener("DOMContentLoaded", function () {
-    var chartSectionProgressTwo = document.getElementById("chartSectionProgressTwo");
-    var canvas = document.getElementById("myChart");
-    if (!chartSectionProgressTwo || !canvas) return;
-    var ctx = canvas.getContext("2d");
-
-    // Target data
-    var targetData = [[0, 18000, 0, 2737, 0, 50000, 0, 17000],
-    // Blue Sales
-    [33000, 0, 25000, 33000, 29000, 0, 27000, 0] // Yellow Sales
-    ];
-
-    // Initial data (all zeros)
-    var initialData = targetData.map(function (row) {
-      return row.map(function () {
-        return 0;
-      });
-    });
-    var chartInitialized = false;
-
-    // Chart instance
-    var myChart = new Chart(ctx, {
-      type: "bar",
-      data: {
-        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "July", "Aug"],
-        datasets: [{
-          label: "Blue Sales",
-          data: initialData[0],
-          backgroundColor: "#00c0ff",
-          borderRadius: 6,
-          barThickness: 20,
-          categoryPercentage: 0.6,
-          barPercentage: 1.0
         }, {
-          label: "Yellow Sales",
-          data: initialData[1],
-          backgroundColor: "#ffee55",
-          borderRadius: 6,
-          barThickness: 20,
-          categoryPercentage: 0.6,
-          barPercentage: 1.0
+          breakpoint: 767,
+          settings: {
+            slidesToShow: 1
+          }
         }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        interaction: {
-          mode: "index",
-          intersect: false
-        },
-        animation: {
-          duration: 1500,
-          easing: "easeOutQuart"
-        },
-        plugins: {
-          legend: {
-            display: false
-          },
-          tooltip: {
-            backgroundColor: "#ffffff",
-            borderColor: "#e0e0e0",
-            borderWidth: 1,
-            titleColor: "#444",
-            bodyColor: "#000",
-            bodyFont: {
-              weight: "bold"
-            },
-            padding: 10,
-            callbacks: {
-              label: function label(context) {
-                return "Sales $" + context.raw.toLocaleString();
-              }
-            }
-          }
-        },
-        scales: {
-          x: {
-            grid: {
-              display: false
-            },
-            ticks: {
-              font: {
-                size: 10,
-                weight: "400"
-              },
-              color: "rgba(3, 22, 11, 0.8)"
-            }
-          },
-          y: {
-            beginAtZero: true,
-            max: 55000,
-            ticks: {
-              stepSize: 5000,
-              callback: function callback(value) {
-                return value / 1000 + " k";
-              },
-              color: "rgba(3, 22, 11, 0.8)",
-              font: {
-                size: 10
-              }
-            },
-            grid: {
-              drawBorder: false,
-              color: "#fff"
-            }
-          }
-        }
-      }
-    });
-
-    // Scroll-trigger Animation
-    var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting && !chartInitialized) {
-          // Update chart data to target values
-          myChart.data.datasets[0].data = targetData[0];
-          myChart.data.datasets[1].data = targetData[1];
-          myChart.update({
-            duration: 1500,
-            easing: "easeOutQuart"
-          });
-          chartInitialized = true;
-        }
       });
-    }, {
-      threshold: 0.4
-    });
-    observer.observe(chartSectionProgressTwo);
-  });
+    }
 
-  /*--------------------------------------------------------------
-  CHART CHART CIRCLE V4 JS INIT
-  ------------------------------------------------------------*/
-  document.addEventListener("DOMContentLoaded", function () {
-    var chartBox = document.getElementById("chartSectionCircle");
-    var chartValue = document.getElementById("chartValue");
-    var canvas = document.getElementById("growthChart");
-    if (!chartBox || !chartValue || !canvas) return;
-    var ctx = canvas.getContext("2d");
-    var chartInstance = null;
-    var animated = false;
-    var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting && !animated) {
-          chartBox.classList.add("active");
-          startSmoothAnimation(73);
-          animated = true;
-        }
+    /*--------------------------------------------------------------
+    TESTIMONIAL SLIDER JS INIT 2
+    --------------------------------------------------------------*/
+    var testimonial_slider2 = $(".awura-testimonial-init2");
+    if (testimonial_slider2.is_exist()) {
+      testimonial_slider2.slick({
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: true,
+        dots: false,
+        autoplay: false,
+        speed: 800,
+        prevArrow: '<button class="slide-arrow awura-testimonial-next2"><i class="ri-arrow-left-s-line"></i></button>',
+        nextArrow: '<button class="slide-arrow awura-testimonial-prev2"><i class="ri-arrow-right-s-line"></i></button>',
+        responsive: [{
+          breakpoint: 479,
+          settings: {
+            arrows: false,
+            autoplay: true
+          }
+        }]
       });
-    }, {
-      threshold: 0.6
-    });
-    observer.observe(chartBox);
-    function easeOutCubic(t) {
-      return 1 - Math.pow(1 - t, 3);
     }
-    function startSmoothAnimation(targetValue) {
-      var startTime = null;
-      var duration = 1600;
-      function animate(currentTime) {
-        if (!startTime) startTime = currentTime;
-        var elapsed = currentTime - startTime;
-        var progress = Math.min(elapsed / duration, 1);
-        var eased = easeOutCubic(progress);
-        var value = Math.round(targetValue * eased);
-        chartValue.textContent = value + "%";
-        updateChart(value);
-        if (progress < 1) requestAnimationFrame(animate);
-      }
-      requestAnimationFrame(animate);
+
+    /*--------------------------------------------------------------
+    TESTIMONIAL SLIDER JS INIT 3
+    --------------------------------------------------------------*/
+    var testimonial_slider3 = $(".awura-testimonial-init3");
+    if (testimonial_slider3.is_exist()) {
+      testimonial_slider3.slick({
+        infinite: true,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        arrows: true,
+        dots: false,
+        autoplay: false,
+        speed: 800,
+        prevArrow: '<button class="slide-arrow awura-testimonial-next3"><i class="ri-arrow-right-line"></i></button>',
+        nextArrow: '<button class="slide-arrow awura-testimonial-prev3"><i class="ri-arrow-left-line"></i></button>',
+        responsive: [{
+          breakpoint: 1399,
+          settings: {
+            slidesToShow: 2
+          }
+        }, {
+          breakpoint: 767,
+          settings: {
+            slidesToShow: 1,
+            autoplay: true,
+            arrows: false
+          }
+        }]
+      });
     }
-    function updateChart(value) {
-      if (chartInstance) chartInstance.destroy();
-      chartInstance = new Chart(ctx, {
-        type: "doughnut",
+
+    /*--------------------------------------------------------------
+    TESTIMONIAL SLIDER JS INIT 4
+    --------------------------------------------------------------*/
+    var testimonial_slider4 = $(".awura-testimonial-init4");
+    if (testimonial_slider4.is_exist()) {
+      testimonial_slider4.slick({
+        infinite: true,
+        slidesToShow: 2.5,
+        slidesToScroll: 1,
+        arrows: false,
+        dots: true,
+        autoplay: true,
+        speed: 1200,
+        responsive: [{
+          breakpoint: 1399,
+          settings: {
+            slidesToShow: 2
+          }
+        }, {
+          breakpoint: 767,
+          settings: {
+            slidesToShow: 1,
+            autoplay: true,
+            arrows: false
+          }
+        }]
+      });
+    }
+
+    /*--------------------------------------------------------------
+    PRICING JS INIT
+    FIX: removed inner DOMContentLoaded wrapper (already inside
+         document-ready); replaced .addEventListener("click") with
+         $(document).on("click")
+    --------------------------------------------------------------*/
+    var $toggle = $("#toggle");
+    var $pricingPrices = $(".awura-pricing-price");
+    if ($toggle.is_exist() && $pricingPrices.is_exist()) {
+      var isYearly = false;
+      $(document).on("click", "#toggle", function () {
+        isYearly = !isYearly;
+        $toggle.toggleClass("active");
+        $pricingPrices.each(function () {
+          var $price = $(this);
+          var monthly = $price.data("monthly");
+          var yearly = $price.data("yearly");
+          var newPrice = isYearly ? yearly : monthly;
+          var duration = isYearly ? "/year" : "/month";
+          $price.css("opacity", "0");
+          setTimeout(function () {
+            $price.html("$" + newPrice + "<span>" + duration + "</span>");
+            $price.css("opacity", "1");
+          }, 250);
+        });
+      });
+    }
+
+    /*--------------------------------------------------------------
+    PRICING JS INIT 3
+    FIX: removed inner DOMContentLoaded wrapper; replaced
+         .addEventListener("click") with $(document).on("click")
+    --------------------------------------------------------------*/
+    var $billingToggle = $(".awura-billing-toggle");
+    var $prices3 = $(".awura-pricing-price3");
+    if ($billingToggle.is_exist() && $prices3.is_exist()) {
+      $(document).on("click", ".awura-billing-toggle .toggle-btn", function () {
+        $(".awura-billing-toggle .toggle-btn").removeClass("active");
+        $(this).addClass("active");
+        var planType = $(this).data("plan");
+        var label = planType === "annual" ? "/year" : "/month";
+        $prices3.each(function () {
+          var newPrice = $(this).data(planType);
+          $(this).html(newPrice + "<span>" + label + "</span>");
+        });
+      });
+    }
+
+    /*--------------------------------------------------------------
+    DASHBOARD ROTATED JS INIT
+    FIX: removed inner DOMContentLoaded wrapper; replaced
+         window.addEventListener("scroll") with $(window).on("scroll")
+    --------------------------------------------------------------*/
+    var rotatingImage = document.getElementById("rotating-image");
+    if (rotatingImage) {
+      var _updateRotation = function updateRotation() {
+        currentRotation += (targetRotation - currentRotation) * smoothness;
+        rotatingImage.style.transform = "perspective(1000px) rotateX(" + currentRotation + "deg)";
+        requestAnimationFrame(_updateRotation);
+      };
+      var scrollThreshold = 400;
+      var targetRotation = 20;
+      var currentRotation = 20;
+      var smoothness = 0.08;
+      $(window).on("scroll", function () {
+        var scrollTop = window.scrollY;
+        var progress = Math.min(scrollTop / scrollThreshold, 1);
+        targetRotation = 20 * (1 - progress);
+      });
+      _updateRotation();
+    }
+
+    /*--------------------------------------------------------------
+    AWURA CHART V3 JS INIT
+    FIX: removed inner DOMContentLoaded wrapper (already in ready)
+    --------------------------------------------------------------*/
+    var chartSectionProgressOne = document.getElementById("chart");
+    var progressBars = document.querySelectorAll(".awura-progress-bar");
+    if (chartSectionProgressOne && progressBars.length > 0) {
+      var barObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            progressBars.forEach(function (bar) {
+              bar.style.height = bar.getAttribute("data-height");
+            });
+            barObserver.unobserve(chartSectionProgressOne);
+          }
+        });
+      }, {
+        threshold: 0.5
+      });
+      barObserver.observe(chartSectionProgressOne);
+    }
+
+    /*--------------------------------------------------------------
+    CHART CHART V4 JS INIT
+    FIX: removed inner DOMContentLoaded wrapper
+    --------------------------------------------------------------*/
+    var chartSectionProgressTwo = document.getElementById("chartSectionProgressTwo");
+    var chartCanvas = document.getElementById("myChart");
+    if (chartSectionProgressTwo && chartCanvas) {
+      var ctx = chartCanvas.getContext("2d");
+      var targetData = [[0, 18000, 0, 2737, 0, 50000, 0, 17000], [33000, 0, 25000, 33000, 29000, 0, 27000, 0]];
+      var initialData = targetData.map(function (row) {
+        return row.map(function () {
+          return 0;
+        });
+      });
+      var chartInitialized = false;
+      var myChart = new Chart(ctx, {
+        type: "bar",
         data: {
+          labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "July", "Aug"],
           datasets: [{
-            data: [value, (100 - value) / 1.5, (100 - value) / 2],
-            backgroundColor: ["#6ED0FB", "#FFE872", "#EEF0F2"],
-            borderWidth: 0,
-            cutout: "70%",
-            rotation: 270
+            label: "Blue Sales",
+            data: initialData[0],
+            backgroundColor: "#00c0ff",
+            borderRadius: 6,
+            barThickness: 20,
+            categoryPercentage: 0.6,
+            barPercentage: 1.0
+          }, {
+            label: "Yellow Sales",
+            data: initialData[1],
+            backgroundColor: "#ffee55",
+            borderRadius: 6,
+            barThickness: 20,
+            categoryPercentage: 0.6,
+            barPercentage: 1.0
           }]
         },
         options: {
-          animation: false,
+          responsive: true,
+          maintainAspectRatio: false,
+          interaction: {
+            mode: "index",
+            intersect: false
+          },
+          animation: {
+            duration: 1500,
+            easing: "easeOutQuart"
+          },
           plugins: {
             legend: {
               display: false
             },
             tooltip: {
-              enabled: false
+              backgroundColor: "#ffffff",
+              borderColor: "#e0e0e0",
+              borderWidth: 1,
+              titleColor: "#444",
+              bodyColor: "#000",
+              bodyFont: {
+                weight: "bold"
+              },
+              padding: 10,
+              callbacks: {
+                label: function label(context) {
+                  return "Sales $" + context.raw.toLocaleString();
+                }
+              }
             }
-          }
-        }
-      });
-    }
-  });
-
-  /*--------------------------------------------------------------
-  PI CHART V5 JS INIT
-  ------------------------------------------------------------*/
-  document.addEventListener("DOMContentLoaded", function () {
-    var canvas = document.getElementById("myPieChart");
-    var chartInit = false;
-    if (!canvas) return;
-    function createSequentialPieChart() {
-      var ctx = canvas.getContext("2d");
-      var data = [55, 15, 15, 15];
-      var colors = ["#855CF8", "#B085FF", "#503795", "#000000"];
-      var labels = ["A", "B", "C", "D"];
-      var chart = new Chart(ctx, {
-        type: "pie",
-        data: {
-          labels: labels,
-          datasets: [{
-            data: data.map(function () {
-              return 0;
-            }),
-            backgroundColor: colors,
-            borderWidth: 0
-          }]
-        },
-        options: {
-          animation: {
-            duration: 1000,
-            easing: "easeOutQuart"
           },
-          plugins: {
-            legend: {
-              display: false
+          scales: {
+            x: {
+              grid: {
+                display: false
+              },
+              ticks: {
+                font: {
+                  size: 10,
+                  weight: "400"
+                },
+                color: "rgba(3, 22, 11, 0.8)"
+              }
+            },
+            y: {
+              beginAtZero: true,
+              max: 55000,
+              ticks: {
+                stepSize: 5000,
+                callback: function callback(value) {
+                  return value / 1000 + " k";
+                },
+                color: "rgba(3, 22, 11, 0.8)",
+                font: {
+                  size: 10
+                }
+              },
+              grid: {
+                drawBorder: false,
+                color: "#fff"
+              }
             }
           }
         }
       });
-
-      // Sequential animation for each slice
-      var i = 0;
-      function animateSlice() {
-        if (i >= data.length) return;
-        chart.data.datasets[0].data[i] = data[i];
-        chart.update();
-        i++;
-        setTimeout(animateSlice, 300); // 0.3s পর পর slice animate হবে
-      }
-      animateSlice();
+      var chartObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting && !chartInitialized) {
+            myChart.data.datasets[0].data = targetData[0];
+            myChart.data.datasets[1].data = targetData[1];
+            myChart.update({
+              duration: 1500,
+              easing: "easeOutQuart"
+            });
+            chartInitialized = true;
+          }
+        });
+      }, {
+        threshold: 0.4
+      });
+      chartObserver.observe(chartSectionProgressTwo);
     }
 
-    // Scroll Trigger
-    var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting && !chartInit) {
-          chartInit = true;
-          createSequentialPieChart();
+    /*--------------------------------------------------------------
+    CHART CHART CIRCLE V4 JS INIT
+    FIX: removed inner DOMContentLoaded wrapper
+    --------------------------------------------------------------*/
+    var chartBox = document.getElementById("chartSectionCircle");
+    var chartValue = document.getElementById("chartValue");
+    var growthCanvas = document.getElementById("growthChart");
+    if (chartBox && chartValue && growthCanvas) {
+      var easeOutCubic = function easeOutCubic(t) {
+        return 1 - Math.pow(1 - t, 3);
+      };
+      var startSmoothAnimation = function startSmoothAnimation(targetValue) {
+        var startTime = null;
+        var duration = 1600;
+        function animate(currentTime) {
+          if (!startTime) startTime = currentTime;
+          var elapsed = currentTime - startTime;
+          var progress = Math.min(elapsed / duration, 1);
+          var eased = easeOutCubic(progress);
+          var value = Math.round(targetValue * eased);
+          chartValue.textContent = value + "%";
+          updateGrowthChart(value);
+          if (progress < 1) requestAnimationFrame(animate);
+        }
+        requestAnimationFrame(animate);
+      };
+      var updateGrowthChart = function updateGrowthChart(value) {
+        if (growthChartInstance) growthChartInstance.destroy();
+        growthChartInstance = new Chart(growthCtx, {
+          type: "doughnut",
+          data: {
+            datasets: [{
+              data: [value, (100 - value) / 1.5, (100 - value) / 2],
+              backgroundColor: ["#6ED0FB", "#FFE872", "#EEF0F2"],
+              borderWidth: 0,
+              cutout: "70%",
+              rotation: 270
+            }]
+          },
+          options: {
+            animation: false,
+            plugins: {
+              legend: {
+                display: false
+              },
+              tooltip: {
+                enabled: false
+              }
+            }
+          }
+        });
+      };
+      var growthCtx = growthCanvas.getContext("2d");
+      var growthChartInstance = null;
+      var circleAnimated = false;
+      var circleObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting && !circleAnimated) {
+            chartBox.classList.add("active");
+            startSmoothAnimation(73);
+            circleAnimated = true;
+          }
+        });
+      }, {
+        threshold: 0.6
+      });
+      circleObserver.observe(chartBox);
+    }
+
+    /*--------------------------------------------------------------
+    PI CHART V5 JS INIT
+    FIX: removed inner DOMContentLoaded wrapper
+    --------------------------------------------------------------*/
+    var pieCanvas = document.getElementById("myPieChart");
+    var pieChartInit = false;
+    if (pieCanvas) {
+      var createSequentialPieChart = function createSequentialPieChart() {
+        var pieCtx = pieCanvas.getContext("2d");
+        var data = [55, 15, 15, 15];
+        var colors = ["#855CF8", "#B085FF", "#503795", "#000000"];
+        var labels = ["A", "B", "C", "D"];
+        var chart = new Chart(pieCtx, {
+          type: "pie",
+          data: {
+            labels: labels,
+            datasets: [{
+              data: data.map(function () {
+                return 0;
+              }),
+              backgroundColor: colors,
+              borderWidth: 0
+            }]
+          },
+          options: {
+            animation: {
+              duration: 1000,
+              easing: "easeOutQuart"
+            },
+            plugins: {
+              legend: {
+                display: false
+              }
+            }
+          }
+        });
+        var i = 0;
+        function animateSlice() {
+          if (i >= data.length) return;
+          chart.data.datasets[0].data[i] = data[i];
+          chart.update();
+          i++;
+          setTimeout(animateSlice, 300);
+        }
+        animateSlice();
+      };
+      var pieObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting && !pieChartInit) {
+            pieChartInit = true;
+            createSequentialPieChart();
+          }
+        });
+      }, {
+        threshold: 0.5
+      });
+      pieObserver.observe(pieCanvas);
+    }
+
+    /*--------------------------------------------------------------
+    TAB V5 JS INIT
+    FIX: removed inner DOMContentLoaded wrapper; replaced
+         .addEventListener("click") with $(document).on("click")
+         for event delegation
+    --------------------------------------------------------------*/
+    $(document).on("click", ".awura-tab-menu-value", function () {
+      var tabId = $(this).data("tab");
+      $(".awura-tab-menu-value").removeClass("active");
+      $(".awura-tab-body").removeClass("active");
+      $(this).addClass("active");
+      $(".awura-tab-body[data-tab='" + tabId + "']").addClass("active");
+    });
+
+    /*--------------------------------------------------------------
+    AWURA V6 CONTENT THUMB JS INIT (GSAP)
+    --------------------------------------------------------------*/
+    if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.to(".awura-content-thumb.left-thumb", {
+        y: -1200,
+        scrollTrigger: {
+          trigger: ".awura-single-content-section",
+          start: "top top",
+          end: "bottom top",
+          scrub: true
         }
       });
-    }, {
-      threshold: 0.5
-    });
-    observer.observe(canvas);
-  });
-
-  /*--------------------------------------------------------------
-  TAB V5 JS INIT
-  ------------------------------------------------------------*/
-  document.addEventListener("DOMContentLoaded", function () {
-    var tabButtons = document.querySelectorAll(".awura-tab-menu-value");
-    var tabContents = document.querySelectorAll(".awura-tab-body");
-    tabButtons.forEach(function (button) {
-      button.addEventListener("click", function () {
-        var tabId = button.getAttribute("data-tab");
-
-        // Remove active classes
-        tabButtons.forEach(function (btn) {
-          return btn.classList.remove("active");
-        });
-        tabContents.forEach(function (content) {
-          return content.classList.remove("active");
-        });
-
-        // Add active class to clicked tab
-        button.classList.add("active");
-        document.querySelector(".awura-tab-body[data-tab=\"".concat(tabId, "\"]")).classList.add("active");
+      gsap.to(".awura-content-thumb.right-thumb", {
+        y: -1700,
+        scrollTrigger: {
+          trigger: ".awura-single-content-section",
+          start: "top top",
+          end: "bottom top",
+          scrub: true
+        }
       });
-    });
-  });
-
-  /*--------------------------------------------------------------
-  AWURA V6 CONTENT THUMB JS INIT
-  ------------------------------------------------------------*/
-  gsap.registerPlugin(ScrollTrigger);
-  gsap.to(".awura-content-thumb.left-thumb", {
-    y: -1200,
-    scrollTrigger: {
-      trigger: ".awura-single-content-section",
-      start: "top top",
-      end: "bottom top",
-      scrub: true
     }
-  });
-  gsap.to(".awura-content-thumb.right-thumb", {
-    y: -1700,
-    scrollTrigger: {
-      trigger: ".awura-single-content-section",
-      start: "top top",
-      end: "bottom top",
-      scrub: true
-    }
-  });
 
-  /*--------------------------------------------------------------
-  HIDE SHOW PASSWORD JS INIT
-  ------------------------------------------------------------*/
-  document.querySelectorAll(".toggle-password").forEach(function (btn) {
-    btn.addEventListener("click", function () {
-      var input = btn.closest(".awura-account-field").querySelector(".password-input");
-      var icon = btn.querySelector("i");
-      if (input.type === "password") {
-        input.type = "text";
-        icon.classList.remove("ri-eye-line");
-        icon.classList.add("ri-eye-off-line");
+    /*--------------------------------------------------------------
+    HIDE SHOW PASSWORD JS INIT
+    FIX: replaced .addEventListener("click") forEach with
+         $(document).on("click") event delegation
+    --------------------------------------------------------------*/
+    $(document).on("click", ".toggle-password", function () {
+      var $input = $(this).closest(".awura-account-field").find(".password-input");
+      var $icon = $(this).find("i");
+      if ($input.attr("type") === "password") {
+        $input.attr("type", "text");
+        $icon.removeClass("ri-eye-line").addClass("ri-eye-off-line");
       } else {
-        input.type = "password";
-        icon.classList.remove("ri-eye-off-line");
-        icon.classList.add("ri-eye-line");
+        $input.attr("type", "password");
+        $icon.removeClass("ri-eye-off-line").addClass("ri-eye-line");
       }
     });
-  });
 
-  /*--------------------------------------------------------------
-  THUMB HOVER JS INIT
-  ------------------------------------------------------------*/
-  var thumbTwo = document.querySelector(".thumb-two");
-  var thumbThree = document.querySelector(".thumb-three");
-  var hTwo = document.querySelector(".hover-two");
-  var hThree = document.querySelector(".hover-three");
+    /*--------------------------------------------------------------
+    THUMB HOVER JS INIT
+    FIX: replaced .addEventListener("mouseenter/mouseleave") with
+         $(document).on("mouseenter/mouseleave") for delegation
+    --------------------------------------------------------------*/
+    $(document).on("mouseenter", ".hover-two", function () {
+      $(".thumb-two").addClass("active");
+    });
+    $(document).on("mouseleave", ".hover-two", function () {
+      $(".thumb-two").removeClass("active");
+    });
+    $(document).on("mouseenter", ".hover-three", function () {
+      $(".thumb-three").addClass("active");
+    });
+    $(document).on("mouseleave", ".hover-three", function () {
+      $(".thumb-three").removeClass("active");
+    });
 
-  // Hover Two
-  if (hTwo && thumbTwo) {
-    hTwo.addEventListener("mouseenter", function () {
-      thumbTwo.classList.add("active");
-    });
-    hTwo.addEventListener("mouseleave", function () {
-      thumbTwo.classList.remove("active");
-    });
-  }
+    /*--------------------------------------------------------------
+    TEXT SCROLL OVERLAY JS INIT (GSAP)
+    --------------------------------------------------------------*/
+    if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
+      gsap.registerPlugin(ScrollTrigger);
+      var textElements = gsap.utils.toArray(".text-overlay-animation");
+      textElements.forEach(function (text) {
+        gsap.to(text, {
+          backgroundSize: "100%",
+          ease: "none",
+          scrollTrigger: {
+            trigger: text,
+            start: "center 80%",
+            end: "center 20%",
+            scrub: true
+          }
+        });
+      });
+    }
 
-  // Hover Three
-  if (hThree && thumbThree) {
-    hThree.addEventListener("mouseenter", function () {
-      thumbThree.classList.add("active");
-    });
-    hThree.addEventListener("mouseleave", function () {
-      thumbThree.classList.remove("active");
-    });
-  }
+    /*--------------------------------------------------------------
+    TEAM PROGRESS JS INIT
+    FIX: replaced window.addEventListener with $(window).on()
+    --------------------------------------------------------------*/
+    var teamBars = document.querySelectorAll(".awura-team-progress-fill");
+    function animateTeamBars() {
+      teamBars.forEach(function (bar) {
+        var rect = bar.getBoundingClientRect();
+        var windowH = window.innerHeight;
+        if (rect.top < windowH - 50) {
+          bar.style.width = bar.getAttribute("data-width") + "%";
+        }
+      });
+    }
+    $(window).on("scroll", animateTeamBars);
+    $(window).on("load", animateTeamBars);
 
-  /*--------------------------------------------------------------
-  TEXT SCROLL OVERLAY JS INIT
-  ------------------------------------------------------------*/
-  gsap.registerPlugin(ScrollTrigger);
-  var textElements = gsap.utils.toArray(".text-overlay-animation");
-  textElements.forEach(function (text) {
-    gsap.to(text, {
-      backgroundSize: "100%",
-      ease: "none",
-      scrollTrigger: {
-        trigger: text,
-        start: "center 80%",
-        end: "center 20%",
-        scrub: true
-      }
-    });
-  });
-
-  /*--------------------------------------------------------------
-  TEAM PROGRESS JS INIT
-  ------------------------------------------------------------*/
-  var bars = document.querySelectorAll(".awura-team-progress-fill");
-  function animateBars() {
-    bars.forEach(function (bar) {
-      var rect = bar.getBoundingClientRect();
-      var barTop = rect.top;
-      var windowHeight = window.innerHeight;
-      if (barTop < windowHeight - 50) {
-        var width = bar.getAttribute("data-width");
-        bar.style.width = width + "%";
-      }
-    });
-  }
-  window.addEventListener("scroll", animateBars);
-  window.addEventListener("load", animateBars);
-  $(window).on("load", function () {
     /*--------------------------------------------------------------
     AWURA PRELOADER JS INIT
+    FIX: replaced $(window).load() with $(window).on("load")
     --------------------------------------------------------------*/
-    var preloader = document.getElementById("awura-preloader");
-    preloader.classList.add("fade-out");
-    setTimeout(function () {
-      preloader.style.display = "none";
-      document.body.style.overflow = "auto";
-    }, 600);
+    $(window).on("load", function () {
+      var preloader = document.getElementById("awura-preloader");
+      if (preloader) {
+        preloader.classList.add("fade-out");
+        setTimeout(function () {
+          preloader.style.display = "none";
+          document.body.style.overflow = "auto";
+        }, 600);
+      }
 
-    /*--------------------------------------------------------------
-    AWURA THREE COLUMN FILTER JS
-    ------------------------------------------------------------*/
-    var kdg_filter_gallery = $("#awura-course-column");
-    if (kdg_filter_gallery.is_exist()) {
-      var $container = $(kdg_filter_gallery),
-        colWidth = function colWidth() {
-          var w = $container.width(),
-            columnNum = 1,
-            columnWidth = 0;
+      /*--------------------------------------------------------------
+      AWURA THREE COLUMN FILTER JS
+      FIX: replaced $optionLinks.click() with
+           $(document).on("click") event delegation;
+           replaced $(window).resize() with $(window).on("resize")
+      --------------------------------------------------------------*/
+      var kdg_filter_gallery = $("#awura-course-column");
+      if (kdg_filter_gallery.is_exist()) {
+        var $container = kdg_filter_gallery;
+        var colWidth = function colWidth() {
+          var w = $container.width();
+          var columnNum = 1;
+          var columnWidth = 0;
           if (w > 1200) {
             columnNum = 3;
           } else if (w > 900) {
@@ -855,19 +824,17 @@
           }
           columnWidth = Math.floor(w / columnNum);
           $container.find(".collection-grid-item").each(function () {
-            var $item = $(this),
-              multiplier_w = $item.attr("class").match(/collection-grid-item-w(\d)/),
-              multiplier_h = $item.attr("class").match(/collection-grid-item-h(\d)/),
-              width = multiplier_w ? columnWidth * multiplier_w[1] : columnWidth,
-              height = multiplier_h ? columnWidth * multiplier_h[1] * 0.4 - 12 : columnWidth * 0.5;
+            var $item = $(this);
+            var multiplier_w = $item.attr("class").match(/collection-grid-item-w(\d)/);
+            var multiplier_h = $item.attr("class").match(/collection-grid-item-h(\d)/);
+            var width = multiplier_w ? columnWidth * multiplier_w[1] : columnWidth;
             $item.css({
               width: width
-              //height: height
             });
           });
           return columnWidth;
-        },
-        isotope = function isotope() {
+        };
+        var isotope = function isotope() {
           $container.isotope({
             resizable: false,
             itemSelector: ".collection-grid-item",
@@ -877,185 +844,171 @@
             }
           });
         };
-      isotope();
-      $(window).resize(isotope);
-      var $optionSets = $(".awura-course-menu .option-set"),
-        $optionLinks = $optionSets.find("li");
-      $optionLinks.click(function () {
-        var $this = $(this);
-        var $optionSet = $this.parents(".option-set");
-        $optionSet.find(".active").removeClass("active");
-        $this.addClass("active");
+        isotope();
 
-        // make option object dynamically, i.e. { filter: '.my-filter-class' }
-        var options = {},
-          key = $optionSet.attr("data-option-key"),
-          value = $this.attr("data-option-value");
-        // parse 'false' as false boolean
-        value = value === "false" ? false : value;
-        options[key] = value;
-        if (key === "layoutMode" && typeof changeLayoutMode === "function") {
-          // changes in layout modes need extra logic
-          changeLayoutMode($this, options);
-        } else {
-          // creativewise, apply new options
-          $container.isotope(options);
-        }
-        return false;
+        // FIX: .resize() → .on("resize")
+        $(window).on("resize", isotope);
+
+        // FIX: $optionLinks.click() → $(document).on("click") with delegation
+        $(document).on("click", ".awura-course-menu .option-set li", function () {
+          var $this = $(this);
+          var $optionSet = $this.closest(".option-set");
+          $optionSet.find(".active").removeClass("active");
+          $this.addClass("active");
+          var options = {};
+          var key = $optionSet.data("option-key");
+          var value = $this.data("option-value");
+          value = value === "false" ? false : value;
+          options[key] = value;
+          if (key === "layoutMode" && typeof changeLayoutMode === "function") {
+            changeLayoutMode($this, options);
+          } else {
+            $container.isotope(options);
+          }
+          return false;
+        });
+      }
+    }); // End $(window).on("load")
+
+    /*--------------------------------------------------------------
+    AWURA WOW JS INIT
+    --------------------------------------------------------------*/
+    if (typeof WOW !== "undefined") {
+      new WOW().init();
+    }
+
+    /*--------------------------------------------------------------
+    AWURA MAP JS INIT
+    FIX: replaced google.maps.event.addDomListener(window, 'load')
+         with $(window).on("load") — preferred modern approach
+    --------------------------------------------------------------*/
+    var $google_map = $("#map");
+    if ($google_map.is_exist()) {
+      $(window).on("load", function initMap() {
+        var mapOptions = {
+          zoom: 11,
+          scrollwheel: false,
+          navigationControl: false,
+          mapTypeControl: false,
+          scaleControl: false,
+          draggable: true,
+          disableDefaultUI: true,
+          center: new google.maps.LatLng(40.6700, -73.9400),
+          styles: [{
+            "featureType": "landscape.man_made",
+            "elementType": "geometry",
+            "stylers": [{
+              "color": "#f7f1df"
+            }]
+          }, {
+            "featureType": "landscape.natural",
+            "elementType": "geometry",
+            "stylers": [{
+              "color": "#d0e3b4"
+            }]
+          }, {
+            "featureType": "landscape.natural.terrain",
+            "elementType": "geometry",
+            "stylers": [{
+              "visibility": "off"
+            }]
+          }, {
+            "featureType": "poi",
+            "elementType": "labels",
+            "stylers": [{
+              "visibility": "off"
+            }]
+          }, {
+            "featureType": "poi.business",
+            "elementType": "all",
+            "stylers": [{
+              "visibility": "off"
+            }]
+          }, {
+            "featureType": "poi.medical",
+            "elementType": "geometry",
+            "stylers": [{
+              "color": "#fbd3da"
+            }]
+          }, {
+            "featureType": "poi.park",
+            "elementType": "geometry",
+            "stylers": [{
+              "color": "#bde6ab"
+            }]
+          }, {
+            "featureType": "road",
+            "elementType": "geometry.stroke",
+            "stylers": [{
+              "visibility": "off"
+            }]
+          }, {
+            "featureType": "road",
+            "elementType": "labels",
+            "stylers": [{
+              "visibility": "off"
+            }]
+          }, {
+            "featureType": "road.highway",
+            "elementType": "geometry.fill",
+            "stylers": [{
+              "color": "#ffe15f"
+            }]
+          }, {
+            "featureType": "road.highway",
+            "elementType": "geometry.stroke",
+            "stylers": [{
+              "color": "#efd151"
+            }]
+          }, {
+            "featureType": "road.arterial",
+            "elementType": "geometry.fill",
+            "stylers": [{
+              "color": "#ffffff"
+            }]
+          }, {
+            "featureType": "road.local",
+            "elementType": "geometry.fill",
+            "stylers": [{
+              "color": "black"
+            }]
+          }, {
+            "featureType": "transit.station.airport",
+            "elementType": "geometry.fill",
+            "stylers": [{
+              "color": "#cfb2db"
+            }]
+          }, {
+            "featureType": "water",
+            "elementType": "geometry",
+            "stylers": [{
+              "color": "#a2daf2"
+            }]
+          }]
+        };
+        var mapElement = document.getElementById("map");
+        var map = new google.maps.Map(mapElement, mapOptions);
+        var marker = new google.maps.Marker({
+          position: new google.maps.LatLng(40.6700, -73.9400),
+          map: map,
+          title: "awura"
+        });
+        var contentString = '<div id="content"><div id="tpw"><h3>awura</h3></div></div>';
+        var infowindow = new google.maps.InfoWindow({
+          content: contentString,
+          maxWidth: 280
+        });
+        marker.setAnimation(google.maps.Animation.BOUNCE);
+        setTimeout(function () {
+          marker.setAnimation(null);
+        }, 750);
+
+        // FIX: google.maps.event.addListener is fine (Google Maps API native),
+        //      but kept tidy with anonymous function
+        google.maps.event.addListener(marker, "click", function () {
+          infowindow.open(map, marker);
+        });
       });
     }
-  }); // End window LODE
-
-  /*--------------------------------------------------------------
-  AWURA WOW JS INIT
-  --------------------------------------------------------------*/
-  new WOW().init();
-
-  /*--------------------------------------------------------------
-  AWURA MAP JS INIT
-  --------------------------------------------------------------*/
-  var google_map = $('#map');
-  if (google_map.is_exist()) {
-    var init = function init() {
-      var mapOptions = {
-        zoom: 11,
-        scrollwheel: false,
-        navigationControl: false,
-        mapTypeControl: false,
-        scaleControl: false,
-        draggable: true,
-        disableDefaultUI: true,
-        center: new google.maps.LatLng(40.6700, -73.9400),
-        styles: [{
-          "featureType": "landscape.man_made",
-          "elementType": "geometry",
-          "stylers": [{
-            "color": "#f7f1df"
-          }]
-        }, {
-          "featureType": "landscape.natural",
-          "elementType": "geometry",
-          "stylers": [{
-            "color": "#d0e3b4"
-          }]
-        }, {
-          "featureType": "landscape.natural.terrain",
-          "elementType": "geometry",
-          "stylers": [{
-            "visibility": "off"
-          }]
-        }, {
-          "featureType": "poi",
-          "elementType": "labels",
-          "stylers": [{
-            "visibility": "off"
-          }]
-        }, {
-          "featureType": "poi.business",
-          "elementType": "all",
-          "stylers": [{
-            "visibility": "off"
-          }]
-        }, {
-          "featureType": "poi.medical",
-          "elementType": "geometry",
-          "stylers": [{
-            "color": "#fbd3da"
-          }]
-        }, {
-          "featureType": "poi.park",
-          "elementType": "geometry",
-          "stylers": [{
-            "color": "#bde6ab"
-          }]
-        }, {
-          "featureType": "road",
-          "elementType": "geometry.stroke",
-          "stylers": [{
-            "visibility": "off"
-          }]
-        }, {
-          "featureType": "road",
-          "elementType": "labels",
-          "stylers": [{
-            "visibility": "off"
-          }]
-        }, {
-          "featureType": "road.highway",
-          "elementType": "geometry.fill",
-          "stylers": [{
-            "color": "#ffe15f"
-          }]
-        }, {
-          "featureType": "road.highway",
-          "elementType": "geometry.stroke",
-          "stylers": [{
-            "color": "#efd151"
-          }]
-        }, {
-          "featureType": "road.arterial",
-          "elementType": "geometry.fill",
-          "stylers": [{
-            "color": "#ffffff"
-          }]
-        }, {
-          "featureType": "road.local",
-          "elementType": "geometry.fill",
-          "stylers": [{
-            "color": "black"
-          }]
-        }, {
-          "featureType": "transit.station.airport",
-          "elementType": "geometry.fill",
-          "stylers": [{
-            "color": "#cfb2db"
-          }]
-        }, {
-          "featureType": "water",
-          "elementType": "geometry",
-          "stylers": [{
-            "color": "#a2daf2"
-          }]
-        }]
-      };
-      var mapElement = document.getElementById('map');
-      var map = new google.maps.Map(mapElement, mapOptions);
-      var marker = new google.maps.Marker({
-        position: new google.maps.LatLng(40.6700, -73.9400),
-        map: map,
-        // icon: 'assets/images/all-img/contact/map.png',
-        title: 'awura'
-      });
-      var contentString = '<div id="content">' + '<div id="tpw">' + '<h3>awura' + '</div>';
-      var infowindow = new google.maps.InfoWindow({
-        content: contentString,
-        maxWidth: 280
-      });
-      marker.setAnimation(google.maps.Animation.BOUNCE);
-      setTimeout(function () {
-        marker.setAnimation(null);
-      }, 750); //time it takes for one bounce   
-
-      google.maps.event.addListener(marker, 'click', function () {
-        infowindow.open(map, marker);
-      });
-    };
-    google.maps.event.addDomListener(window, 'load', init);
-  }
+  }); // End $(function) — document ready
 })(jQuery);
-
-// $(function () {
-
-//   var current = window.location.pathname.split("/").pop();
-
-//   $(".main-menu ul li a").each(function () {
-
-//     var link = $(this).attr("href");
-
-//     if (link.indexOf(current) !== -1 && current !== "") {
-//       $(this).addClass("active");
-//     }
-
-//   });
-
-// });

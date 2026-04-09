@@ -488,22 +488,41 @@ h2,
   }
 }
 
+.heading-style-h3 {
+  font-weight: 500;
+}
+
+.heading-style-h3,
 h3,
 .h3 {
   font-size: 32px;
   line-height: 1.25em; /* 116.667% */
 }
 @media (max-width: 767px) {
+  .heading-style-h3,
   h3,
   .h3 {
     font-size: 28px;
   }
 }
 
+.heading-style-h3.light-color {
+  color: var(--white-color);
+}
+
+.heading-style-h3 {
+  color: var(--primary-color);
+}
+
+.heading-style-h4,
 h4,
 .h4 {
   font-size: 20px;
   line-height: 1.5em; /* 116.667% */
+}
+
+.heading-style-h4 {
+  font-weight: 500;
 }
 
 p {
@@ -786,6 +805,14 @@ p {
 h2.reveal-text {
   display: flex;
   flex-wrap: wrap;
+}
+
+.mb30 {
+  margin-bottom: 30px;
+}
+
+.mb15 {
+  margin-bottom: 15px;
 }
 
 a {
@@ -1345,7 +1372,8 @@ ul.sub-menu li.menu-item-has-children a::after {
   font-weight: 600;
   color: rgba(3, 22, 11, 0.5);
 }
-.font-typo-four .awura-footer-menu h4 {
+.font-typo-four .awura-footer-menu span {
+  display: block;
   font-size: 24px;
   font-weight: 600;
   margin-bottom: 24px;
@@ -1381,7 +1409,8 @@ ul.sub-menu li.menu-item-has-children a::after {
   color: var(--bottle-green-color);
 }
 
-.font-typo-five .awura-footer-menu h5 {
+.font-typo-five .awura-footer-menu span {
+  display: block;
   font-size: 24px;
   font-weight: 600;
   margin-bottom: 24px;
@@ -2940,6 +2969,7 @@ button#awura-subscriber-btn9:hover .button-icon-show img {
   line-height: 1.25em; /* 116.667% */
   margin-bottom: 15px;
   transition: all 0.4s;
+  font-weight: 500;
 }
 @media (max-width: 767px) {
   .blog-title {
@@ -4218,7 +4248,7 @@ span.button-icon-hide {
   padding: 14px 23px;
   border-radius: 3px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 16px !important;
   font-weight: 600;
   display: inline-block;
   transition: 0.4s;
@@ -4232,6 +4262,9 @@ span.button-icon-hide {
   display: block;
   position: relative;
   z-index: 10;
+  font-size: 16px !important;
+  margin-bottom: 0 !important;
+  line-height: inherit !important;
 }
 .awura-btn-style-eight:hover {
   color: var(--dodger-blue-color) !important;
@@ -4429,15 +4462,17 @@ span.button-icon-hide {
 .awura-section-title.max-w-730 {
   max-width: 730px;
 }
-.awura-section-title.font-typo-two h5 {
+.awura-section-title.font-typo-two span {
   font-size: 24px;
   line-height: 34px;
   margin-bottom: 20px;
+  font-weight: 500;
+  display: block;
   font-family: "Anton", sans-serif;
   color: var(--dark-color-1);
 }
 @media (max-width: 575px) {
-  .awura-section-title.font-typo-two h5 {
+  .awura-section-title.font-typo-two span {
     font-size: 20px;
     margin-bottom: 15px;
   }
@@ -4469,7 +4504,7 @@ span.button-icon-hide {
     font-size: 36px;
   }
 }
-.awura-section-title.font-typo-two.light-color h5, .awura-section-title.font-typo-two.light-color h2 {
+.awura-section-title.font-typo-two.light-color span, .awura-section-title.font-typo-two.light-color h5, .awura-section-title.font-typo-two.light-color h2 {
   color: var(--white-color) !important;
 }
 .awura-section-title.font-typo-three h2 {
@@ -4814,14 +4849,16 @@ span.button-icon-hide {
     font-size: 36px;
   }
 }
-.awura-default-content.font-typo-two h5 {
+.awura-default-content.font-typo-two span {
+  display: block;
   font-size: 24px;
   line-height: 34px;
   margin-bottom: 20px;
+  font-weight: 500;
   font-family: "Anton", sans-serif;
   color: var(--dark-color-1);
 }
-.awura-default-content.font-typo-two.light-color h2, .awura-default-content.font-typo-two.light-color h5, .awura-default-content.font-typo-two.light-color p {
+.awura-default-content.font-typo-two.light-color span, .awura-default-content.font-typo-two.light-color h2, .awura-default-content.font-typo-two.light-color h5, .awura-default-content.font-typo-two.light-color p {
   color: var(--white-color);
 }
 .awura-default-content.font-typo-two p {
@@ -7046,8 +7083,9 @@ a.current {
   text-align: center;
   margin-bottom: 50px;
 }
-.awura-brandlogo-center-title h5 {
+.awura-brandlogo-center-title span {
   font-size: 24px;
+  font-weight: 500;
   letter-spacing: -0.01em;
   color: var(--white-color);
   font-family: "Pixelify Sans", sans-serif;
@@ -7111,14 +7149,16 @@ a.current {
   border-radius: 0;
   background-color: var(--white-color);
 }
-.awura-brandlogo-style-two .awura-brandlogo-box h4 {
+.awura-brandlogo-style-two .awura-brandlogo-box span {
+  font-weight: 500;
   font-size: 24px;
   line-height: 34px;
   letter-spacing: -0.05em;
   font-family: "Plus Jakarta Sans", sans-serif;
+  color: var(--primary-color);
 }
 @media (max-width: 1199px) {
-  .awura-brandlogo-style-two .awura-brandlogo-box h4 {
+  .awura-brandlogo-style-two .awura-brandlogo-box span {
     font-size: 20px;
     line-height: 26px;
   }
@@ -7139,7 +7179,8 @@ a.current {
   margin-bottom: 60px;
   text-align: center;
 }
-.awura-brandlogo-title2 h5 {
+.awura-brandlogo-title2 span {
+  display: block;
   font-weight: 600;
   font-size: 20px;
   line-height: 30px;
@@ -7443,7 +7484,8 @@ a.current {
 .awura-iconbox-icon4.bg-04 {
   background-color: var(--jonquil-color);
 }
-.awura-iconbox-data4 h5 {
+.awura-iconbox-data4 span {
+  display: block;
   font-size: 24px;
   line-height: 34px;
   margin-bottom: 15px;
@@ -7481,7 +7523,8 @@ a.current {
 .awura-iconbox-icon5 {
   margin-bottom: 24px;
 }
-.awura-iconbox-data5 h5 {
+.awura-iconbox-data5 span {
+  display: block;
   font-size: 24px;
   font-weight: 600;
   margin-bottom: 15px;
@@ -7530,7 +7573,8 @@ a.current {
 .awura-iconbox-icon6.icon-bg3 {
   background-color: #F5D6A7;
 }
-.awura-iconbox-data6 h5 {
+.awura-iconbox-data6 h5, .awura-iconbox-data6 span {
+  display: block;
   font-size: 24px;
   font-weight: 600;
   margin-bottom: 15px;
@@ -7577,7 +7621,8 @@ a.current {
   justify-content: center;
   background-color: var(--green-color);
 }
-.awura-iconbox-data7 h5 {
+.awura-iconbox-data7 h5, .awura-iconbox-data7 span {
+  display: block;
   font-weight: 500;
   font-size: 24px;
   line-height: 32px;
@@ -7603,7 +7648,8 @@ a.current {
 .awura-iconbox-icon8 {
   margin-bottom: 30px;
 }
-.awura-iconbox-data8 h5 {
+.awura-iconbox-data8 h5, .awura-iconbox-data8 span {
+  display: block;
   font-weight: 500;
   font-size: 24px;
   line-height: 32px;
@@ -7632,7 +7678,8 @@ a.current {
   margin-bottom: 24px;
   background-color: var(--white-color);
 }
-.awura-step-box h5 {
+.awura-step-box h5, .awura-step-box span {
+  display: block;
   font-weight: 500;
   font-size: 24px;
   line-height: 32px;
@@ -8509,7 +8556,8 @@ a.current {
   align-items: center;
   justify-content: space-between;
 }
-.awura-portfolio-data3 h5 {
+.awura-portfolio-data3 span {
+  display: block;
   font-weight: 600;
   font-size: 24px;
   line-height: 32px;
@@ -8518,7 +8566,7 @@ a.current {
   color: var(--dark-color-4);
   transition: all 0.4s;
 }
-.awura-portfolio-data3 h5:hover {
+.awura-portfolio-data3 span:hover {
   color: var(--orange-color);
 }
 .awura-portfolio-tags ul {
@@ -8586,7 +8634,8 @@ a.current {
     text-align: left;
   }
 }
-.awura-portfolio-data4 h4 {
+.awura-portfolio-data4 h4, .awura-portfolio-data4 span {
+  display: block;
   font-weight: 500;
   font-size: 28px;
   margin-bottom: 15px;
@@ -8596,7 +8645,7 @@ a.current {
   color: var(--dark-color-4);
 }
 @media (max-width: 479px) {
-  .awura-portfolio-data4 h4 {
+  .awura-portfolio-data4 h4, .awura-portfolio-data4 span {
     font-size: 24px;
   }
 }
@@ -8640,10 +8689,18 @@ a.current {
   flex-shrink: 0;
 }
 
-.awura-portfolio-data2.default-font h3 {
+.awura-portfolio-data2.default-font span {
+  margin-bottom: 20px;
+  display: block;
   font-weight: 500;
+  font-size: 32px;
   color: var(--primary-color);
   font-family: "Outfit", sans-serif;
+}
+@media (max-width: 767px) {
+  .awura-portfolio-data2.default-font span {
+    font-size: 28px;
+  }
 }
 .awura-portfolio-data2.default-font ul li {
   font-weight: 500;
@@ -9108,7 +9165,8 @@ a.current {
   background-color: var(--white-color);
   margin-bottom: 24px;
 }
-.awura-testimonial-box5 h5 {
+.awura-testimonial-box5 span {
+  display: block;
   font-size: 24px;
   font-weight: 600;
   margin-bottom: 15px;
@@ -9176,7 +9234,8 @@ a.current {
   border-radius: 20px;
   background-color: var(--wood-color);
 }
-.awura-testimonial-box6 h5 {
+.awura-testimonial-box6 h5, .awura-testimonial-box6 span {
+  display: block;
   font-weight: 600;
   font-size: 24px;
   line-height: 32px;
@@ -9370,7 +9429,7 @@ a.current {
 .awura-team-wrap:hover .awura-team-data-row {
   background-color: var(--primary-color);
 }
-.awura-team-wrap:hover .awura-team-data h4, .awura-team-wrap:hover .awura-team-data p {
+.awura-team-wrap:hover .awura-team-data a, .awura-team-wrap:hover .awura-team-data p {
   color: var(--white-color);
 }
 .awura-team-wrap:hover .awura-social-icon ul li a {
@@ -9402,11 +9461,16 @@ a.current {
   text-align: center;
   background-color: var(--primary-color);
 }
-.awura-team-data-row.dark-version .awura-team-data h4,
+.awura-team-data-row.dark-version .awura-team-data a,
 .awura-team-data-row.dark-version .awura-team-data p {
   color: var(--white-color);
 }
-.awura-team-data h4 {
+.awura-team-data a {
+  display: block;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.5em; /* 116.667% */
+  color: var(--primary-color);
   margin-bottom: 5px;
   transition: all 0.4s;
 }
@@ -9451,7 +9515,8 @@ a.current {
 .awura-team-data2 {
   margin-top: 24px;
 }
-.awura-team-data2 h4 {
+.awura-team-data2 h4, .awura-team-data2 a {
+  display: block;
   font-size: 24px;
   font-weight: 600;
   margin-bottom: 15px;
@@ -11582,7 +11647,7 @@ canvas {
     margin-bottom: 24px;
   }
 }
-.awura-pricing-header3 h5 {
+.awura-pricing-header3 h5, .awura-pricing-header3 span {
   font-size: 20px;
   font-weight: 500;
   font-family: "Geist", sans-serif;
@@ -12002,7 +12067,8 @@ canvas {
   height: 100%;
   object-fit: cover;
 }
-.tab-style-two .awura-tab-content h5 {
+.tab-style-two .awura-tab-content span, .tab-style-two .awura-tab-content h5 {
+  display: block;
   font-size: 24px;
   font-weight: 600;
   line-height: 32px;
@@ -12012,7 +12078,7 @@ canvas {
   font-family: "Onest", sans-serif;
 }
 @media (max-width: 767px) {
-  .tab-style-two .awura-tab-content h5 {
+  .tab-style-two .awura-tab-content span, .tab-style-two .awura-tab-content h5 {
     font-size: 20px;
     line-height: 28px;
   }
@@ -12120,7 +12186,8 @@ canvas {
   position: absolute;
   background-color: var(--orange-color);
 }
-.awura-single-content2 h3 {
+.awura-single-content2 span, .awura-single-content2 h3 {
+  display: block;
   font-size: 43px;
   line-height: 53px;
   font-weight: 600;
@@ -12129,19 +12196,19 @@ canvas {
   color: var(--dark-color-4);
 }
 @media (max-width: 1199px) {
-  .awura-single-content2 h3 {
+  .awura-single-content2 span, .awura-single-content2 h3 {
     font-size: 36px;
     line-height: 46px;
   }
 }
 @media (max-width: 991px) {
-  .awura-single-content2 h3 {
+  .awura-single-content2 span, .awura-single-content2 h3 {
     font-size: 30px;
     line-height: 40px;
   }
 }
 @media (max-width: 767px) {
-  .awura-single-content2 h3 {
+  .awura-single-content2 span, .awura-single-content2 h3 {
     font-size: 24px;
     line-height: 36px;
   }
@@ -12265,7 +12332,8 @@ canvas {
 .awura-course-content {
   padding-top: 24px;
 }
-.awura-course-content h5 {
+.awura-course-content h5, .awura-course-content span {
+  display: block;
   font-size: 23px;
   font-weight: 600;
   margin-bottom: 15px;
@@ -12310,14 +12378,15 @@ canvas {
   font-family: "Inter", sans-serif;
   color: var(--dark-color-5);
 }
-.awura-course-price h5 {
+.awura-course-price h5, .awura-course-price span {
+  display: block;
   font-size: 24px;
   font-weight: 600;
   margin-bottom: 0;
   font-family: "Inter", sans-serif;
   color: var(--dark-color-5);
 }
-.awura-course-price h5 del {
+.awura-course-price h5 del, .awura-course-price span del {
   color: rgba(42, 42, 42, 0.5);
 }
 
@@ -12728,8 +12797,8 @@ a.awura-default-btn {
   }
 }
 .awura-contact-info-wrap {
-  padding-bottom: 70px;
-  margin-bottom: 70px;
+  padding-bottom: 55px;
+  margin-bottom: 55px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 @media (max-width: 991px) {
